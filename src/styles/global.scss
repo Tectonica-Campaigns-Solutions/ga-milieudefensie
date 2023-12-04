@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-size: 20px;
+  overflow-x: hidden;
+}
+
+.header-home {
+  position: relative;
+  z-index: 10;
+}
+
+.header-detail {
+  background-color: var(--primary-color);
+  height: 220px;
+}
+
+
+.formWrapper {
+  iframe {
+    width: 100%;
+  }
+}
+
+.text-with-border-color {
+  font-weight: 400;
+  font-size: 20px;
+  max-width: 100%;
+  line-height: 1.15;
+  margin: 0;
+  color: #242424;
+
+  span {
+    background-image: linear-gradient(0deg,
+        transparent .2em,
+        var(--secondary-color) 0px,
+        var(--secondary-color) .31em,
+        transparent 0px,
+        transparent 100%);
+  }
+}
+
+.landing-page {
+  .logo {
+    padding-top: 30px;
+
+    img {
+      max-width: 230px;
+    }
+  }
+}

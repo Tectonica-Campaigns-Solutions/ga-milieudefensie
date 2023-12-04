@@ -1,0 +1,45 @@
+.hero-home {
+  position: relative;
+  padding-top: 285px;
+  padding-bottom: 205px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+
+  h1 {
+    position: relative;
+    color: var(--white);
+    font-family: var(--secondary-font);
+    font-size: 125px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 80%;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+
+  .introduction {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    * {
+      color: var(--white);
+      font-family: 'Inter';
+      font-size: 25px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 115%;
+    }
+  }
+}
+
+@media screen and (max-width:992px) {
+  .hero-home {
+    h1 {
+      font-size: 72px;
+    }
+  }
+}

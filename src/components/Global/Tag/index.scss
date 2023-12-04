@@ -1,0 +1,18 @@
+.tag {
+	padding: 1px 5px;
+	background: var(--third-color);
+	color: var(--black);
+	font-family: "Inter";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 150%;
+	letter-spacing: 0.12px;
+	text-transform: uppercase;
+}
+
+.tags-list {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}

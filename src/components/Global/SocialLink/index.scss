@@ -1,0 +1,17 @@
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  a:hover {
+    svg path {
+      fill: var(--black);
+    }
+  }
+
+  .white-icons:hover {
+    svg path {
+      fill: var(--primary-color);
+    }
+  }
+}

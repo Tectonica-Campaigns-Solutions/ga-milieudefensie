@@ -1,0 +1,136 @@
+.footer-container {
+  padding: 56px 0;
+  background-color: #000;
+
+  a {
+    color: var(--white);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--secondary-color);
+    }
+  }
+
+  .columns-links {
+    h2 {
+      color: var(--white);
+      font-family: "Inter";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    .general-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      a {
+        font-family: "Inter";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+      }
+    }
+  }
+
+  .extra-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 70px;
+
+    a {
+      display: block;
+      color: var(--white);
+      font-family: "Inter";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+
+      &:hover {
+        color: var(--secondary-color);
+      }
+    }
+  }
+
+  .extra-ctas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    .ctas {
+      justify-content: flex-end;
+    }
+  }
+
+  &.landing {
+    background-color: var(--white);
+
+    a,
+    .columns-links h2 {
+      color: var(--black);
+    }
+
+    .extra-ctas {
+      // display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .footer-container {
+    .columns-links h2 {
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .columns-links .general-links {
+      gap: 8px;
+    }
+
+    .columns-links .general-links a {
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+    }
+
+    .extra-ctas {
+      .ctas {
+        display: block;
+        width: 100%;
+
+        .btn {
+          width: 100%;
+        }
+      }
+
+      .social-icons {
+        display: none;
+      }
+    }
+
+    .extra-links {
+      margin-top: 35px;
+
+      a {
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+      }
+    }
+  }
+}
