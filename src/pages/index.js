@@ -39,6 +39,15 @@ export const HomeQuery = graphql`
         ... on DatoCmsNarrativeBlock {
           ...BlockNarrativeBlock
         }
+        ... on DatoCmsHighlightEvent {
+          ...BlockHighlightEvent
+        }
+        ... on DatoCmsHighlightTool {
+          ...BlockHighlightTools
+        }
+        ... on DatoCmsTextHubspotForm {
+          ...BlockTextHubspot
+        }
       }
     }
   }

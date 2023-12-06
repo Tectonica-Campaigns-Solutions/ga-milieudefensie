@@ -7,14 +7,15 @@ function HomeHero({ title, subtitle, image }) {
   return (
     <div className="hero-home" style={{ backgroundImage: `url(${heroBgImage})` }}>
       <div className="container">
-        {title && (
-          <h1 className="text-with-border-color">
-            <span>{title}</span>
-          </h1>
-        )}
+        <div className="content">
+          {title && <h1>{title}</h1>}
+          {subtitle && <div className="introduction" dangerouslySetInnerHTML={{ __html: subtitle }} />}
 
-        {subtitle && <div className="introduction" dangerouslySetInnerHTML={{ __html: subtitle }} />}
+          {/* Form here */}
+        </div>
       </div>
+
+      <div className="overlay" />
     </div>
   );
 }

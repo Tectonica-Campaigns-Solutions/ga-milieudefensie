@@ -1,38 +1,74 @@
 .hero-home {
+  min-height: 444px;
   position: relative;
-  padding-top: 285px;
-  padding-bottom: 205px;
   background-repeat: no-repeat;
   background-size: cover;
-  text-align: center;
+  border-radius: 0 0 60% 60%/20px;
 
-  h1 {
-    position: relative;
-    color: var(--white);
-    font-family: var(--secondary-font);
-    font-size: 125px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 80%;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 30px;
+  .content {
+    margin: 0 auto;
+    max-width: 1097px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 40px 36px;
+    background: var(--white);
+    position: absolute;
+    bottom: -30%;
+    left: 22%;
+    z-index: 10;
+    background-image: url('../../Icons/hero-home-circle.svg');
+    background-repeat: no-repeat;
+    background-position: top right;
+
+
+    h1 {
+      font-family: var(--primary-font);
+      font-size: 49px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 110%;
+      color: var(--primary-color);
+      margin: 0;
+      padding: 0;
+      margin-bottom: 26px;
+    }
+
+    .introduction {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 40px;
+
+      * {
+        font-family: var(--secondary-font);
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        color: var(--primary-color);
+        margin: 0;
+        padding: 0;
+      }
+    }
   }
 
-  .introduction {
-    max-width: 1000px;
-    margin: 0 auto;
+  .overlay {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%);
+    border-radius: 0 0 60% 60%/20px;
+  }
 
-    * {
-      color: var(--white);
-      font-family: 'Inter';
-      font-size: 25px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 115%;
-    }
+  &+div,
+  &+section {
+    padding-top: 300px !important;
+    background-color: var(--secondary-bg-color);
+    border-radius: 0 0 60% 60%/20px;
   }
 }
 

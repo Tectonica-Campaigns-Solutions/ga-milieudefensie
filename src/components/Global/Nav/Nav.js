@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from '../Link/Link';
-import headerLogo from '../../Icons/one-pa-logo-header.svg';
+import headerLogo from '../../Icons/Logo Component.svg';
 import Cta from '../Cta/Cta';
-import SearchIcon from '../../Icons/Search.svg';
 import { ReactSVG } from 'react-svg';
 
 import './index.scss';
@@ -109,29 +108,14 @@ export default function Nav({
   );
 
   return (
-    <div>
+    <div className="container">
       {/* Main navbar */}
-      <nav
-        className={`navbar navbar-expand-xl ${isHome ? 'home-nav' : ''} ${expanded ? 'expanded' : ''} ${
-          scrollPosition > 75 ? 'sticky-nav' : ''
-        } ${isBlueHeader ? 'blue-header' : ''}`}
-      >
+      <nav className={`navbar navbar-expand-xl ${isHome ? 'home-nav' : ''} ${expanded ? 'expanded' : ''}`}>
         <Link className="navbar-brand" to={'/'}>
-          <ReactSVG src={headerLogo} alt="One pa main logo" />
+          <ReactSVG src={headerLogo} alt="Milieudefensie logo" />
         </Link>
 
         <div className="actions">
-          {/* Search icon */}
-          {enableSearchEngine && setSearchEngineVisible && (
-            <ReactSVG
-              className="mobile-search-system"
-              src={SearchIcon}
-              alt="Navbar search icon"
-              onClick={() => setSearchEngineVisible(true)}
-              style={{ cursor: 'pointer' }}
-            />
-          )}
-
           <button
             type="button"
             data-target="#navNav"
@@ -155,17 +139,6 @@ export default function Nav({
                 ) : (
                   <DropdownItem key={link.id} link={link} label={link?.title} children={link?.treeChildren} />
                 )
-              )}
-
-              {/* Search icon */}
-              {enableSearchEngine && setSearchEngineVisible && (
-                <ReactSVG
-                  src={SearchIcon}
-                  alt="Navbar search icon"
-                  onClick={() => setSearchEngineVisible(true)}
-                  style={{ cursor: 'pointer' }}
-                  className="desktop-search-system"
-                />
               )}
             </div>
 

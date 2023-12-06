@@ -125,6 +125,85 @@ export const DatoCMS = graphql`
     }
   }
 
+  fragment BlockHighlightTools on DatoCmsHighlightTool {
+    __typename
+    id: originalId
+    sectionTitle
+    items {
+      ... on DatoCmsToolItem {
+        id
+        title
+        introduction
+        image {
+          gatsbyImageData
+        }
+        icon {
+          url
+        }
+        cta {
+          ... on DatoCmsCta {
+            id
+            title
+            isButton
+            link {
+              ... on DatoCmsGlobalLink {
+                id
+                content {
+                  ... on DatoCmsBasicPage {
+                    id
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  fragment BlockHighlightEvent on DatoCmsHighlightEvent {
+    __typename
+    id: originalId
+    sectionTitle
+    cta {
+      ... on DatoCmsCta {
+        id
+        title
+        isButton
+        link {
+          ... on DatoCmsGlobalLink {
+            id
+            content {
+              ... on DatoCmsBasicPage {
+                id
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+    items {
+      ... on DatoCmsEvent {
+        id
+        title
+        slug
+        introduction
+        date
+        tags {
+          ... on DatoCmsTag {
+            id
+            title
+          }
+        }
+        image {
+          gatsbyImageData
+        }
+      }
+    }
+  }
+
   fragment BlockTable on DatoCmsTable {
     __typename
     id: originalId
@@ -143,6 +222,19 @@ export const DatoCMS = graphql`
     video {
       url
       thumbnailUrl
+    }
+  }
+
+  fragment BlockTextHubspot on DatoCmsTextHubspotForm {
+    __typename
+    id: originalId
+    title
+    hubspot {
+      ... on DatoCmsHubspot {
+        formId
+        region
+        portalId
+      }
     }
   }
 `;

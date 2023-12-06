@@ -1,8 +1,9 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import CtaList from '../../Global/Cta/CtaList';
-import SocialLinkList from '../../Global/SocialLink/SocialLinkList';
 import Link from '../../Global/Link/Link';
+import { ReactSVG } from 'react-svg';
+import wpIcon from '../../Icons/wp-icon.svg';
+import Cta from '../../Global/Cta/Cta';
 
 import './index.scss';
 
@@ -24,69 +25,78 @@ function Footer({ isLanding = false, customLogo = null }) {
             socialNetwork
           }
         }
+        columns {
+          ... on DatoCmsMenuColumn {
+            id
+            label
+            content
+          }
+        }
+        bottomLinks {
+          ... on DatoCmsGlobalLink {
+            id
+            label
+            externalUrl
+            content {
+              ... on DatoCmsBasicPage {
+                id
+                slug
+              }
+            }
+          }
+        }
       }
     }
   `);
-  if (!data?.datoCmsFooter) return null;
 
   const { logo = null, columns = [], bottomLinks = [], socialLinks = [], cta } = data.datoCmsFooter;
-
   const hasColumnsLinks = columns && columns.length > 0;
-  const hasExtraLinks = bottomLinks && bottomLinks.length > 0;
 
   return (
     <div className={`footer-container ${isLanding ? 'landing' : ''}`}>
       <div className="container">
-        <div className="row gy-5">
-          {/* Logo item */}
-          <div className="col-lg-3 col-12">
-            <img src={isLanding ? customLogo?.url : logo?.url} alt={logo.alt} />
+        {/* First row */}
+        <div className="first-row">
+          <div>
+            <Link to={'/'}>
+              <img src={isLanding ? customLogo?.url : logo?.url} alt={logo.alt} />
+            </Link>
           </div>
 
+          <div className="wp-btn">
+            <span>Join Us to Our WhatsApp Community</span>
+            <ReactSVG src={wpIcon} />
+          </div>
+        </div>
+
+        {/* Second row */}
+        <div className="row">
           {/* Columns links items */}
           {hasColumnsLinks &&
             columns.map((column) => (
-              <div key={column.id} className="col-lg-2 col-6 columns-links">
+              <div key={column.id} className="col-lg-3 col-6 columns-links">
                 <h2>{column.label}</h2>
-
-                {column.items && column.items.length > 0 && (
-                  <div className="general-links">
-                    {column.items.map((i) => (
-                      <Link key={i.id} to={i}>
-                        {i.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                <div className="content" dangerouslySetInnerHTML={{ __html: column.content }} />
               </div>
             ))}
 
-          {/* Ctas */}
-          {cta && (
-            <div className="col-lg-3 extra-ctas">
-              {!isLanding && <CtaList ctas={cta} customVariant="btn-white" />}
+          <div className="col extra-data">
+            <Cta url="https://milieudefensie.nl/" externalTitle="milieudefensie.nl" customVariant="green" />
 
-              {socialLinks && <SocialLinkList socialLinks={socialLinks} smallIcons whiteIcons isLanding={isLanding} />}
-            </div>
-          )}
-        </div>
-
-        {/* Extra links */}
-        {!isLanding && (
-          <div className="row">
-            <div className="col-lg-12">
-              {hasExtraLinks && (
-                <div className="extra-links">
-                  {bottomLinks.map((link) => (
-                    <div key={link.id}>
-                      <Link to={link}>{link.label}</Link>
-                    </div>
-                  ))}
+            {/* Extra links */}
+            <div className="extra-links">
+              {bottomLinks.map((link) => (
+                <div key={link.id}>
+                  <Link to={link}>{link.label}</Link>
                 </div>
-              )}
+              ))}
+            </div>
+
+            <div className="extra-text">
+              <span>Milieudefensie is onderdeel van Friends of the Earth International</span>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

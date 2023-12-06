@@ -3,8 +3,6 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import SeoDatoCMS from '../components/Layout/SeoDatocms';
 import Blocks from '../components/Blocks';
-import HeroBasic from '../components/Global/HeroBasic/HeroBasic';
-import { isBlueColor } from '../utils';
 
 const Page = ({ pageContext, data: { page, favicon } }) => {
   const {
@@ -18,7 +16,7 @@ const Page = ({ pageContext, data: { page, favicon } }) => {
   } = page;
 
   return (
-    <Layout isBlueHeader={isBlueColor(backgroundColorHero)}>
+    <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
       {/* <HeroBasic
         title={title}

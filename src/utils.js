@@ -37,17 +37,29 @@ export const getCtaUrl = (cta) => {
   return url;
 };
 
-export const getCtaTitle = (cta) => {
-  if (typeof cta === 'string') {
-    return cta;
+export const formatDate = (rawDate) => {
+  if (!rawDate) {
+    return 'Invalid date';
   }
 
-  return cta.title ? cta.title : cta.link?.content ? cta.link.content.label : cta.label;
-};
+  // Create a date object from the date string
+  const date = new Date(rawDate);
 
-export const isBlueColor = (colorItem) => {
-  if (!colorItem) return true;
+  // Check if the date is valid
+  if (isNaN(date.getTime())) {
+    return 'Invalid date';
+  }
 
-  const { color } = colorItem;
-  return color?.hex === '#155bcc' || color?.hex === '#6237b6';
+  // Get the month name
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const monthName = months[date.getMonth()];
+
+  // Get the day and year
+  const day = date.getDate();
+  const year = date.getFullYear();
+
+  // Construct the formatted date string
+  const formattedDate = `${monthName} ${day}, ${year}`;
+
+  return formattedDate;
 };
