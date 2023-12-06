@@ -3,17 +3,8 @@
   padding-top: 0 !important;
 
   .navbar-brand {
-    margin-right: 41px;
     margin-top: -10px;
   }
-
-  // .navbar-toggler {
-  //   display: block !important;
-
-  //   &:focus {
-  //     box-shadow: none;
-  //   }
-  // }
 
   .actions {
     display: flex;
@@ -25,4 +16,18 @@
     padding: 1.5rem 0;
     background-color: var(--white);
   }
+}
+
+@media screen and (max-width: 992px) {
+
+  .navbar-brand {
+    height: 50px;
+    margin-top: -65px !important;
+
+    svg {
+      height: 100%;
+      width: 260px;
+    }
+  }
+
 }

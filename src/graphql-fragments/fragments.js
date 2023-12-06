@@ -191,6 +191,8 @@ export const DatoCMS = graphql`
         slug
         introduction
         date
+        hourStart
+        hourEnd
         tags {
           ... on DatoCmsTag {
             id

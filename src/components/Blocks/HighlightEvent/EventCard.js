@@ -7,13 +7,21 @@ import TagList from '../../Global/Tag/TagList';
 import './styles.scss';
 
 const EventCard = ({ event }) => {
-  const { title, introduction, image, date, tags = [] } = event;
+  const { title, introduction, image, date, hourStart, hourEnd, tags = [] } = event;
 
   return (
     <div className="event-card">
       <div className="metadata">
         {date && <span className="date">{formatDate(date)}</span>}
-        <span className="venue">Venue Information</span>
+
+        <div className="venue">
+          <span>
+            {hourStart}-{hourEnd}
+          </span>
+
+          <span>Venue Information</span>
+        </div>
+
         {Array.isArray(tags) && <TagList tags={tags} />}
       </div>
 
