@@ -86,9 +86,9 @@ function Footer({ isLanding = false, customLogo = null }) {
             {/* Extra links */}
             <div className="extra-links">
               {bottomLinks.map((link) => (
-                <div key={link.id}>
-                  <Link to={link}>{link.label}</Link>
-                </div>
+                <Link key={link.id} to={link}>
+                  {link.label}
+                </Link>
               ))}
             </div>
 

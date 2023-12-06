@@ -12,7 +12,10 @@ const ListHighlightEvent = ({ block }) => {
       <div className="container">
         <div className="header">
           <h3>{sectionTitle}</h3>
-          <CtaList ctas={cta} />
+
+          <div className="desktop-ctas">
+            <CtaList ctas={cta} />
+          </div>
         </div>
 
         {/* Items */}
@@ -20,6 +23,10 @@ const ListHighlightEvent = ({ block }) => {
           {items.map((item) => (
             <EventCard event={item} key={item.id} />
           ))}
+        </div>
+
+        <div className="mobile-ctas">
+          <CtaList ctas={cta} />
         </div>
       </div>
     </section>

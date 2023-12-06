@@ -10,18 +10,15 @@
     max-width: 1097px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     border-radius: 10px;
     padding: 40px 36px;
     background: var(--white);
-    position: absolute;
-    bottom: -30%;
-    left: 22%;
+    position: relative;
     z-index: 10;
+    top: 300px;
     background-image: url('../../Icons/hero-home-circle.svg');
     background-repeat: no-repeat;
     background-position: top right;
-
 
     h1 {
       font-family: var(--primary-font);
@@ -72,10 +69,35 @@
   }
 }
 
-@media screen and (max-width:992px) {
+@media screen and (max-width: 992px) {
   .hero-home {
-    h1 {
-      font-size: 72px;
+    min-height: 350px;
+
+    .content {
+      top: 200px;
+      margin: 0 20px;
+      padding: 20px 24px;
+
+      h1 {
+        font-size: 37px;
+        line-height: 115%;
+        margin-bottom: 6px;
+      }
+
+      .introduction {
+        margin-bottom: 35px;
+
+        * {
+          color: var(--black);
+          font-size: 19px;
+          line-height: 120%;
+        }
+      }
+    }
+
+    &+div,
+    &+section {
+      padding-top: 100px !important;
     }
   }
 }

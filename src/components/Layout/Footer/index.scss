@@ -121,50 +121,57 @@
 
 @media screen and (max-width: 992px) {
   .footer-container {
-    .columns-links h2 {
-      font-size: 13px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 150%;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
+    padding: 35px 0;
 
-    .columns-links .general-links {
-      gap: 8px;
-    }
+    .first-row {
+      flex-direction: column;
+      align-items: start;
+      gap: 56px;
+      margin-bottom: 20px;
 
-    .columns-links .general-links a {
-      font-size: 13px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 150%;
-    }
+      .wp-btn {
+        display: flex;
+        gap: 7px;
+        padding: 10px 7px 8px 7px;
+        flex-direction: row-reverse;
 
-    .extra-ctas {
-      .ctas {
-        display: block;
-        width: 100%;
-
-        .btn {
-          width: 100%;
+        span {
+          width: 155px;
+          text-align: left;
+          font-size: 16px;
         }
       }
+    }
 
-      .social-icons {
-        display: none;
+    .columns-links {
+      width: 100%;
+
+      h2 {
+        font-size: 15px;
+        line-height: 130%;
+        margin-bottom: 10px;
       }
+    }
+
+    .extra-data {
+      text-align: left;
     }
 
     .extra-links {
-      margin-top: 35px;
+      gap: 10px;
+      justify-content: start;
+      flex-direction: column;
+      margin-bottom: 20px;
 
       a {
-        font-size: 11px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%;
+        font-size: 15px;
+        line-height: 130%;
       }
+    }
+
+    .extra-text span {
+      font-size: 15px;
+      line-height: 130%;
     }
   }
 }

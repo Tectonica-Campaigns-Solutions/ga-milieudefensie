@@ -61,93 +61,54 @@
 }
 
 
-
-
-
-/* Inter Black */
+/* Lato */
 @font-face {
-  font-family: 'Inter';
-  font-weight: 900;
-  font-display: swap;
-  font-style: normal;
-  src: url('/fonts/inter--black.woff2') format('woff2');
-}
-
-/* Inter ExtraBold */
-@font-face {
-  font-family: 'Inter';
+  font-family: 'Lato';
   font-weight: 800;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/inter--extrabold.woff2') format('woff2');
+  src: url('/fonts/lato/Lato-Black.woff2') format('woff2');
 }
 
 /* Inter Bold */
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Lato';
   font-weight: 700;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/inter--bold.woff2') format('woff2');
-}
-
-/* Inter SemiBold */
-@font-face {
-  font-family: 'Inter';
-  font-weight: 600;
-  font-display: swap;
-  font-style: normal;
-  src: url('/fonts/inter--semibold.woff2') format('woff2');
-}
-
-/* Inter Medium */
-@font-face {
-  font-family: 'Inter';
-  font-weight: 500;
-  font-display: swap;
-  font-style: normal;
-  src: url('/fonts/inter--medium.woff2') format('woff2');
+  src: url('/fonts/lato/Lato-Bold.woff2') format('woff2');
 }
 
 /* Inter Regular */
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Lato';
   font-weight: 400;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/inter--regular.woff2') format('woff2');
+  src: url('/fonts/lato/Lato-Regular.woff2') format('woff2');
 }
 
 /* Inter Light */
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Lato';
   font-weight: 300;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/inter--light.woff2') format('woff2');
-}
-
-/* Inter ExtraLight */
-@font-face {
-  font-family: 'Inter';
-  font-weight: 200;
-  font-display: swap;
-  font-style: normal;
-  src: url('/fonts/inter--extralight.woff2') format('woff2');
+  src: url('/fonts/lato/Lato-Light.woff2') format('woff2');
 }
 
 /* Inter Thin */
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Lato';
   font-weight: 100;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/Inter-Thin.woff2') format('woff2');
+  src: url('/fonts/lato/Lato-Thin.woff2') format('woff2');
 }
 
 :root {
   --primary-font: 'TacaPro-Bold';
-  --secondary-font: 'Laca';
+  --secondary-font: 'Lato';
 }
 
 body {

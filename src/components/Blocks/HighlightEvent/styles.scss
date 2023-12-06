@@ -32,6 +32,10 @@
       }
     }
   }
+
+  .mobile-ctas {
+    display: none;
+  }
 }
 
 .event-card {
@@ -108,6 +112,83 @@
     .basic-info h4,
     .basic-info .introduction {
       color: var(--white) !important;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .highlight-event-section {
+    padding-bottom: 60px;
+
+    .header {
+      margin-bottom: 30px;
+
+      h3 {
+        font-size: 23px;
+      }
+    }
+
+    .desktop-ctas {
+      display: none;
+    }
+
+    .mobile-ctas {
+      display: block;
+    }
+  }
+
+  .event-card {
+    padding: 26px 19px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+    .image {
+      order: 1;
+
+      * {
+        width: 100%;
+      }
+    }
+
+    .metadata {
+      order: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+
+      .date {
+        font-size: 15px;
+        line-height: 130%;
+        order: 1;
+      }
+
+      .venue {
+        order: 3;
+        font-size: 15px;
+        line-height: 130%;
+      }
+
+      .tags-list {
+        order: 2;
+        justify-content: flex-end;
+      }
+    }
+
+    .basic-info {
+      order: 3;
+
+      h4 {
+        font-size: 23px;
+        line-height: 120%;
+        margin-bottom: 10px;
+      }
+
+      .introduction {
+        font-size: 15px;
+        line-height: 130%;
+        margin-bottom: 15px;
+      }
     }
   }
 }

@@ -23,17 +23,18 @@
   }
 }
 
-@media screen and (max-width:992px) {
+@media screen and (max-width: 992px) {
   .form-block {
-    padding: 28px 0;
+    padding: 26px 0;
 
     h2 {
-      font-size: 50px;
-      font-weight: 600;
-      line-height: 87%;
-      letter-spacing: 1px;
-      max-width: 100%;
-      margin-bottom: 1rem;
+      font-size: 29px;
+      line-height: 120%;
+      margin-bottom: 25px;
+    }
+
+    .left-img {
+      display: none;
     }
   }
 }

@@ -42,125 +42,36 @@
   }
 }
 
-@media screen and (min-width:992px) {
-  .component-narrative-block {
-    .col-floating-image {
-      background-image: none !important;
-    }
-  }
-}
-
 @media screen and (max-width:992px) {
   .component-narrative-block {
     padding-top: 60px;
-    background-image: none !important;
+    margin-bottom: 57px;
 
-    .main-content {
-      padding-top: 0;
-      padding-bottom: 0;
-      padding-left: calc(var(--bs-gutter-x) * 0.5);
 
-      h2 {
-        span {
-          &:first-child {
-            font-size: 50px;
-            letter-spacing: 1px;
-          }
+    h2 {
+      margin-bottom: 15px;
 
-          &:last-child {
-            font-size: 62px;
-            letter-spacing: 1.24px;
-          }
-        }
+      span {
+        font-size: 37px;
+        line-height: 115%;
       }
     }
 
     .text-content {
-      font-size: 16px;
-      line-height: 135%;
-    }
+      margin-bottom: 15px;
 
-    .col-floating-image {
-      position: initial;
-      margin-top: 26px;
-
-      .floating-image {
-        position: initial;
-
-        img {
-          height: auto;
-        }
+      * {
+        font-size: 19px;
+        line-height: 130%;
       }
     }
 
-    &.default {
-      padding-top: 10px;
-
-      &:first-of-type {
-        padding-top: 40px;
-      }
-
-
-      .main-content {
-        padding-bottom: 0 !important;
-
-        h2 {
-          margin-bottom: 12px;
-
-          span {
-            font-size: 40px;
-          }
-        }
-      }
-
-      .img-wrapper-nb {
-        margin-top: 16px !important;
-      }
-    }
-  }
-}
-
-.landing-page {
-  .component-narrative-block {
-    .text-style {
-      span {
-        border-bottom: 3px solid var(--landing)
-      }
-
-      svg {
-        path {
-
-          fill: var(--landing)
-        }
-      }
-    }
-
-    h2,
-    h2 span {
-      color: var(--black) !important;
+    .img-wrapper-nb {
+      order: 1;
     }
 
     .main-content {
-      padding-top: 10px;
+      order: 2;
     }
-
-    .top-center {
-      .top-image {
-        top: unset;
-        left: unset;
-        bottom: -200px;
-        right: -200px;
-      }
-    }
-  }
-}
-
-.inner-page .component-narrative-block.default {
-  padding-bottom: 30px;
-}
-
-.inner-page .component-narrative-block {
-  .main-content {
-    padding-bottom: 30px;
   }
 }

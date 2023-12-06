@@ -32,7 +32,7 @@ export default function NarrativeBlock({ block, anchor = null }) {
     >
       <div className={`container`}>
         <div className={`row ${alignment === 'left' ? 'flex-row-reverse' : ''} align-items-center`}>
-          <div className={`col-lg-7 main-content col-sm-order-1`}>
+          <div className={`col-lg-7 main-content`}>
             {logo && <img className="logo" src={logo.url} alt={logo.alt ?? 'Logo icon'} />}
 
             <h2>
@@ -52,11 +52,7 @@ export default function NarrativeBlock({ block, anchor = null }) {
 
           {/* Render image  */}
           {(image || video) && (
-            <div
-              className={`img-wrapper-nb col-lg-5 col-sm-order-2 ${
-                alignment === 'right' ? 'offset-lg-1  mt-5 mt-lg-0' : ''
-              }`}
-            >
+            <div className={`img-wrapper-nb col-lg-5`}>
               {video ? (
                 <VideoPlayer video={video} />
               ) : image ? (

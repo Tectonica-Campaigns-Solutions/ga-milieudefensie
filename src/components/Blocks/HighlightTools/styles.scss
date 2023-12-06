@@ -89,3 +89,47 @@
     }
   }
 }
+
+@media screen and (max-width: 992px) {
+  .highlight-tools-section {
+    padding-bottom: 30px;
+
+    .header {
+      margin-bottom: 30px;
+
+      h3 {
+        font-size: 23px;
+      }
+    }
+  }
+
+  .tool-card {
+    height: auto;
+    margin-bottom: 19px;
+
+    .image {
+      * {
+        width: 100%;
+      }
+    }
+
+    .content {
+      padding: 15px 25px;
+
+      .icon {
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 29px;
+        margin-bottom: 20px;
+      }
+
+      .introduction {
+        font-size: 15px;
+        line-height: 130%;
+        margin-bottom: 60px;
+      }
+    }
+  }
+}
