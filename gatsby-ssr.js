@@ -5,75 +5,43 @@ export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
     <link
       rel="preload"
-      href="/fonts/inter--black.woff2"
+      href="/fonts/lato/Lato-Black.woff2"
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
-      key="interBlack"
+      key="latoBlack"
     />,
     <link
       rel="preload"
-      href="/fonts/inter--bold.woff2"
+      href="/fonts/lato/Lato-Bold.woff2"
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
-      key="interBold"
+      key="latoBold"
     />,
     <link
       rel="preload"
-      href="/fonts/inter--extrabold.woff2"
+      href="/fonts/lato/Lato-Regular.woff2"
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
-      key="interExtraBold"
+      key="latoRegular"
     />,
     <link
       rel="preload"
-      href="/fonts/inter--extralight.woff2"
+      href="/fonts/lato/Lato-Light.woff2"
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
-      key="interExtraLight"
+      key="latoLight"
     />,
     <link
       rel="preload"
-      href="/fonts/inter--light.woff2"
+      href="/fonts/lato/Lato-Thin.woff2"
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
-      key="interLight"
-    />,
-    <link
-      rel="preload"
-      href="/fonts/inter--medium.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="anonymous"
-      key="interMedium"
-    />,
-    <link
-      rel="preload"
-      href="/fonts/inter--regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="anonymous"
-      key="interRegular"
-    />,
-    <link
-      rel="preload"
-      href="/fonts/inter--semibold.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="anonymous"
-      key="interSemiBold"
-    />,
-    <link
-      rel="preload"
-      href="/fonts/inter--thin.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="anonymous"
-      key="interThin"
+      key="latoThin"
     />,
   ]);
 };

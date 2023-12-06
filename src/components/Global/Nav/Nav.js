@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from '../Link/Link';
 import headerLogo from '../../Icons/Logo Component.svg';
-import Cta from '../Cta/Cta';
 import { ReactSVG } from 'react-svg';
+import hamburgerIcon from '../../Icons/Hamburguer Icon.svg';
+import wpNavigationIcon from '../../Icons/Whatsapp Navigation.svg';
 
 import './index.scss';
 
@@ -58,15 +59,7 @@ const DropdownItem = ({ link, label, children }) => {
   );
 };
 
-export default function Nav({
-  navData,
-  topMenu,
-  navbarWhite = false,
-  location,
-  enableSearchEngine = false,
-  setSearchEngineVisible = null,
-  isBlueHeader = false,
-}) {
+export default function Nav({ navData, topMenu, navbarWhite = false, location }) {
   const navLinks = navData.nodes;
 
   const [expanded, setExpanded] = useState(false);
@@ -93,8 +86,6 @@ export default function Nav({
     setExpanded(!expanded);
   };
 
-  const isHome = location ? location?.pathname === '/' : false;
-
   const groupedLinks = navLinks.reduce(
     (result, item) => {
       if (item.isButton) {
@@ -108,9 +99,8 @@ export default function Nav({
   );
 
   return (
-    <div className="container">
-      {/* Main navbar */}
-      <nav className={`navbar navbar-expand-xl ${isHome ? 'home-nav' : ''} ${expanded ? 'expanded' : ''}`}>
+    <nav className={`navbar fixed-top`}>
+      <div className="container">
         <Link className="navbar-brand" to={'/'}>
           <ReactSVG src={headerLogo} alt="Milieudefensie logo" />
         </Link>
@@ -126,33 +116,35 @@ export default function Nav({
             aria-label="Toggle navigation"
             onClick={() => handleNavClick()}
           >
-            <span className={`${expanded ? 'open-toggle ' : ''} navbar-toggler-icon`} />
+            <ReactSVG src={hamburgerIcon} />
           </button>
+
+          <ReactSVG src={wpNavigationIcon} />
         </div>
 
-        <div className={`${expanded ? 'show' : ''} collapse navbar-collapse`} id="navNav">
-          <ul className={`main-items navbar-nav mr-auto ${navbarWhite ? 'nav-white' : ''}`}>
-            <div className="links-container">
-              {groupedLinks.links.map((link) =>
-                link.treeChildren.length === 0 ? (
-                  <LinkItem key={link.id} link={link} label={link?.title} isButton={link?.isButton} />
-                ) : (
-                  <DropdownItem key={link.id} link={link} label={link?.title} children={link?.treeChildren} />
-                )
-              )}
-            </div>
+        <div className={`offcanvas offcanvas-end ${expanded ? 'show' : ''}`} tabIndex={-1}>
+          <div className="offcanvas-header">
+            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
+              Offcanvas
+            </h5>
+            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
 
-            {/* <Cta */}
-            {groupedLinks.ctas && (
-              <div className="cta-list-container">
-                {groupedLinks.ctas.map((cta) => (
-                  <Cta cta={cta} key={cta.id} isButton />
-                ))}
+          <div className="offcanvas-body">
+            <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <div className="links-container">
+                {groupedLinks.links.map((link) =>
+                  link.treeChildren.length === 0 ? (
+                    <LinkItem key={link.id} link={link} label={link?.title} isButton={link?.isButton} />
+                  ) : (
+                    <DropdownItem key={link.id} link={link} label={link?.title} children={link?.treeChildren} />
+                  )
+                )}
               </div>
-            )}
-          </ul>
+            </ul>
+          </div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }
