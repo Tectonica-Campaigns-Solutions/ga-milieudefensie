@@ -8,10 +8,10 @@ function FormBlock({ block }) {
   const { title, hubspot } = block;
 
   return (
-    <div className={`form-block`}>
-      <img className="left-img" src={formVector} alt="Form icon" />
+    <div className="container">
+      <div className={`form-block`}>
+        <img className="left-img" src={formVector} alt="Form icon" />
 
-      <div className="container">
         <div className="form-container-content">
           <div className={`row ${!title ? 'justify-content-center' : 'align-items-center'}`}>
             {title && (

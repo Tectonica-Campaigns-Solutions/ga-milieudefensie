@@ -3,28 +3,18 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import SeoDatoCMS from '../components/Layout/SeoDatocms';
 import Blocks from '../components/Blocks';
+import HeroBasic from '../components/Global/HeroBasic/HeroBasic';
+import SimpleText from '../components/Blocks/SimpleText/SimpleText';
 
 const Page = ({ pageContext, data: { page, favicon } }) => {
-  const {
-    seo,
-    title,
-    backgroundImage,
-    backgroundImageMobile,
-    backgroundImageAlignment,
-    backgroundColorHero,
-    blocks = [],
-  } = page;
+  const { seo, title, introduction, backgroundColor, heroBackgroundImage, blocks = [] } = page;
 
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
-      {/* <HeroBasic
-        title={title}
-        image={backgroundImage}
-        imageMobile={backgroundImageMobile}
-        imageAlignment={backgroundImageAlignment}
-        backgroundColor={backgroundColorHero}
-      /> */}
+      <HeroBasic title={title} image={heroBackgroundImage} backgroundColor={backgroundColor} />
+
+      {introduction && <SimpleText limitedWidth block={{ text: introduction }} />}
 
       <div className="inner-page">
         <Blocks blocks={blocks} />
@@ -44,6 +34,11 @@ export const PageQuery = graphql`
     }
     page: datoCmsBasicPage(id: { eq: $id }) {
       title
+      introduction
+      backgroundColor
+      heroBackgroundImage {
+        gatsbyImageData
+      }
       seo: seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
@@ -62,6 +57,12 @@ export const PageQuery = graphql`
         }
         ... on DatoCmsTable {
           ...BlockTable
+        }
+        ... on DatoCmsHighlightTool {
+          ...BlockHighlightTools
+        }
+        ... on DatoCmsTextHubspotForm {
+          ...BlockTextHubspot
         }
       }
     }
