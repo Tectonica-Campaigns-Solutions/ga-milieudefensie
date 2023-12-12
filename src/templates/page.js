@@ -37,6 +37,7 @@ export const PageQuery = graphql`
       introduction
       backgroundColor
       heroBackgroundImage {
+        url
         gatsbyImageData
       }
       seo: seoMetaTags {
