@@ -3,61 +3,45 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-// vtc_garibaldi
+// Taca Pro
 @font-face {
-  font-family: 'vtc_garibaldi';
+  font-family: 'TacaPro-Bold';
   font-weight: 800;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/vtc_garibaldi/VTCGaribaldiSans-XCndXBold.woff2') format('woff2');
+  src: url('/fonts/taca/Taca-Pro-Extrabold.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'vtc_garibaldi';
+  font-family: 'TacaPro-Bold';
   font-weight: 700;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/vtc_garibaldi/VTCGaribaldiSans-XCndBold.woff2') format('woff2');
+  src: url('/fonts/taca/Taca-Pro-Bold.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'vtc_garibaldi';
-  font-weight: 600;
-  font-display: swap;
-  font-style: normal;
-  src: url('/fonts/vtc_garibaldi/VTCGaribaldiSans-XCndSemiBold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'vtc_garibaldi';
-  font-weight: 500;
-  font-display: swap;
-  font-style: normal;
-  src: url('/fonts/vtc_garibaldi/VTCGaribaldiSans-XCndThin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'vtc_garibaldi';
+  font-family: 'TacaPro-Bold';
   font-weight: 400;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/vtc_garibaldi/VTCGaribaldiSans-XCndRegular.woff2') format('woff2');
+  src: url('/fonts/taca/Taca-Pro.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'vtc_garibaldi';
+  font-family: 'TacaPro-Bold';
   font-weight: 300;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/vtc_garibaldi/VTCGaribaldiSans-XCndLight.woff2') format('woff2');
+  src: url('/fonts/taca/Taca-Pro-Light.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'vtc_garibaldi';
+  font-family: 'TacaPro-Bold';
   font-weight: 200;
   font-display: swap;
   font-style: normal;
-  src: url('/fonts/vtc_garibaldi/VTCGaribaldiSans-XCndXLight.woff2') format('woff2');
+  src: url('/fonts/taca/Taca-Pro-Extra Light.woff2') format('woff2');
 }
 
 
