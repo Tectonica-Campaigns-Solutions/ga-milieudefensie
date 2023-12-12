@@ -36,6 +36,14 @@
     background: linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%);
     border-radius: 0 0 60% 60%/20px;
   }
+
+  &.light {
+    background-color: #E5E3DA;
+
+    h1 {
+      color: var(--primary-color);
+    }
+  }
 }
 
 @media screen and (max-width:992px) {

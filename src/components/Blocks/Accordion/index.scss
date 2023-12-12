@@ -1,23 +1,29 @@
 .accordion {
-  padding-top: 80px;
+  padding-top: 50px;
 
   .item {
     cursor: pointer;
-    margin-bottom: 43px;
+    padding: 25px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    background-color: #F9F8F5;
 
     .ac-title {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 15.5px;
-      border-bottom: 1px solid hsla(240, 1%, 52%, 0.2);
+      margin: 0;
+      padding: 0;
 
       * {
-
+        color: var(--primary-color);
+        font-family: var(--secondary-font);
+        font-size: 20px;
         font-style: normal;
-        font-weight: 800;
-        font-size: 31px;
-        line-height: 110%;
+        font-weight: 600;
+        line-height: 150%;
+        margin: 0;
+        padding: 0;
       }
     }
 
@@ -26,13 +32,26 @@
     }
 
     &.active {
-      .ac-title h3 {
-        
+      .ac-title {
+        * {
+          color: var(--black);
+        }
       }
 
       .ac-content {
-        padding-top: 32px;
         display: block;
+        margin-top: 20px;
+
+        * {
+          margin: 0;
+          padding: 0;
+          color: var(--black);
+          font-family: var(--secondary-font);
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+        }
       }
     }
   }

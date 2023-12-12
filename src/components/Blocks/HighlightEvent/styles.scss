@@ -120,6 +120,17 @@
       color: var(--white) !important;
     }
   }
+
+  &.highlighted {
+    background-color: var(--primary-color);
+
+    .metadata .date,
+    .metadata .venue span,
+    .basic-info h4,
+    .basic-info .introduction {
+      color: var(--white);
+    }
+  }
 }
 
 @media screen and (max-width: 992px) {

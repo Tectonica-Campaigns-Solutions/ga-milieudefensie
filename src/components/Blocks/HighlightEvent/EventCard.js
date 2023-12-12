@@ -6,11 +6,11 @@ import TagList from '../../Global/Tag/TagList';
 
 import './styles.scss';
 
-const EventCard = ({ event }) => {
+const EventCard = ({ event, isHighlighted = false }) => {
   const { title, introduction, image, date, hourStart, hourEnd, tags = [] } = event;
 
   return (
-    <div className="event-card">
+    <div className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
       <div className="metadata">
         {date && <span className="date">{formatDate(date)}</span>}
 
