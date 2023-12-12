@@ -99,6 +99,44 @@ export const DatoCMS = graphql`
               ... on DatoCmsBasicPage {
                 id
                 slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsEvent {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsListEvent {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsListGroup {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsTool {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsGroup {
+                id
+                slug
+                model {
+                  apiKey
+                }
               }
             }
           }
@@ -152,6 +190,44 @@ export const DatoCMS = graphql`
                   ... on DatoCmsBasicPage {
                     id
                     slug
+                    model {
+                      apiKey
+                    }
+                  }
+                  ... on DatoCmsEvent {
+                    id
+                    slug
+                    model {
+                      apiKey
+                    }
+                  }
+                  ... on DatoCmsListEvent {
+                    id
+                    slug
+                    model {
+                      apiKey
+                    }
+                  }
+                  ... on DatoCmsListGroup {
+                    id
+                    slug
+                    model {
+                      apiKey
+                    }
+                  }
+                  ... on DatoCmsTool {
+                    id
+                    slug
+                    model {
+                      apiKey
+                    }
+                  }
+                  ... on DatoCmsGroup {
+                    id
+                    slug
+                    model {
+                      apiKey
+                    }
                   }
                 }
               }
@@ -178,6 +254,44 @@ export const DatoCMS = graphql`
               ... on DatoCmsBasicPage {
                 id
                 slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsEvent {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsListEvent {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsListGroup {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsTool {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsGroup {
+                id
+                slug
+                model {
+                  apiKey
+                }
               }
             }
           }

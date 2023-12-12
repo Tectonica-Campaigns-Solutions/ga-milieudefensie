@@ -12,11 +12,10 @@ const Page = ({ pageContext, data: { page, favicon } }) => {
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
-      <HeroBasic title={title} image={heroBackgroundImage} backgroundColor={backgroundColor} />
 
-      {introduction && <SimpleText limitedWidth block={{ text: introduction }} />}
-
-      <div className="inner-page">
+      <div className="inner-page" style={{ backgroundColor: '#FFF' }}>
+        <HeroBasic title={title} image={heroBackgroundImage} backgroundColor={backgroundColor} />
+        {introduction && <SimpleText limitedWidth block={{ text: introduction }} />}
         <Blocks blocks={blocks} />
       </div>
     </Layout>

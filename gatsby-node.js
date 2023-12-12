@@ -160,7 +160,7 @@ exports.createPages = ({ graphql, actions }) => {
         const tools = result.data.tools.edges;
         for (const tool of tools) {
           createPage({
-            path: tool.node.slug,
+            path: `/action/${tool.node.slug}`,
             component: templates.tool,
             context: {
               slug: tool.node.slug,

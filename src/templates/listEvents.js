@@ -6,6 +6,7 @@ import HeroBasic from '../components/Global/HeroBasic/HeroBasic';
 import EventCard from '../components/Blocks/HighlightEvent/EventCard';
 import Map from '../components/Global/Map/Map';
 import FilterEvents from '../components/Global/FilterEvents/FilterEvents';
+import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 
 import './list-events.styles.scss';
 
@@ -16,23 +17,26 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
-      <HeroBasic title={title} backgroundColor={'light'} />
 
-      <div className="list-event-wrapper">
-        <div className="container">
-          {highlighEvent && (
-            <div className="highlighted-event-wrapper">
-              <EventCard event={highlighEvent} isHighlighted />
-            </div>
-          )}
+      <WrapperLayout variant="light">
+        <HeroBasic title={title} backgroundColor={'light'} />
 
-          {/* Map */}
-          <Map />
+        <div className="list-event-wrapper">
+          <div className="container">
+            {highlighEvent && (
+              <div className="highlighted-event-wrapper">
+                <EventCard event={highlighEvent} isHighlighted />
+              </div>
+            )}
 
-          {/* Filter events */}
-          <FilterEvents events={mappedEvents} />
+            {/* Map */}
+            <Map />
+
+            {/* Filter events */}
+            <FilterEvents events={mappedEvents} />
+          </div>
         </div>
-      </div>
+      </WrapperLayout>
     </Layout>
   );
 };

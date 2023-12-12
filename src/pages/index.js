@@ -4,14 +4,17 @@ import Layout from '../components/Layout/Layout';
 import SeoDatoCMS from '../components/Layout/SeoDatocms';
 import Blocks from '../components/Blocks';
 import HomeHero from '../components/Global/HomeHero/HomeHero';
+import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 
 const IndexPage = ({ data: { page, favicon } }) => {
   return (
     <Layout isHome={true}>
       {page?.seo && <SeoDatoCMS seo={page?.seo} favicon={favicon} homepage />}
-      <HomeHero title={page?.title} subtitle={page?.subtitle} image={page?.heroImage} />
 
-      {page?.blocks && <Blocks blocks={page.blocks} />}
+      <WrapperLayout variant="white">
+        <HomeHero title={page?.title} subtitle={page?.subtitle} image={page?.heroImage} />
+        {page?.blocks && <Blocks blocks={page.blocks} />}
+      </WrapperLayout>
     </Layout>
   );
 };

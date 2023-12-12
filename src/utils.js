@@ -3,6 +3,8 @@ export const pathToModel = (model = null, slug = '') => {
     return `/${slug}`;
   } else if (model === 'event') {
     return `/event/${slug}`;
+  } else if (model === 'tool') {
+    return `/action/${slug}`;
   } else {
     return `/${slug}`;
   }

@@ -9,58 +9,79 @@ import dateIcon from '../components/Icons/calendar-date.svg';
 import hourIcon from '../components/Icons/calendar-hour.svg';
 import locationIcon from '../components/Icons/calendar-location.svg';
 import wpIcon from '../components/Icons/wp-icon.svg';
+import { ReactSVG } from 'react-svg';
+import Link from '../components/Global/Link/Link';
+import backBtnIcon from '../components/Icons/back-btn.svg';
+import HubspotForm from '../components/Blocks/HubspotForm/HubspotForm';
+import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 
 import './event.styles.scss';
-import { ReactSVG } from 'react-svg';
 
-const Event = ({ pageContext, data: { page, favicon } }) => {
-  const { seo, title, introduction, image, content } = page;
+const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
+  const { seo, title, introduction, registrationForm, image, content } = page;
 
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
-      <HeroBasic image={image} />
 
-      <FloatLayout>
-        <h1>{title}</h1>
+      <WrapperLayout variant="white">
+        <HeroBasic image={image} />
 
-        {/* Form  */}
+        <FloatLayout>
+          {listEvent && (
+            <div className="back-btn">
+              <Link to={listEvent}>
+                <img src={backBtnIcon} alt="Back button icon" />
+                <span>Alle evenementen</span>
+              </Link>
+            </div>
+          )}
 
-        {/* Brief information */}
-        <div className="brief-information">
-          <div className="metadata">
-            <span>
-              <img src={dateIcon} alt="Date icon" />
-              <span>Date here...</span>
-            </span>
+          <h1>{title}</h1>
 
-            <span>
-              <img src={hourIcon} alt="Hour icon" />
-              <span>Hour here...</span>
-            </span>
+          {/* Form  */}
+          {registrationForm && (
+            <div className="form-wrapper">
+              <HubspotForm {...registrationForm} />
+            </div>
+          )}
 
-            <span>
-              <img src={locationIcon} alt="Location icon" />
-              <span>Location here...</span>
-            </span>
+          {/* Brief information */}
+          <div className="brief-information">
+            <div className="metadata">
+              <span>
+                <img src={dateIcon} alt="Date icon" />
+                <span>Date here...</span>
+              </span>
+
+              <span>
+                <img src={hourIcon} alt="Hour icon" />
+                <span>Hour here...</span>
+              </span>
+
+              <span>
+                <img src={locationIcon} alt="Location icon" />
+                <span>Location here...</span>
+              </span>
+            </div>
+
+            <div>
+              <span className="wp-button">
+                <span>Deel op WhatsApp</span>
+                <ReactSVG src={wpIcon} alt="Wp icon" />
+              </span>
+            </div>
           </div>
 
-          <div>
-            <span className="wp-button">
-              <span>Deel op WhatsApp</span>
-              <ReactSVG src={wpIcon} alt="Wp icon" />
-            </span>
-          </div>
-        </div>
+          {introduction && <div className="introduction" dangerouslySetInnerHTML={{ __html: introduction }} />}
 
-        {introduction && <div className="introduction" dangerouslySetInnerHTML={{ __html: introduction }} />}
-
-        {content && (
-          <div className="content">
-            <StructuredTextDefault content={content} />
-          </div>
-        )}
-      </FloatLayout>
+          {content?.value && (
+            <div className="content">
+              <StructuredTextDefault content={content} />
+            </div>
+          )}
+        </FloatLayout>
+      </WrapperLayout>
     </Layout>
   );
 };
@@ -74,6 +95,10 @@ export const PageQuery = graphql`
         ...GatsbyDatoCmsFaviconMetaTags
       }
     }
+    listEvent: datoCmsListEvent {
+      id
+      slug
+    }
     page: datoCmsEvent(id: { eq: $id }) {
       id
       title
@@ -81,6 +106,13 @@ export const PageQuery = graphql`
       date
       hourStart
       hourEnd
+      registrationForm {
+        ... on DatoCmsHubspot {
+          formId
+          region
+          portalId
+        }
+      }
       tags {
         ... on DatoCmsTag {
           id
