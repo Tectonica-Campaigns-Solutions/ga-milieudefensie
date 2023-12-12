@@ -202,6 +202,9 @@ export const DatoCMS = graphql`
         image {
           gatsbyImageData
         }
+        model {
+          apiKey
+        }
       }
     }
   }

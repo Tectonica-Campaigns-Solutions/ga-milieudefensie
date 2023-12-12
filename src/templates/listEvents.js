@@ -65,6 +65,9 @@ export const PageQuery = graphql`
           image {
             gatsbyImageData
           }
+          model {
+            apiKey
+          }
         }
       }
     }
@@ -89,6 +92,9 @@ export const PageQuery = graphql`
           }
           image {
             gatsbyImageData
+          }
+          model {
+            apiKey
           }
         }
       }

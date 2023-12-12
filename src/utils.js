@@ -1,6 +1,8 @@
 export const pathToModel = (model = null, slug = '') => {
   if (model === 'basicPage') {
     return `/${slug}`;
+  } else if (model === 'event') {
+    return `/event/${slug}`;
   } else {
     return `/${slug}`;
   }
@@ -13,6 +15,11 @@ export const isArray = (array) => {
 export const getCtaUrl = (cta) => {
   if (typeof cta === 'string') {
     return '/' + cta;
+  }
+
+  if (cta.model) {
+    const { apiKey: model } = cta.model;
+    return pathToModel(model, cta.slug);
   }
 
   if (cta.content?.model) {

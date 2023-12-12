@@ -107,6 +107,11 @@
   .image {
     * {
       border-radius: 10px;
+      height: 100%;
+    }
+
+    img {
+      object-fit: cover !important;
     }
   }
 
@@ -115,6 +120,7 @@
 
     .metadata .date,
     .metadata .venue,
+    .metadata .venue span,
     .basic-info h4,
     .basic-info .introduction {
       color: var(--white) !important;
