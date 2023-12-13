@@ -7,7 +7,7 @@ import TagList from '../../Global/Tag/TagList';
 import './styles.scss';
 
 const EventCard = ({ event, isHighlighted = false }) => {
-  const { title, introduction, image, date, hourStart, hourEnd, tags = [] } = event;
+  const { title, introduction, image, date, address, hourStart, hourEnd, tags = [] } = event;
 
   return (
     <div className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
@@ -19,7 +19,7 @@ const EventCard = ({ event, isHighlighted = false }) => {
             {hourStart}-{hourEnd}
           </span>
 
-          <span>Venue Information</span>
+          {address && <span>{address}</span>}
         </div>
 
         {Array.isArray(tags) && <TagList tags={tags} />}

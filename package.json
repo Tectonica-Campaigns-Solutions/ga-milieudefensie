@@ -46,6 +46,6 @@
     "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "devDependencies": {
-    "prettier": "^3.0.3"
+    "prettier": "^3.1.1"
   }
 }

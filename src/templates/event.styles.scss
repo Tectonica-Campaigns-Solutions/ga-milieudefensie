@@ -14,6 +14,14 @@
       margin-bottom: 30px;
     }
 
+    .pre-header {
+      display: flex;
+      align-items: center;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 35px;
+    }
+
     .brief-information {
       padding: 35px 30px;
       border-radius: 10px;
@@ -205,8 +213,6 @@
     }
 
     .back-btn {
-      margin-bottom: 35px;
-
       a {
         display: flex;
         align-items: center;

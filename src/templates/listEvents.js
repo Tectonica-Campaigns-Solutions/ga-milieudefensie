@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import SeoDatoCMS from '../components/Layout/SeoDatocms';
@@ -12,6 +12,9 @@ import './list-events.styles.scss';
 
 const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) => {
   const { seo, title, highlighEvent } = page;
+
+  const [selectedEvent, setSelectedEvent] = useState(null);
+
   const mappedEvents = Array.isArray(allEvents.edges) ? allEvents.edges.map((raw) => raw.node) : [];
 
   return (
@@ -19,7 +22,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="light">
-        <HeroBasic title={title} backgroundColor={'light'} />
+        <HeroBasic backgroundColor={'light'} />
 
         <div className="list-event-wrapper">
           <div className="container">
@@ -30,7 +33,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
             )}
 
             {/* Map */}
-            <Map />
+            <Map events={mappedEvents} onClickMarker={(event) => setSelectedEvent(event)} />
 
             {/* Filter events */}
             <FilterEvents events={mappedEvents} />
@@ -60,6 +63,11 @@ export const PageQuery = graphql`
           date
           hourStart
           hourEnd
+          address
+          coordinates {
+            latitude
+            longitude
+          }
           tags {
             ... on DatoCmsTag {
               id

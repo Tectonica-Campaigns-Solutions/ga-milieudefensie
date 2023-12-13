@@ -14,11 +14,25 @@ import Link from '../components/Global/Link/Link';
 import backBtnIcon from '../components/Icons/back-btn.svg';
 import HubspotForm from '../components/Blocks/HubspotForm/HubspotForm';
 import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
+import TagList from '../components/Global/Tag/TagList';
 
 import './event.styles.scss';
+import { formatDate } from '../utils';
 
 const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
-  const { seo, title, introduction, registrationForm, image, content } = page;
+  const {
+    seo,
+    title,
+    introduction,
+    hourStart,
+    hourEnd,
+    date,
+    address,
+    registrationForm,
+    image,
+    content,
+    tags = [],
+  } = page;
 
   return (
     <Layout>
@@ -29,11 +43,15 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
 
         <FloatLayout>
           {listEvent && (
-            <div className="back-btn">
-              <Link to={listEvent}>
-                <img src={backBtnIcon} alt="Back button icon" />
-                <span>Alle evenementen</span>
-              </Link>
+            <div className="pre-header">
+              <div className="back-btn">
+                <Link to={listEvent}>
+                  <img src={backBtnIcon} alt="Back button icon" />
+                  <span>Alle evenementen</span>
+                </Link>
+              </div>
+
+              <TagList tags={tags} />
             </div>
           )}
 
@@ -51,17 +69,19 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
             <div className="metadata">
               <span>
                 <img src={dateIcon} alt="Date icon" />
-                <span>Date here...</span>
+                <span>{formatDate(date)}</span>
               </span>
 
               <span>
                 <img src={hourIcon} alt="Hour icon" />
-                <span>Hour here...</span>
+                <span>
+                  {hourStart ? hourStart : ''} {hourEnd ? ` - ${hourEnd}` : ''}
+                </span>
               </span>
 
               <span>
                 <img src={locationIcon} alt="Location icon" />
-                <span>Location here...</span>
+                <span>{address}</span>
               </span>
             </div>
 
@@ -106,6 +126,7 @@ export const PageQuery = graphql`
       date
       hourStart
       hourEnd
+      address
       registrationForm {
         ... on DatoCmsHubspot {
           formId
