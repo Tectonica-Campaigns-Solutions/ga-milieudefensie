@@ -8,7 +8,7 @@ const Map = ({ events = [], onClickMarker }) => {
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
-    const map = createMapReference(mapContainerRef, [10, 15], 8.85, 1.99, 1, true);
+    const map = createMapReference(mapContainerRef, [4, 51], 8.85, 1.99, 5, true);
 
     // Markers
     const pins = events
@@ -17,6 +17,8 @@ const Map = ({ events = [], onClickMarker }) => {
         coordinates: [e.coordinates.longitude, e.coordinates.latitude],
         onClickMarker: () => onClickMarker(e),
       }));
+
+    console.log({ pins });
 
     createMapMarkers(map, pins);
   });
