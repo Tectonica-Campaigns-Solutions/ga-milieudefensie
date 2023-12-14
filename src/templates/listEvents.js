@@ -14,7 +14,6 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
   const { seo, title, highlighEvent } = page;
   const mappedEvents = Array.isArray(allEvents.edges) ? allEvents.edges.map((raw) => raw.node) : [];
 
-  const [selectedEvent, setSelectedEvent] = useState(null);
   const [filteredEvents, setFilteredEvents] = useState(mappedEvents);
 
   return (
@@ -33,7 +32,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
             )}
 
             {/* Map */}
-            <Map title="Evenementen" data={filteredEvents} onClickMarker={(event) => setSelectedEvent(event)} />
+            <Map title="Evenementen" data={filteredEvents} />
 
             {/* Filter events */}
             <FilterEvents events={filteredEvents} handleOnApplyNewFilters={(events) => setFilteredEvents(events)} />
@@ -75,6 +74,7 @@ export const PageQuery = graphql`
             }
           }
           image {
+            url
             gatsbyImageData
           }
           model {

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Marker = ({ onClickMarker }) => {
+const Marker = () => {
   return (
-    <div onClick={onClickMarker} className="custom-marker">
+    <div className="custom-marker">
       <style scoped>
         {`
           .custom-marker:hover svg path:nth-child(1) {

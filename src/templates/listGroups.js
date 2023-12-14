@@ -13,7 +13,6 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
   const { seo, title } = page;
   const mappedGroups = Array.isArray(allGroups.edges) ? allGroups.edges.map((raw) => raw.node) : [];
 
-  const [selectedGroup, setSelectedGroup] = useState(null);
   const [filteredGroups, setFilteredGroups] = useState(mappedGroups);
 
   return (
@@ -26,7 +25,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
         <div className="list-event-wrapper pt-4">
           <div className="container">
             {/* Map */}
-            <Map title={title} data={filteredGroups} onClickMarker={(event) => setSelectedGroup(event)} />
+            <Map title={title} data={filteredGroups} type="group" />
 
             {Array.isArray(filteredGroups) && <ListGroupBlock items={filteredGroups} />}
           </div>
@@ -60,7 +59,14 @@ export const PageQuery = graphql`
             apiKey
           }
           image {
+            url
             gatsbyImageData
+          }
+          tags {
+            ... on DatoCmsTag {
+              id
+              title
+            }
           }
         }
       }

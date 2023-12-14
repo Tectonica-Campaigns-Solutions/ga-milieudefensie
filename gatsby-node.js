@@ -135,7 +135,7 @@ exports.createPages = ({ graphql, actions }) => {
         const groups = result.data.groups.edges;
         for (const group of groups) {
           createPage({
-            path: group.node.slug,
+            path: `/group/${group.node.slug}`,
             component: templates.group,
             context: {
               slug: group.node.slug,

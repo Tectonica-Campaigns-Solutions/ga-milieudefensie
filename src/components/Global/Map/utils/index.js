@@ -2,7 +2,11 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import mapboxgl from '!mapbox-gl';
 import Marker from '../Marker/Marker';
-import Card from '../MapPopup/MapPopup';
+import ReactDOMServer from 'react-dom/server';
+import MapPopup from '../MapPopup/MapPopup';
+import GroupMarker from '../Marker/GroupMarker';
+
+const { Popup } = mapboxgl;
 
 export const createMapReference = (ref, coordinates, maxZoom, minZoom, zoom, interactive = false) => {
   return new mapboxgl.Map({
@@ -18,17 +22,24 @@ export const createMapReference = (ref, coordinates, maxZoom, minZoom, zoom, int
   });
 };
 
-export const createMapMarkers = (mapRef, pins) => {
+export const createMapMarkers = (mapRef, pins, type) => {
   mapRef.on('load', () => {
     mapRef.addSource('countries', { type: 'vector', url: 'mapbox://mapbox.country-boundaries-v1' });
 
     for (const pin of pins) {
       const markerElement = document.createElement('div');
       const root = createRoot(markerElement);
-      root.render(<Marker onClickMarker={pin.onClickMarker} />);
+      root.render(type === 'group' ? <GroupMarker /> : <Marker />);
 
       // Create a Mapbox Marker at our new DOM node
-      new mapboxgl.Marker(markerElement).setLngLat(pin.coordinates).addTo(mapRef);
+      const marker = new mapboxgl.Marker(markerElement).setLngLat(pin.coordinates).addTo(mapRef);
+
+      // Add a Popup to the marker
+      const popupContent = ReactDOMServer.renderToString(
+        <MapPopup card={pin} linkTitle={type === 'group' ? 'Go to Group Page' : 'Go to Event Page'} />
+      );
+      const popup = new Popup({ offset: 25 }).setHTML(popupContent);
+      marker.setPopup(popup);
     }
   });
 };
