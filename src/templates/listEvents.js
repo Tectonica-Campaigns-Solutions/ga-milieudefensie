@@ -12,10 +12,12 @@ import './list-events.styles.scss';
 
 const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) => {
   const { seo, title, highlighEvent } = page;
+  const mappedEvents = Array.isArray(allEvents.edges) ? allEvents.edges.map((raw) => raw.node) : [];
 
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [filteredEvents, setFilteredEvents] = useState(mappedEvents);
 
-  const mappedEvents = Array.isArray(allEvents.edges) ? allEvents.edges.map((raw) => raw.node) : [];
+  console.log({ filteredEvents });
 
   return (
     <Layout>
@@ -33,10 +35,10 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
             )}
 
             {/* Map */}
-            <Map events={mappedEvents} onClickMarker={(event) => setSelectedEvent(event)} />
+            <Map events={filteredEvents} onClickMarker={(event) => setSelectedEvent(event)} />
 
             {/* Filter events */}
-            <FilterEvents events={mappedEvents} />
+            <FilterEvents events={filteredEvents} handleOnApplyNewFilters={(events) => setFilteredEvents(events)} />
           </div>
         </div>
       </WrapperLayout>

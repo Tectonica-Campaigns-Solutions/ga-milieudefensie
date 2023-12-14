@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import mapboxgl from '!mapbox-gl';
 import Marker from '../Marker/Marker';
+import Card from '../MapPopup/MapPopup';
 
 export const createMapReference = (ref, coordinates, maxZoom, minZoom, zoom, interactive = false) => {
   return new mapboxgl.Map({

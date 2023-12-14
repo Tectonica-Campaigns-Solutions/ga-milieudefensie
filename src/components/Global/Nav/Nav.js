@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from '../Link/Link';
 import headerLogo from '../../Icons/Logo Component.svg';
 import { ReactSVG } from 'react-svg';
@@ -6,6 +6,7 @@ import hamburgerIcon from '../../Icons/Hamburguer Icon.svg';
 import wpNavigationIcon from '../../Icons/Whatsapp Navigation.svg';
 
 import './index.scss';
+import Cta from '../Cta/Cta';
 
 const LinkItem = ({ link, label, isButton }) => {
   return (
@@ -20,26 +21,10 @@ const LinkItem = ({ link, label, isButton }) => {
 const DropdownItem = ({ link, label, children }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const handleMouseEnter = () => {
-    if (window.innerWidth >= 1200) {
-      setDropdownOpen(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (window.innerWidth >= 1200) {
-      setDropdownOpen(false);
-    }
-  };
-
-  const handleLinkClick = () => {
-    if (window.innerWidth < 1200) {
-      setDropdownOpen(!dropdownOpen);
-    }
-  };
+  const handleLinkClick = () => setDropdownOpen((prev) => !prev);
 
   return (
-    <li className="dropdown nav-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <li className={`dropdown nav-item ${dropdownOpen ? 'open' : ''}`}>
       <Link to={link} onClick={handleLinkClick} style={{ cursor: 'pointer' }}>
         {label}
       </Link>
@@ -59,32 +44,11 @@ const DropdownItem = ({ link, label, children }) => {
   );
 };
 
-export default function Nav({ navData, topMenu, navbarWhite = false, location }) {
+export default function Nav({ navData, location }) {
   const navLinks = navData.nodes;
-
   const [expanded, setExpanded] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
 
-  // Use effect for sticky nav
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleScroll = () => {
-        if (typeof window !== 'undefined') {
-          const position = window.pageYOffset;
-          setScrollPosition(position);
-        }
-      };
-
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, []);
-
-  const handleNavClick = () => {
-    setExpanded(!expanded);
-  };
+  const handleNavClick = () => setExpanded((prev) => !prev);
 
   const groupedLinks = navLinks.reduce(
     (result, item) => {
@@ -99,35 +63,61 @@ export default function Nav({ navData, topMenu, navbarWhite = false, location })
   );
 
   return (
-    <nav className={`navbar fixed-top`}>
+    <nav className={`navbar`}>
       <div className="container">
         <Link className="navbar-brand" to={'/'}>
           <ReactSVG src={headerLogo} alt="Milieudefensie logo" />
         </Link>
 
-        <div className="actions">
-          <button
-            type="button"
-            data-target="#navNav"
-            aria-expanded="false"
-            aria-controls="navNav"
-            data-toggle="collapse"
-            className="navbar-toggler"
-            aria-label="Toggle navigation"
-            onClick={() => handleNavClick()}
-          >
-            <ReactSVG src={hamburgerIcon} />
-          </button>
+        {!expanded && (
+          <div className="actions">
+            <button
+              type="button"
+              data-target="#navNav"
+              aria-expanded="false"
+              aria-controls="navNav"
+              data-toggle="collapse"
+              className="navbar-toggler"
+              aria-label="Toggle navigation"
+              onClick={() => handleNavClick()}
+            >
+              <ReactSVG src={hamburgerIcon} />
+            </button>
 
-          <ReactSVG src={wpNavigationIcon} />
-        </div>
+            <ReactSVG src={wpNavigationIcon} />
+          </div>
+        )}
 
-        <div className={`offcanvas offcanvas-end ${expanded ? 'show' : ''}`} tabIndex={-1}>
+        {/* Open navbar */}
+        <div className={`offcanvas offcanvas-end ${expanded ? 'show' : ''}`}>
           <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-              Offcanvas
-            </h5>
-            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div className="actions">
+              <button
+                className="close"
+                type="button"
+                aria-label="Toggle navigation"
+                onClick={() => setExpanded((prev) => !prev)}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="29" height="28" viewBox="0 0 29 28" fill="none">
+                  <path
+                    d="M2.83276 2.5L26.1673 25.8345"
+                    stroke="#295F4E"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M2.83276 25.5L26.1673 2.16548"
+                    stroke="#295F4E"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <ReactSVG src={wpNavigationIcon} />
+            </div>
           </div>
 
           <div className="offcanvas-body">
@@ -141,6 +131,9 @@ export default function Nav({ navData, topMenu, navbarWhite = false, location })
                   )
                 )}
               </div>
+
+              {/* Main btn */}
+              <Cta url="https://milieudefensie.nl/" externalTitle="milieudefensie.nl" isButton />
             </ul>
           </div>
         </div>
