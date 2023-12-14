@@ -4,9 +4,9 @@ import headerLogo from '../../Icons/Logo Component.svg';
 import { ReactSVG } from 'react-svg';
 import hamburgerIcon from '../../Icons/Hamburguer Icon.svg';
 import wpNavigationIcon from '../../Icons/Whatsapp Navigation.svg';
+import Cta from '../Cta/Cta';
 
 import './index.scss';
-import Cta from '../Cta/Cta';
 
 const LinkItem = ({ link, label, isButton }) => {
   return (

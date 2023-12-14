@@ -51,11 +51,11 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
                 </Link>
               </div>
 
-              <TagList tags={tags} />
+              {Array.isArray(tags) && <TagList tags={tags} />}
             </div>
           )}
 
-          <h1>{title}</h1>
+          {title && <h1>{title}</h1>}
 
           {/* Form  */}
           {registrationForm && (
@@ -67,22 +67,28 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
           {/* Brief information */}
           <div className="brief-information">
             <div className="metadata">
-              <span>
-                <img src={dateIcon} alt="Date icon" />
-                <span>{formatDate(date)}</span>
-              </span>
-
-              <span>
-                <img src={hourIcon} alt="Hour icon" />
+              {date && (
                 <span>
-                  {hourStart ? hourStart : ''} {hourEnd ? ` - ${hourEnd}` : ''}
+                  <img src={dateIcon} alt="Date icon" />
+                  <span>{formatDate(date)}</span>
                 </span>
-              </span>
+              )}
 
-              <span>
-                <img src={locationIcon} alt="Location icon" />
-                <span>{address}</span>
-              </span>
+              {hourStart && (
+                <span>
+                  <img src={hourIcon} alt="Hour icon" />
+                  <span>
+                    {hourStart ? hourStart : ''} {hourEnd ? ` - ${hourEnd}` : ''}
+                  </span>
+                </span>
+              )}
+
+              {address && (
+                <span>
+                  <img src={locationIcon} alt="Location icon" />
+                  <span>{address}</span>
+                </span>
+              )}
             </div>
 
             <div>
