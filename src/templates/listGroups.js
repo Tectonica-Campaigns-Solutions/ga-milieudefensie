@@ -21,12 +21,12 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="light">
-        <HeroBasic title={title} backgroundColor={'light'} />
+        <HeroBasic backgroundColor={'light'} />
 
-        <div className="list-group-wrapper mt-5">
+        <div className="list-event-wrapper pt-4">
           <div className="container">
             {/* Map */}
-            <Map data={filteredGroups} onClickMarker={(event) => setSelectedGroup(event)} />
+            <Map title={title} data={filteredGroups} onClickMarker={(event) => setSelectedGroup(event)} />
 
             {Array.isArray(filteredGroups) && <ListGroupBlock items={filteredGroups} />}
           </div>

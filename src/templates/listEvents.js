@@ -17,8 +17,6 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [filteredEvents, setFilteredEvents] = useState(mappedEvents);
 
-  console.log({ filteredEvents });
-
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />

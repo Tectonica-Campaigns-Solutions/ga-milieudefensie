@@ -15,10 +15,11 @@ import backBtnIcon from '../components/Icons/back-btn.svg';
 import HubspotForm from '../components/Blocks/HubspotForm/HubspotForm';
 import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 import TagList from '../components/Global/Tag/TagList';
+import ListHighlightEvent from '../components/Blocks/HighlightEvent/ListHighlightEvent';
 
 import './event.styles.scss';
 
-const Group = ({ pageContext, data: { page, listGroup, favicon } }) => {
+const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) => {
   const {
     seo,
     title,
@@ -30,6 +31,7 @@ const Group = ({ pageContext, data: { page, listGroup, favicon } }) => {
     whatsappGroup,
     organizer,
     tags = [],
+    relatedEvents = [],
   } = page;
 
   return (
@@ -54,8 +56,6 @@ const Group = ({ pageContext, data: { page, listGroup, favicon } }) => {
           )}
 
           {title && <h1>{title}</h1>}
-
-          {/* INTRO HERE... */}
           {introduction && <div className="alt-introduction" dangerouslySetInnerHTML={{ __html: introduction }} />}
 
           {/* Form  */}
@@ -117,6 +117,19 @@ const Group = ({ pageContext, data: { page, listGroup, favicon } }) => {
             </div>
           )}
         </FloatLayout>
+
+        {/* Related events */}
+        {Array.isArray(relatedEvents) && (
+          <div className="related-section">
+            <ListHighlightEvent
+              block={{
+                sectionTitle: 'Events organized by this Group',
+                cta: [{ ...listEvent, title: 'See Full Calendar' }],
+                items: relatedEvents,
+              }}
+            />
+          </div>
+        )}
       </WrapperLayout>
     </Layout>
   );
@@ -132,6 +145,10 @@ export const PageQuery = graphql`
       }
     }
     listGroup: datoCmsListGroup {
+      id
+      slug
+    }
+    listEvent: datoCmsListEvent {
       id
       slug
     }
@@ -157,6 +174,36 @@ export const PageQuery = graphql`
       }
       content {
         value
+      }
+      tags {
+        ... on DatoCmsTag {
+          id
+          title
+        }
+      }
+      relatedEvents {
+        ... on DatoCmsEvent {
+          id
+          title
+          slug
+          introduction
+          date
+          hourStart
+          hourEnd
+          address
+          tags {
+            ... on DatoCmsTag {
+              id
+              title
+            }
+          }
+          image {
+            gatsbyImageData
+          }
+          model {
+            apiKey
+          }
+        }
       }
       seo: seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags

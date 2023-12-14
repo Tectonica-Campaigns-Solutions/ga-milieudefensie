@@ -8,6 +8,13 @@ export const DatoCMS = graphql`
     externalUrl
     isButton
     content {
+      ... on DatoCmsListTool {
+        id
+        slug
+        model {
+          apiKey
+        }
+      }
       ... on DatoCmsBasicPage {
         id
         slug
@@ -58,6 +65,13 @@ export const DatoCMS = graphql`
         position
         externalUrl
         content {
+          ... on DatoCmsListTool {
+            id
+            slug
+            model {
+              apiKey
+            }
+          }
           ... on DatoCmsBasicPage {
             id
             slug

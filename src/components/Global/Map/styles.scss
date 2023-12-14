@@ -1,14 +1,19 @@
 .map-wrapper {
+  position: relative;
+
   h3 {
     color: var(--primary-color);
     font-family: var(--primary-font);
-    font-size: 61px;
+    font-size: 49px;
     font-style: normal;
     font-weight: 600;
-    line-height: 100%;
+    line-height: 110%;
     margin: 0;
     padding: 0;
-    margin-bottom: 40px;
+    position: absolute;
+    z-index: 1;
+    top: 53px;
+    left: 53px;
   }
 
   .map {
