@@ -35,7 +35,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
             )}
 
             {/* Map */}
-            <Map data={filteredEvents} onClickMarker={(event) => setSelectedEvent(event)} />
+            <Map title="Evenementen" data={filteredEvents} onClickMarker={(event) => setSelectedEvent(event)} />
 
             {/* Filter events */}
             <FilterEvents events={filteredEvents} handleOnApplyNewFilters={(events) => setFilteredEvents(events)} />

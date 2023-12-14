@@ -11,6 +11,7 @@ export default function SearchEngine({ searchEngineVisible, setSearchEngineVisib
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
 
+  /*
   useEffect(() => {
     if (!searchEngineVisible) {
       setQuery('');
@@ -37,6 +38,7 @@ export default function SearchEngine({ searchEngineVisible, setSearchEngineVisib
     const inputValue = e.target.value;
     setQuery(inputValue);
   };
+  */
 
   return (
     <div className={`search-engine ${searchEngineVisible ? 'search-engine--visible' : ''}`}>
@@ -59,7 +61,7 @@ export default function SearchEngine({ searchEngineVisible, setSearchEngineVisib
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            await performSearch();
+            // await performSearch();
           }}
         >
           <input
