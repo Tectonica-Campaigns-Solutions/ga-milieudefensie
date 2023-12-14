@@ -15,9 +15,9 @@ import backBtnIcon from '../components/Icons/back-btn.svg';
 import HubspotForm from '../components/Blocks/HubspotForm/HubspotForm';
 import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 import TagList from '../components/Global/Tag/TagList';
+import { formatDate } from '../utils';
 
 import './event.styles.scss';
-import { formatDate } from '../utils';
 
 const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
   const {
@@ -29,10 +29,13 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
     date,
     address,
     registrationForm,
+    whatsappGroup,
     image,
     content,
     tags = [],
   } = page;
+
+  console.log({ whatsappGroup });
 
   return (
     <Layout>
@@ -91,12 +94,19 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
               )}
             </div>
 
-            <div>
-              <span className="wp-button">
-                <span>Deel op WhatsApp</span>
-                <ReactSVG src={wpIcon} alt="Wp icon" />
-              </span>
-            </div>
+            {whatsappGroup && (
+              <div>
+                <a
+                  className="wp-button"
+                  href={`https://wa.me/${whatsappGroup}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Deel op WhatsApp</span>
+                  <ReactSVG src={wpIcon} alt="Wp icon" />
+                </a>
+              </div>
+            )}
           </div>
 
           {introduction && <div className="introduction" dangerouslySetInnerHTML={{ __html: introduction }} />}
@@ -133,6 +143,7 @@ export const PageQuery = graphql`
       hourStart
       hourEnd
       address
+      whatsappGroup
       registrationForm {
         ... on DatoCmsHubspot {
           formId
