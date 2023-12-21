@@ -11,7 +11,7 @@ const Map = ({ title, data = [], type = 'event' }) => {
     const map = createMapReference(mapContainerRef, [4, 51], 8.85, 1.99, 5, true);
 
     const pins = data
-      .filter((e) => e.coordinates)
+      .filter((e) => e.coordinates && e.coordinates.latitude && e.coordinates.longitude)
       .map((e) => ({
         ...e,
         coordinates: [e.coordinates.longitude, e.coordinates.latitude],

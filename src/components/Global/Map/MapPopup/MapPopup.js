@@ -6,7 +6,8 @@ import Cta from '../../Cta/Cta';
 import './styles.scss';
 
 const MapPopup = ({ card, linkTitle }) => {
-  const { title, date, hourStart, hourEnd, address, image, tags } = card;
+  const { title, date, hourStart, hourEnd, address, image, tags, type, url } = card;
+  const isCslEvent = type === 'INTERNATIONAL';
 
   return (
     <article className="map-popup">
@@ -16,7 +17,7 @@ const MapPopup = ({ card, linkTitle }) => {
         </div>
       )}
 
-      {image && (
+      {image?.url && (
         <div className="image">
           <img src={image.url} />
         </div>
@@ -34,7 +35,13 @@ const MapPopup = ({ card, linkTitle }) => {
 
       {title && <h2>{title}</h2>}
 
-      <Cta cta={{ ...card, title: linkTitle, isButton: true }} />
+      {isCslEvent ? (
+        <a target="_blank" href={url} className="custom-btn custom-btn-primary">
+          Go to Event Page
+        </a>
+      ) : (
+        <Cta cta={{ ...card, title: linkTitle, isButton: true }} />
+      )}
     </article>
   );
 };

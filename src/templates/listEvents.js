@@ -9,20 +9,21 @@ import FilterEvents from '../components/Global/FilterEvents/FilterEvents';
 import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 import axios from 'axios';
 import Spinner from '../components/Global/Spinner/Spinner';
+import { convertTime, formatDateAsYYMMDD } from '../utils';
 
 import './list-events.styles.scss';
-import { formatDateAsYYMMDD } from '../utils';
 
 const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) => {
-  const { seo, title, highlighEvent } = page;
+  const { seo, highlighEvent } = page;
   const cmsEvents = Array.isArray(allEvents.edges)
     ? allEvents.edges.map((raw) => ({ ...raw.node, type: 'NATIONAL' }))
     : [];
 
-  const [cslEvents, setCslEvents] = useState([]);
   const [mergedEvents, setMergedEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
+  const [locationOptions, setLocationOptions] = useState([]);
   const [status, setStatus] = useState('loading'); // loading | success | error
+  const [filterValues, setFilterValues] = useState({ location: null, typeOfEvent: null });
 
   useEffect(() => {
     async function fetchEvents() {
@@ -32,22 +33,27 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
         const response = await axios.get('/api/events');
         const fetchedEvents = response.data.events;
         const mappedCSL = fetchedEvents.map((e) => ({
-          id: 'id',
-          address: '',
-          coordinates: { latitude: e.location?.latitude || 54, longitude: e.location?.longitude || 54 },
+          id: e.slug.replace(' ', '_'),
+          address: e.location?.query,
+          coordinates: { latitude: e.location?.latitude, longitude: e.location?.longitude },
           region: e.location?.region,
           date: formatDateAsYYMMDD(e.start_at),
-          hourEnd: '9:00 PM',
-          hourStart: '5:00 AM',
+          hourStart: convertTime(e.start_at),
+          hourEnd: e.end_at ? convertTime(e.end_at) : null,
           introduction: e.description,
           slug: e.slug,
           url: e.url,
           title: e.title,
+          image: { url: e.image_url },
           type: 'INTERNATIONAL',
         }));
 
-        setCslEvents(mappedCSL);
-        setMergedEvents([...cmsEvents, ...mappedCSL]);
+        const events = [...cmsEvents, ...mappedCSL];
+        const uniqueLocations = [...new Set(events.map((event) => event.region))];
+
+        setMergedEvents(events);
+        setFilteredEvents(events);
+        setLocationOptions(uniqueLocations);
         setStatus('success');
       } catch (error) {
         console.error('Error fetching events:', error);
@@ -57,6 +63,19 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
 
     fetchEvents();
   }, []);
+
+  useEffect(() => {
+    const filteredEvents = [...mergedEvents]
+      .filter(
+        (e) => filterValues.location === null || filterValues.location === 'All' || e.region === filterValues.location
+      )
+      .filter(
+        (e) =>
+          filterValues.typeOfEvent === null || filterValues.typeOfEvent === 'All' || e.type === filterValues.typeOfEvent
+      );
+
+    setFilteredEvents(filteredEvents);
+  }, [filterValues, mergedEvents]);
 
   const isLoading = status === 'loading';
 
@@ -81,11 +100,13 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
               </div>
             ) : (
               <>
-                {/* Map */}
-                <Map title="Evenementen" data={mergedEvents} />
+                <Map title="Evenementen" data={filteredEvents} />
 
-                {/* Filter events */}
-                <FilterEvents events={mergedEvents} handleOnApplyNewFilters={(events) => setFilteredEvents(events)} />
+                <FilterEvents
+                  events={filteredEvents}
+                  locations={locationOptions}
+                  handleOnApplyNewFilters={(newFilterValues) => setFilterValues(newFilterValues)}
+                />
               </>
             )}
           </div>

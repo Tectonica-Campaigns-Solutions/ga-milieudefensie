@@ -85,3 +85,31 @@ export const formatDateAsYYMMDD = (rawDate) => {
   const newDateString = `${year}-${month}-${day}`;
   return newDateString;
 };
+
+export const convertTime = (dateTimeString) => {
+  var date = new Date(dateTimeString);
+
+  // Get hours and minutes
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+
+  // Determine AM or PM
+  var period = hours >= 12 ? 'PM' : 'AM';
+
+  // Convert to 12-hour format
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+
+  var formattedTime = hours + ':' + minutes + ' ' + period;
+
+  return formattedTime;
+};
+
+export const truncateText = (text, maxLength) => {
+  if (text.length <= maxLength) {
+    return text;
+  } else {
+    return text.substring(0, maxLength) + '...';
+  }
+};

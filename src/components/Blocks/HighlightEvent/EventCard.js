@@ -1,13 +1,14 @@
 import React from 'react';
 import Cta from '../../Global/Cta/Cta';
 import ImageWrapper from '../../Global/Image/ImageWrapper';
-import { formatDate } from '../../../utils';
+import { formatDate, truncateText } from '../../../utils';
 import TagList from '../../Global/Tag/TagList';
 
 import './styles.scss';
 
 const EventCard = ({ event, isHighlighted = false }) => {
-  const { title, introduction, image, date, address, hourStart, hourEnd, tags = [] } = event;
+  const { title, introduction, image, date, address, hourStart, hourEnd, tags = [], type, url } = event;
+  const isCslEvent = type === 'INTERNATIONAL';
 
   return (
     <div className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
@@ -16,7 +17,7 @@ const EventCard = ({ event, isHighlighted = false }) => {
 
         <div className="venue">
           <span>
-            {hourStart}-{hourEnd}
+            {hourStart} {hourEnd ? `- ${hourEnd}` : ''}
           </span>
 
           {address && <span>{address}</span>}
@@ -27,8 +28,17 @@ const EventCard = ({ event, isHighlighted = false }) => {
 
       <div className="basic-info">
         {title && <h4>{title}</h4>}
-        {introduction && <div className="introduction" dangerouslySetInnerHTML={{ __html: introduction }} />}
-        <Cta cta={{ ...event, title: 'Go to Event Page', isButton: true }} />
+        {introduction && (
+          <div className="introduction" dangerouslySetInnerHTML={{ __html: truncateText(introduction, 300) }} />
+        )}
+
+        {isCslEvent ? (
+          <a target="_blank" href={url} className="custom-btn custom-btn-primary">
+            Go to Event Page
+          </a>
+        ) : (
+          <Cta cta={{ ...event, title: 'Go to Event Page', isButton: true }} />
+        )}
       </div>
 
       {image && (
