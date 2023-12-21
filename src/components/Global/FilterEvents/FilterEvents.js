@@ -4,6 +4,7 @@ import Dropdown from '../Inputs/Dropdown/Dropdown';
 import CtaHandler from '../Cta/CtaHandler';
 
 import './styles.scss';
+import ListPaginated from '../Pagination/ListPaginated';
 
 const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
   const [location, setLocation] = useState(null);
@@ -38,7 +39,16 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
       </div>
 
       <div>
-        {events.length > 0 ? events.map((item) => <EventCard event={item} key={item.id} />) : <h5>No events found.</h5>}
+        {/* events.map((item) => <EventCard event={item} key={item.id} />) */}
+        {events.length > 0 ? (
+          <ListPaginated
+            list={events}
+            customPageSize={10}
+            renderItem={(item, index) => <EventCard event={item} key={item.id} />}
+          />
+        ) : (
+          <h5>No events found.</h5>
+        )}
       </div>
     </div>
   );

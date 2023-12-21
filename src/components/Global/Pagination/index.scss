@@ -5,10 +5,9 @@
   gap: 10px;
   list-style: none;
 
-
   li {
     color: var(--primary-color);
-    font-family: "Inter";
+    font-family: var(--secondary-font);
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -22,62 +21,11 @@
   }
 
   .pagination-item {
-    color: var(--ct-dark-blue);
+    color: var(--primary-color);
 
     &.dots:hover {
       background-color: transparent;
       cursor: default;
-    }
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.04);
-      cursor: pointer;
-    }
-
-    &.selected {
-      background-color: rgba(0, 0, 0, 0.08);
-    }
-
-    .arrow {
-      &::before {
-        content: '';
-        position: relative;
-        display: inline-block;
-        width: 0.4em;
-        height: 0.4em;
-        border-right: 0.12em solid rgba(0, 0, 0, 0.87);
-        border-top: 0.12em solid rgba(0, 0, 0, 0.87);
-      }
-
-      &.left {
-        transform: rotate(-135deg) translate(-50%);
-
-        &::before {
-          left: 3px;
-        }
-      }
-
-      &.right {
-        transform: rotate(45deg);
-
-        &::before {
-          bottom: 5px;
-        }
-      }
-    }
-
-    &.disabled {
-      pointer-events: none;
-
-      .arrow::before {
-        border-right: 0.12em solid rgba(0, 0, 0, 0.43);
-        border-top: 0.12em solid rgba(0, 0, 0, 0.43);
-      }
-
-      &:hover {
-        background-color: transparent;
-        cursor: default;
-      }
     }
   }
 }

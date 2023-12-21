@@ -8,7 +8,7 @@ const Map = ({ title, data = [], type = 'event' }) => {
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
-    const map = createMapReference(mapContainerRef, [4, 51], 8.85, 1.99, 5, true);
+    const map = createMapReference(mapContainerRef, [4, 51], 20, 5, 5, true);
 
     const pins = data
       .filter((e) => e.coordinates && e.coordinates.latitude && e.coordinates.longitude)
