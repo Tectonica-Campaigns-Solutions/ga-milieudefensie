@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import EventCard from '../../Blocks/HighlightEvent/EventCard';
 import Dropdown from '../Inputs/Dropdown/Dropdown';
 import CtaHandler from '../Cta/CtaHandler';
+import ListPaginated from '../Pagination/ListPaginated';
 
 import './styles.scss';
-import ListPaginated from '../Pagination/ListPaginated';
 
 const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
   const [location, setLocation] = useState(null);
