@@ -8,6 +8,7 @@ import Table from './Blocks/Table/Table';
 import ListHighlightEvent from './Blocks/HighlightEvent/ListHighlightEvent';
 import HighlightTools from './Blocks/HighlightTools/HighlightTools';
 import FormBlock from './Blocks/FormBlock/FormBlock';
+import Share from './Blocks/Share/Share';
 
 export default function Blocks({ blocks, usePrimaryHeading = false }) {
   return (
@@ -32,6 +33,8 @@ export default function Blocks({ blocks, usePrimaryHeading = false }) {
             return <HighlightTools key={block.id} block={block} />;
           case 'DatoCmsTextHubspotForm':
             return <FormBlock key={block.id} block={block} />;
+          case 'DatoCmsShare':
+            return <Share key={block.id} block={block} />;
 
           default:
             return null;

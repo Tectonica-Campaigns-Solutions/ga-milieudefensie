@@ -249,6 +249,86 @@ export const DatoCMS = graphql`
     }
   }
 
+  fragment BlockShare on DatoCmsShare {
+    __typename
+    id: originalId
+    title
+    whatsappGroup
+    socialLinks {
+      ... on DatoCmsSocialLink {
+        id
+        title
+        url
+        socialNetwork
+      }
+    }
+    ctas {
+      ... on DatoCmsCta {
+        id
+        title
+        isButton
+        link {
+          ... on DatoCmsGlobalLink {
+            id
+            label
+            externalUrl
+            content {
+              ... on DatoCmsListTool {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsBasicPage {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsEvent {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsListEvent {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsListGroup {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsTool {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsGroup {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   fragment BlockHighlightTools on DatoCmsHighlightTool {
     __typename
     id: originalId
