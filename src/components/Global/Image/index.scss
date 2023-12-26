@@ -1,35 +1,23 @@
 .image-wrapper {
+  *:not(img) {
+    width: 100%;
+  }
+
   .caption {
-    // max-width: 654px;
     display: flex;
     align-items: flex-start;
-    justify-content: start;
     gap: 10px;
-    margin-top: 10px;
-    margin-bottom: 30px;
+    margin-top: 10px !important;
 
-    img {
-      padding-top: 0.2rem;
-    }
-
-    span {
-      color: var(--black);
-      font-family: "Inter";
-      font-size: 13px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 19px;
+    .image-caption {
+      color: var(--black) !important;
+      font-size: 13px !important;
+      line-height: 130% !important;
     }
   }
 
   &.wrapping {
     float: left;
     width: 40%;
-  }
-
-  @media screen and (max-width: 768px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }

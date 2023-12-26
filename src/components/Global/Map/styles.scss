@@ -17,6 +17,10 @@
   }
 
   .map {
+    .pre-header {
+      display: none;
+    }
+
     .map-container {
       height: 80vh;
       border-radius: 20px;
@@ -54,6 +58,7 @@
       z-index: 10;
 
       .pre-header {
+        display: block;
         background: var(--secondary-bg-color);
         border-bottom: 2px solid var(--primary-color);
 

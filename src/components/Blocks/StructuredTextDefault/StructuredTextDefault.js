@@ -11,20 +11,17 @@ const StructuredTextDefault = ({ content }) => {
     <StructuredText
       data={content}
       renderBlock={({ record }) => {
-        console.log('Record name: ', record.__typename);
-
         switch (record.__typename) {
           case 'DatoCmsImage':
-            return <ImageWrapper image={record.image} />;
+            return <ImageWrapper image={record.image} key={record.id} />;
           case 'DatoCmsEmbedIframe':
-            return <EmbedIframe content={record} />;
+            return <EmbedIframe content={record} key={record.id} />;
           case 'DatoCmsTableBlock':
-            return <Table content={record} />;
+            return <Table content={record} key={record.id} />;
           case 'DatoCmsVideoBlock':
-            return <Video content={record} />;
+            return <Video content={record} key={record.id} />;
           case 'DatoCmsAcordion':
-            // return <Accordion content={record}>;
-            return <>accordion here...</>;
+            return <Accordion items={record.items} key={record.id} />;
 
           default:
             return null;

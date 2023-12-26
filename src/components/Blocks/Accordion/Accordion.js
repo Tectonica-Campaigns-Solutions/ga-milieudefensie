@@ -12,7 +12,7 @@ function Accordion({ items, renderCustomTitle = null, defaultActive = 0 }) {
   if (items.length === 0) return null;
 
   return (
-    <div className="accordion container">
+    <div className="accordion">
       {items.map((item, index) => (
         <div
           key={index}

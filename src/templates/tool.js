@@ -15,8 +15,6 @@ import './event.styles.scss';
 const Tool = ({ pageContext, data: { page, listTool, favicon } }) => {
   const { seo, title, introduction, heroImage, content, blocks = [] } = page;
 
-  console.log({ content });
-
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
@@ -90,8 +88,16 @@ export const PageQuery = graphql`
         value
         blocks {
           __typename
+          ... on DatoCmsImage {
+            id: originalId
+            image {
+              gatsbyImageData(width: 700)
+              title
+              url
+            }
+          }
           ... on DatoCmsAcordion {
-            id
+            id: originalId
             items {
               ... on DatoCmsAcordionItem {
                 id
