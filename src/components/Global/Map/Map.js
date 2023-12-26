@@ -4,7 +4,7 @@ import { createMapMarkers, createMapReference } from './utils';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './styles.scss';
 
-const Map = ({ title, data = [], type = 'event' }) => {
+const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileView }) => {
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
@@ -18,13 +18,25 @@ const Map = ({ title, data = [], type = 'event' }) => {
       }));
 
     createMapMarkers(map, pins, type);
+
+    return () => map.remove();
   }, [data]);
 
   return (
-    <div className="map-wrapper">
+    <div className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>
       {title && <h3>{title}</h3>}
 
       <div className="map">
+        {/* Pre-header */}
+        <div className="pre-header">
+          <div className="container">
+            <div className="action" onClick={() => setMobileView((prev) => !prev)}>
+              <span>←</span>
+              <span>List {type === 'event' ? 'Events' : 'Local Groups'}</span>
+            </div>
+          </div>
+        </div>
+
         <div ref={mapContainerRef} className="map-container" />
       </div>
     </div>

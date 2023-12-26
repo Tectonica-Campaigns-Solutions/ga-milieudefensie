@@ -35,8 +35,6 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
     tags = [],
   } = page;
 
-  console.log({ whatsappGroup });
-
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
@@ -95,17 +93,15 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
             </div>
 
             {whatsappGroup && (
-              <div>
-                <a
-                  className="wp-button"
-                  href={`https://wa.me/${whatsappGroup}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Deel op WhatsApp</span>
-                  <ReactSVG src={wpIcon} alt="Wp icon" />
-                </a>
-              </div>
+              <a
+                className="wp-button"
+                href={`https://wa.me/${whatsappGroup}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Deel op WhatsApp</span>
+                <ReactSVG src={wpIcon} alt="Wp icon" />
+              </a>
             )}
           </div>
 

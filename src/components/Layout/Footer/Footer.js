@@ -10,6 +10,9 @@ import './index.scss';
 function Footer({ isLanding = false, customLogo = null }) {
   const data = useStaticQuery(graphql`
     query FooterData {
+      configuration: datoCmsSiteConfiguration {
+        whatsappGroup
+      }
       datoCmsFooter {
         id
         logo {
@@ -63,10 +66,19 @@ function Footer({ isLanding = false, customLogo = null }) {
             </Link>
           </div>
 
-          <div className="wp-btn">
-            <span>Join Us to Our WhatsApp Community</span>
-            <ReactSVG src={wpIcon} />
-          </div>
+          {data.configuration?.whatsappGroup && (
+            <a
+              className="wp-button"
+              href={`https://wa.me/${data.configuration.whatsappGroup}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="wp-btn">
+                <span>Join Us to Our WhatsApp Community</span>
+                <ReactSVG src={wpIcon} />
+              </div>
+            </a>
+          )}
         </div>
 
         {/* Second row */}

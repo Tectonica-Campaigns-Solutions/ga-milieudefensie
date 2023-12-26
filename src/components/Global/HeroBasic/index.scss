@@ -52,5 +52,10 @@
       font-size: 60px;
       padding-bottom: 50px;
     }
+
+    &.event {
+      height: 320px;
+      background-color: var(--secondary-bg-color);
+    }
   }
 }

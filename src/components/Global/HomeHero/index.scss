@@ -75,34 +75,38 @@
 }
 
 @media screen and (max-width: 992px) {
-  .hero-home {
-    min-height: 350px;
+  .wrapper-hero {
+    .hero-home {
+      min-height: 350px;
 
-    .content {
-      top: 200px;
-      margin: 0 20px;
-      padding: 20px 24px;
+      .content {
+        min-height: 350px;
+        top: 200px;
+        margin: 0 20px;
+        padding: 20px 24px;
+        background-size: 120px;
 
-      h1 {
-        font-size: 37px;
-        line-height: 115%;
-        margin-bottom: 6px;
-      }
+        h1 {
+          font-size: 37px;
+          line-height: 115%;
+          margin-bottom: 6px;
+        }
 
-      .introduction {
-        margin-bottom: 35px;
+        .introduction {
+          margin-bottom: 35px;
 
-        * {
-          color: var(--black);
-          font-size: 19px;
-          line-height: 120%;
+          * {
+            color: var(--black);
+            font-size: 19px;
+            line-height: 120%;
+          }
         }
       }
-    }
 
-    &+div,
-    &+section {
-      padding-top: 100px !important;
+      &+div,
+      &+section {
+        padding-top: 100px !important;
+      }
     }
   }
 }

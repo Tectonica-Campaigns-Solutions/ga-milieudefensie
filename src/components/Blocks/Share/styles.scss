@@ -64,3 +64,25 @@
     }
   }
 }
+
+@media screen and (max-width:992px) {
+
+  .share-block {
+    h3 {
+      font-size: 23px;
+      font-style: normal;
+      line-height: 120%;
+      margin-bottom: 26px;
+    }
+
+    .social-icons {
+      margin-bottom: 25px;
+    }
+
+    .wp-button {
+      width: 100%;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+  }
+}

@@ -3,9 +3,7 @@ import { useStaticQuery } from 'gatsby';
 import { graphql } from 'gatsby';
 import Nav from '../Global/Nav/Nav';
 
-const Header = ({ isHome, isDetail, isBlueHeader }) => {
-  const [searchEngineVisible, setSearchEngineVisible] = React.useState(false);
-
+const Header = ({ isHome, isDetail }) => {
   const menus = useStaticQuery(graphql`
     query {
       mainMenu: allDatoCmsMenuItem(filter: { root: { eq: true } }, sort: { position: ASC }) {
@@ -13,12 +11,15 @@ const Header = ({ isHome, isDetail, isBlueHeader }) => {
           ...MainNavigation
         }
       }
+      configuration: datoCmsSiteConfiguration {
+        whatsappGroup
+      }
     }
   `);
 
   return (
     <header data-datocms-noindex className={`${isHome ? 'header-home' : ''} ${isDetail ? 'header-detail' : ''}`}>
-      <Nav navData={menus.mainMenu} setSearchEngineVisible={setSearchEngineVisible} isBlueHeader={isBlueHeader} />
+      <Nav navData={menus.mainMenu} config={menus.configuration} />
     </header>
   );
 };

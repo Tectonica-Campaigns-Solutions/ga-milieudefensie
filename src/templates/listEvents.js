@@ -10,6 +10,7 @@ import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 import axios from 'axios';
 import Spinner from '../components/Global/Spinner/Spinner';
 import { convertTime, formatDateAsYYMMDD } from '../utils';
+import CtaHandler from '../components/Global/Cta/CtaHandler';
 
 import './list-events.styles.scss';
 
@@ -24,6 +25,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
   const [locationOptions, setLocationOptions] = useState([]);
   const [status, setStatus] = useState('loading'); // loading | success | error
   const [filterValues, setFilterValues] = useState({ location: null, typeOfEvent: null });
+  const [mobileShowMap, setMobileShowMap] = useState(false);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -83,11 +85,16 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
-      <WrapperLayout variant="light">
-        <HeroBasic backgroundColor={'light'} />
+      <WrapperLayout variant="light" responsiveVariant="secondary-bg">
+        <HeroBasic backgroundColor="light" responsiveVariant="event" />
 
         <div className="list-event-wrapper">
           <div className="container">
+            {/* Mobile button */}
+            <div className="mobile-view-map">
+              <CtaHandler title={'Map View'} isPrimaryButton handleOnClick={() => setMobileShowMap((prev) => !prev)} />
+            </div>
+
             {highlighEvent && (
               <div className="highlighted-event-wrapper">
                 <EventCard event={highlighEvent} isHighlighted />
@@ -99,15 +106,20 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
                 <Spinner />
               </div>
             ) : (
-              <>
-                <Map title="Evenementen" data={filteredEvents} />
+              <div className={`${mobileShowMap ? 'mobile-map' : ''}`}>
+                <Map
+                  title="Evenementen"
+                  data={filteredEvents}
+                  mobileView={mobileShowMap}
+                  setMobileView={setMobileShowMap}
+                />
 
                 <FilterEvents
                   events={filteredEvents}
                   locations={locationOptions}
                   handleOnApplyNewFilters={(newFilterValues) => setFilterValues(newFilterValues)}
                 />
-              </>
+              </div>
             )}
           </div>
         </div>

@@ -18,3 +18,9 @@
   align-items: center;
   gap: 10px;
 }
+
+@media screen and (max-width: 992px) {
+  .tag {
+    font-size: 13px;
+  }
+}

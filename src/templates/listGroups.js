@@ -8,26 +8,38 @@ import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 import ListGroupBlock from '../components/Blocks/HighlightGroup/ListGroups';
 
 import './list-events.styles.scss';
+import CtaHandler from '../components/Global/Cta/CtaHandler';
 
 const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) => {
   const { seo, title } = page;
   const mappedGroups = Array.isArray(allGroups.edges) ? allGroups.edges.map((raw) => raw.node) : [];
 
-  const [filteredGroups, setFilteredGroups] = useState(mappedGroups);
+  const [mobileShowMap, setMobileShowMap] = useState(false);
 
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="light">
-        <HeroBasic backgroundColor={'light'} />
+        <HeroBasic backgroundColor="light" responsiveVariant="event" />
 
         <div className="list-event-wrapper pt-4">
           <div className="container">
-            {/* Map */}
-            <Map title={title} data={filteredGroups} type="group" />
+            {/* Mobile button */}
+            <div className="mobile-view-map mb-4">
+              <CtaHandler title={'Map View'} isPrimaryButton handleOnClick={() => setMobileShowMap((prev) => !prev)} />
+            </div>
 
-            {Array.isArray(filteredGroups) && <ListGroupBlock items={filteredGroups} />}
+            {/* Map */}
+            <Map
+              title={title}
+              data={mappedGroups}
+              type="group"
+              mobileView={mobileShowMap}
+              setMobileView={setMobileShowMap}
+            />
+
+            {Array.isArray(mappedGroups) && <ListGroupBlock items={mappedGroups} />}
           </div>
         </div>
       </WrapperLayout>

@@ -13,6 +13,11 @@
   .actions {
     display: flex;
     align-items: center;
+    gap: 15px;
+
+    button {
+      padding: 0;
+    }
   }
 
   .offcanvas-header,
@@ -128,13 +133,68 @@
 }
 
 @media screen and (max-width: 992px) {
-  .navbar-brand {
-    height: 50px;
-    margin-top: -65px !important;
+  .navbar {
+    .navbar-brand {
+      height: 50px;
+      margin-top: -65px !important;
 
-    svg {
-      height: 100%;
-      width: 260px;
+      svg {
+        height: 100%;
+        width: 240px;
+      }
+    }
+
+    .actions {
+      gap: 0;
+      position: relative;
+      top: -.5rem;
+    }
+
+    .offcanvas.show {
+      width: 85%;
+      padding: 0;
+
+      .actions {
+        gap: 18px;
+        margin-bottom: 50px;
+      }
+
+      .offcanvas-body {
+        .links-container {
+          gap: 25px;
+          margin-bottom: 25px;
+
+          .nav-item a {
+            font-size: 29px;
+            font-weight: 400;
+            line-height: 115%;
+          }
+
+          .nav-item.dropdown .dropdown-menu.open {
+            gap: 12px;
+          }
+
+          .nav-item.dropdown .dropdown-menu .dropdown-item .dropdown-link {
+            font-size: 19px;
+            line-height: 130%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 456px) {
+  .navbar {
+    .navbar-brand {
+      svg {
+        height: 76px;
+        width: 180px;
+      }
+    }
+
+    .actions {
+      top: -.7rem;
     }
   }
 }

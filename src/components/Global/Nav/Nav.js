@@ -44,7 +44,7 @@ const DropdownItem = ({ link, label, children }) => {
   );
 };
 
-export default function Nav({ navData, location }) {
+export default function Nav({ navData, config }) {
   const navLinks = navData.nodes;
   const [expanded, setExpanded] = useState(false);
 
@@ -84,7 +84,16 @@ export default function Nav({ navData, location }) {
               <ReactSVG src={hamburgerIcon} />
             </button>
 
-            <ReactSVG src={wpNavigationIcon} />
+            {config?.whatsappGroup && (
+              <a
+                className="wp-button"
+                href={`https://wa.me/${config.whatsappGroup}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ReactSVG src={wpNavigationIcon} />
+              </a>
+            )}
           </div>
         )}
 
@@ -116,7 +125,16 @@ export default function Nav({ navData, location }) {
                 </svg>
               </button>
 
-              <ReactSVG src={wpNavigationIcon} />
+              {config?.whatsappGroup && (
+                <a
+                  className="wp-button"
+                  href={`https://wa.me/${config.whatsappGroup}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ReactSVG src={wpNavigationIcon} />
+                </a>
+              )}
             </div>
           </div>
 

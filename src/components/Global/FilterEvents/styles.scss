@@ -15,3 +15,13 @@
     line-height: 135%;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .filter-events-wrapper {
+    padding: 0;
+
+    .filters {
+      flex-direction: column;
+    }
+  }
+}
