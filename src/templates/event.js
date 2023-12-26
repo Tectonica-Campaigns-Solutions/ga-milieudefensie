@@ -160,6 +160,27 @@ export const PageQuery = graphql`
       }
       content {
         value
+        blocks {
+          __typename
+          ... on DatoCmsImage {
+            id: originalId
+            image {
+              gatsbyImageData(width: 700)
+              title
+              url
+            }
+          }
+          ... on DatoCmsAcordion {
+            id: originalId
+            items {
+              ... on DatoCmsAcordionItem {
+                id
+                title
+                text
+              }
+            }
+          }
+        }
       }
       seo: seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
