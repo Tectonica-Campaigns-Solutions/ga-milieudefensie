@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from '../Link/Link';
 import headerLogo from '../../Icons/Logo Component.svg';
 import { ReactSVG } from 'react-svg';
@@ -45,10 +45,28 @@ const DropdownItem = ({ link, label, children }) => {
 };
 
 export default function Nav({ navData, config }) {
+  const navRef = useRef(null);
+
   const navLinks = navData.nodes;
   const [expanded, setExpanded] = useState(false);
 
   const handleNavClick = () => setExpanded((prev) => !prev);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const isExpanded = document.querySelector('#nav-content').classList.contains('show');
+
+      if (navRef.current && !navRef.current.contains(event.target) && isExpanded) {
+        // setExpanded(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [expanded]);
 
   const groupedLinks = navLinks.reduce(
     (result, item) => {
@@ -98,7 +116,7 @@ export default function Nav({ navData, config }) {
         )}
 
         {/* Open navbar */}
-        <div className={`offcanvas offcanvas-end ${expanded ? 'show' : ''}`}>
+        <div id="nav-content" ref={navRef} className={`offcanvas offcanvas-end ${expanded ? 'show' : ''}`}>
           <div className="offcanvas-header">
             <div className="actions">
               <button

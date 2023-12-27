@@ -19,15 +19,17 @@ const ToolCard = ({ tool }) => {
 
       <div className="content">
         <div>
-          <div className="icon">
-            {googleFontIcon ? (
+          {googleFontIcon ? (
+            <div className="icon">
               <span className="material-symbols-outlined">{googleFontIcon?.icon}</span>
-            ) : icon?.url ? (
+            </div>
+          ) : icon?.url ? (
+            <div className="icon">
               <ReactSVG src={icon.url} />
-            ) : (
-              <></>
-            )}
-          </div>
+            </div>
+          ) : (
+            <></>
+          )}
 
           {title && <h3>{title}</h3>}
           {introduction && <div className="introduction" dangerouslySetInnerHTML={{ __html: introduction }} />}
