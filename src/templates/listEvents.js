@@ -15,7 +15,7 @@ import CtaHandler from '../components/Global/Cta/CtaHandler';
 import './list-events.styles.scss';
 
 const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) => {
-  const { seo, highlighEvent } = page;
+  const { title, seo, highlighEvent } = page;
   const cmsEvents = Array.isArray(allEvents.edges)
     ? allEvents.edges.map((raw) => ({ ...raw.node, type: 'NATIONAL' }))
     : [];
@@ -79,6 +79,25 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
     setFilteredEvents(filteredEvents);
   }, [filterValues, mergedEvents]);
 
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const htmlElement = document.documentElement;
+
+      if (mobileShowMap && window.innerWidth < 992) {
+        htmlElement.style.overflow = 'hidden';
+      } else {
+        htmlElement.style.overflow = '';
+      }
+    };
+
+    handleWindowResize();
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, [mobileShowMap]);
+
   const isLoading = status === 'loading';
 
   return (
@@ -90,6 +109,8 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
 
         <div className="list-event-wrapper">
           <div className="container">
+            <h1>{title}</h1>
+
             {/* Mobile button */}
             <div className="mobile-view-map">
               <CtaHandler title={'Map View'} isPrimaryButton handleOnClick={() => setMobileShowMap((prev) => !prev)} />
@@ -119,6 +140,32 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
                   locations={locationOptions}
                   handleOnApplyNewFilters={(newFilterValues) => setFilterValues(newFilterValues)}
                 />
+
+                {/* Fixed cta to view all */}
+                <div className="cta-view-list">
+                  <div
+                    className="custom-btn custom-btn-primary"
+                    onClick={() => {
+                      const targetElement = document.getElementById('filter-events-list');
+
+                      if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    Show Event List
+                    {/* Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                      <path
+                        d="M15.5 7.5L10.5 12.5L5.5 7.5"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="square"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -148,6 +195,7 @@ export const PageQuery = graphql`
           hourStart
           hourEnd
           address
+          region
           coordinates {
             latitude
             longitude

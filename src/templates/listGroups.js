@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import SeoDatoCMS from '../components/Layout/SeoDatocms';
@@ -16,6 +16,25 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
 
   const [mobileShowMap, setMobileShowMap] = useState(false);
 
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const htmlElement = document.documentElement;
+
+      if (mobileShowMap && window.innerWidth < 992) {
+        htmlElement.style.overflow = 'hidden';
+      } else {
+        htmlElement.style.overflow = '';
+      }
+    };
+
+    handleWindowResize();
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, [mobileShowMap]);
+
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
@@ -25,6 +44,8 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
 
         <div className="list-event-wrapper pt-4">
           <div className="container">
+            <h1>{title}</h1>
+
             {/* Mobile button */}
             <div className="mobile-view-map mb-4">
               <CtaHandler title={'Map View'} isPrimaryButton handleOnClick={() => setMobileShowMap((prev) => !prev)} />
@@ -39,7 +60,33 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
               setMobileView={setMobileShowMap}
             />
 
-            {Array.isArray(mappedGroups) && <ListGroupBlock items={mappedGroups} />}
+            {Array.isArray(mappedGroups) && <ListGroupBlock withContainer={false} items={mappedGroups} />}
+
+            {/* Fixed cta to view all */}
+            <div className="cta-view-list">
+              <div
+                className="custom-btn custom-btn-primary"
+                onClick={() => {
+                  const targetElement = document.getElementById('groups-list');
+
+                  if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Show Local Groups List
+                {/* Icon */}
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                  <path
+                    d="M15.5 7.5L10.5 12.5L5.5 7.5"
+                    stroke="white"
+                    strokeWidth="3"
+                    strokeLinecap="square"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </WrapperLayout>

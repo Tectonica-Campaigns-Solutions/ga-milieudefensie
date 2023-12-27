@@ -98,13 +98,18 @@
             top: 0;
             left: 0;
             position: fixed;
-            width: 98vw;
+            width: 100vw;
             height: 90vh;
+            border-radius: 0;
 
             .mapboxgl-popup-close-button {
               margin: 10px 0;
               font-size: 24px;
             }
+          }
+
+          .map-popup {
+            margin-top: 1rem;
           }
         }
       }

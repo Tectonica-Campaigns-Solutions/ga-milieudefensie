@@ -18,6 +18,12 @@
     button {
       padding: 0;
     }
+
+    .wp-button svg:hover {
+      g rect {
+        fill: var(--primary-color);
+      }
+    }
   }
 
   .offcanvas-header,
@@ -44,8 +50,13 @@
         background: #FFF;
         padding: 4px 10px 10px 10px;
       }
-    }
 
+      .wp-button svg:hover {
+        g rect {
+          fill: #69BE28;
+        }
+      }
+    }
   }
 
   // Links

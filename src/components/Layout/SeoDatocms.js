@@ -8,4 +8,5 @@ const SeoDatoCMS = ({ seo, favicon = null, homepage = false }) => {
 
   return <HelmetDatoCms seo={seo} favicon={favicon?.faviconMetaTags} />;
 };
+
 export default SeoDatoCMS;

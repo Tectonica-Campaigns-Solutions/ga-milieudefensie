@@ -30,7 +30,7 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
   };
 
   return (
-    <div className="filter-events-wrapper ">
+    <div className="filter-events-wrapper" id="filter-events-list">
       <div className="filters">
         <Dropdown title="Locations" options={locationsValues} onSelect={(value) => setLocation(value)} />
         <Dropdown title="Type of Event" options={eventsType} onSelect={(value) => setTypeOfEvent(value)} />
@@ -39,12 +39,11 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
       </div>
 
       <div>
-        {/* events.map((item) => <EventCard event={item} key={item.id} />) */}
         {events.length > 0 ? (
           <ListPaginated
             list={events}
             customPageSize={10}
-            renderItem={(item, index) => <EventCard event={item} key={item.id} />}
+            renderItem={(item) => <EventCard event={item} key={item.id} />}
           />
         ) : (
           <h5>No events found.</h5>
