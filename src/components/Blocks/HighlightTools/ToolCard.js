@@ -6,7 +6,8 @@ import { ReactSVG } from 'react-svg';
 import './styles.scss';
 
 const ToolCard = ({ tool }) => {
-  const { title, introduction, image, icon, cta = [] } = tool;
+  const { title, introduction, image, icon, cta = [], iconFontPicker } = tool;
+  const googleFontIcon = iconFontPicker ? JSON.parse(iconFontPicker) : '';
 
   return (
     <div className="tool-card">
@@ -18,11 +19,16 @@ const ToolCard = ({ tool }) => {
 
       <div className="content">
         <div>
-          {icon?.url && (
-            <div className="icon">
+          <div className="icon">
+            {googleFontIcon ? (
+              <span className="material-symbols-outlined">{googleFontIcon?.icon}</span>
+            ) : icon?.url ? (
               <ReactSVG src={icon.url} />
-            </div>
-          )}
+            ) : (
+              <></>
+            )}
+          </div>
+
           {title && <h3>{title}</h3>}
           {introduction && <div className="introduction" dangerouslySetInnerHTML={{ __html: introduction }} />}
         </div>
