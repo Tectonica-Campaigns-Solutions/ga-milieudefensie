@@ -3,6 +3,7 @@ import EventCard from '../../Blocks/HighlightEvent/EventCard';
 import Dropdown from '../Inputs/Dropdown/Dropdown';
 import CtaHandler from '../Cta/CtaHandler';
 import ListPaginated from '../Pagination/ListPaginated';
+import { MapCountry } from '../../../utils';
 
 import './styles.scss';
 
@@ -15,8 +16,9 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
     ...locations
       .filter((l) => l)
       .map((l) => {
-        return { label: l, value: l };
-      }),
+        return { label: MapCountry[l] ? MapCountry[l] : l, value: l };
+      })
+      .sort((a, b) => a.label.localeCompare(b.label)),
   ];
 
   const eventsType = [

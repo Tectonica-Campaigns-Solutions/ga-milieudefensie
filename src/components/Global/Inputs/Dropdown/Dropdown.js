@@ -32,7 +32,7 @@ const Dropdown = ({ title, options, onSelect }) => {
   return (
     <div ref={dropdownRef} className={`custom-dropdown ${isOpen ? 'open' : ''}`}>
       <button className="dropdown-toggle" onClick={handleToggle}>
-        {selectedOption || title || 'Select an option'}
+        {options.find((o) => o.value === selectedOption)?.label || title || 'Select an option'}
       </button>
 
       <ul className="dropdown-menu">
