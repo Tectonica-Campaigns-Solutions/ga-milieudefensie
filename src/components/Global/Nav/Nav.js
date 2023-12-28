@@ -87,33 +87,31 @@ export default function Nav({ navData, config }) {
           <ReactSVG src={headerLogo} alt="Milieudefensie logo" />
         </Link>
 
-        {!expanded && (
-          <div className="actions">
-            <button
-              type="button"
-              data-target="#navNav"
-              aria-expanded="false"
-              aria-controls="navNav"
-              data-toggle="collapse"
-              className="navbar-toggler"
-              aria-label="Toggle navigation"
-              onClick={() => handleNavClick()}
-            >
-              <ReactSVG src={hamburgerIcon} />
-            </button>
+        <div className="actions" style={{ visibility: !expanded ? 'visible' : 'hidden' }}>
+          <button
+            type="button"
+            data-target="#navNav"
+            aria-expanded="false"
+            aria-controls="navNav"
+            data-toggle="collapse"
+            className="navbar-toggler"
+            aria-label="Toggle navigation"
+            onClick={() => handleNavClick()}
+          >
+            <ReactSVG src={hamburgerIcon} />
+          </button>
 
-            {config?.whatsappGroup && (
-              <a
-                className="wp-button"
-                href={`https://wa.me/${config.whatsappGroup}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ReactSVG src={wpNavigationIcon} />
-              </a>
-            )}
-          </div>
-        )}
+          {config?.whatsappGroup && (
+            <a
+              className="wp-button"
+              href={`https://wa.me/${config.whatsappGroup}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ReactSVG src={wpNavigationIcon} />
+            </a>
+          )}
+        </div>
 
         {/* Open navbar */}
         <div id="nav-content" ref={navRef} className={`offcanvas offcanvas-end ${expanded ? 'show' : ''}`}>

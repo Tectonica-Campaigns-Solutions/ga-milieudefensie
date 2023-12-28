@@ -11,11 +11,12 @@ import axios from 'axios';
 import Spinner from '../components/Global/Spinner/Spinner';
 import { convertTime, formatDateAsYYMMDD } from '../utils';
 import CtaHandler from '../components/Global/Cta/CtaHandler';
+import Blocks from '../components/Blocks';
 
 import './list-events.styles.scss';
 
 const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) => {
-  const { title, seo, highlighEvent } = page;
+  const { title, seo, highlighEvent, blocks = [] } = page;
   const cmsEvents = Array.isArray(allEvents.edges)
     ? allEvents.edges.map((raw) => ({ ...raw.node, type: 'NATIONAL' }))
     : [];
@@ -169,6 +170,12 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
               </div>
             )}
           </div>
+
+          {Array.isArray(blocks) && blocks.length > 0 && (
+            <div className="mt-5 pb-5">
+              <Blocks blocks={blocks} />
+            </div>
+          )}
         </div>
       </WrapperLayout>
     </Layout>
@@ -241,6 +248,11 @@ export const PageQuery = graphql`
           model {
             apiKey
           }
+        }
+      }
+      blocks {
+        ... on DatoCmsTextHubspotForm {
+          ...BlockTextHubspot
         }
       }
       seo: seoMetaTags {

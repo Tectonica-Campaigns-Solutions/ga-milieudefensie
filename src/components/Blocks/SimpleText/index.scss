@@ -54,7 +54,9 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%
+    line-height: 150%;
+    margin: 0;
+    padding: 0;
   }
 
   em {
@@ -125,14 +127,22 @@
 }
 
 @media screen and (max-width:992px) {
-  .simple-text {
-    div:first-child {
-      margin-top: 10px !important;
-      margin-bottom: 10px !important;
+  .simple-text-wrapper {
+
+    .pre-c {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
     }
 
-    * {
-      font-size: 16px;
+    .simple-text {
+      div:first-child {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+      }
+
+      * {
+        font-size: 16px;
+      }
     }
   }
 }

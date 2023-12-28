@@ -15,7 +15,12 @@ const ListTool = ({ pageContext, data: { page, favicon } }) => {
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="white">
-        <HeroBasic title={title} image={heroBackgroundImage} backgroundColor={backgroundColor} />
+        <HeroBasic
+          title={title}
+          image={heroBackgroundImage}
+          backgroundColor={backgroundColor}
+          responsiveVariant="tools"
+        />
         {introduction && <SimpleText limitedWidth block={{ text: introduction }} />}
         <Blocks blocks={blocks} />
       </WrapperLayout>

@@ -24,7 +24,7 @@ function Accordion({ items, renderCustomTitle = null, defaultActive = 0 }) {
             <img src={activeItem === index ? accordionClose : accordionOpen} alt="Accordion close/open icon" />
           </div>
 
-          <div className="ac-content" dangerouslySetInnerHTML={{ __html: item.text }}></div>
+          <div id="ac-content" className="ac-content" dangerouslySetInnerHTML={{ __html: item.text }}></div>
         </div>
       ))}
     </div>

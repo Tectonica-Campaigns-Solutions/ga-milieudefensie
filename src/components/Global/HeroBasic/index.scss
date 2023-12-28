@@ -48,9 +48,15 @@
 
 @media screen and (max-width:992px) {
   .hero-basic {
+    &.tools {
+      height: 230px;
+      padding: 0;
+    }
+
     h1 {
-      font-size: 60px;
-      padding-bottom: 50px;
+      font-size: 29px;
+      line-height: 115%;
+      padding-bottom: 30px;
     }
 
     &.event {

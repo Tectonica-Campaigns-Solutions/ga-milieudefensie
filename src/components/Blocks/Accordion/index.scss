@@ -59,15 +59,29 @@
 
 @media screen and (max-width: 992px) {
   .accordion {
+    margin-top: 20px !important;
+
     .item {
+      padding: 15px !important;
+
       .ac-title {
 
         h3,
         h3 span {
-          font-size: 20px !important;
+          font-size: 18px !important;
           line-height: 110% !important;
           margin: 0;
         }
+      }
+
+      #ac-content {
+        margin-top: 10px !important;
+      }
+
+      #ac-content p {
+        margin: 0;
+        padding: 0;
+        font-size: 14px !important;
       }
     }
   }

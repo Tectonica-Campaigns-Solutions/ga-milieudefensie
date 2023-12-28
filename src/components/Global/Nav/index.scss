@@ -164,9 +164,10 @@
     .offcanvas.show {
       width: 85%;
       padding: 0;
+      padding-top: .5rem;
 
       .actions {
-        gap: 18px;
+        gap: 10px;
         margin-bottom: 50px;
       }
 

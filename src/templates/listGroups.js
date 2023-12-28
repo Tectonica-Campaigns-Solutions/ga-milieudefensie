@@ -6,12 +6,13 @@ import HeroBasic from '../components/Global/HeroBasic/HeroBasic';
 import Map from '../components/Global/Map/Map';
 import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 import ListGroupBlock from '../components/Blocks/HighlightGroup/ListGroups';
+import CtaHandler from '../components/Global/Cta/CtaHandler';
+import Blocks from '../components/Blocks';
 
 import './list-events.styles.scss';
-import CtaHandler from '../components/Global/Cta/CtaHandler';
 
 const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) => {
-  const { seo, title } = page;
+  const { seo, title, blocks = [] } = page;
   const mappedGroups = Array.isArray(allGroups.edges) ? allGroups.edges.map((raw) => raw.node) : [];
 
   const [mobileShowMap, setMobileShowMap] = useState(false);
@@ -88,6 +89,12 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
               </div>
             </div>
           </div>
+
+          {Array.isArray(blocks) && blocks.length > 0 && (
+            <div className="mt-5 pb-5">
+              <Blocks blocks={blocks} />
+            </div>
+          )}
         </div>
       </WrapperLayout>
     </Layout>
@@ -134,6 +141,11 @@ export const PageQuery = graphql`
       id
       title
       slug
+      blocks {
+        ... on DatoCmsTextHubspotForm {
+          ...BlockTextHubspot
+        }
+      }
       seo: seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
