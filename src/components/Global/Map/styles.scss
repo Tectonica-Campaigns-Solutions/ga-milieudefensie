@@ -17,6 +17,8 @@
   }
 
   .map {
+    filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, 0.15));
+
     .pre-header {
       display: none;
     }
@@ -39,6 +41,10 @@
         .tag {
           text-transform: capitalize;
         }
+      }
+
+      .mapboxgl-popup-close-button {
+        font-size: 22px;
       }
     }
   }

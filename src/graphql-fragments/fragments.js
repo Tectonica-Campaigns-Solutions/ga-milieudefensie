@@ -345,6 +345,7 @@ export const DatoCMS = graphql`
           url
         }
         iconFontPicker
+        backgroundColor
         cta {
           ... on DatoCmsCta {
             id

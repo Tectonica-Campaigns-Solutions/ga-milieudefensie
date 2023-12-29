@@ -29,7 +29,7 @@ const EventCard = ({ event, isHighlighted = false }) => {
       <div className="basic-info">
         {title && <h4>{title}</h4>}
         {introduction && (
-          <div className="introduction" dangerouslySetInnerHTML={{ __html: truncateText(introduction, 300) }} />
+          <div className="introduction" dangerouslySetInnerHTML={{ __html: truncateText(introduction, 200) }} />
         )}
 
         {isCslEvent ? (

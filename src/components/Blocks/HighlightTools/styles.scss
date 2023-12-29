@@ -36,6 +36,8 @@
 }
 
 .tool-card {
+  display: block;
+  text-decoration: none;
   height: 450px;
   border-radius: 10px;
   background-color: var(--secondary-bg-color);
@@ -95,6 +97,14 @@
 
     .content .icon svg path {
       fill: var(--white);
+    }
+  }
+
+  &.light-green {
+    background-color: var(--primary-bg-color);
+
+    &:hover {
+      background-color: var(--primary-color);
     }
   }
 }
