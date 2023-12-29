@@ -11,9 +11,8 @@ const { Popup } = mapboxgl;
 export const createMapReference = (ref, coordinates, maxZoom, minZoom, zoom, interactive = false) => {
   return new mapboxgl.Map({
     container: ref.current,
-    accessToken:
-      'pk.eyJ1IjoibWFyY2Vsc2Fmb250dGVjdG9uaWNhIiwiYSI6ImNsZmNjNmN0bTAxMXE0MG56ZWVlaWxnOGEifQ.dSLvNNGEiQQAoW5wbT2mYA',
-    style: '',
+    accessToken: 'pk.eyJ1IjoibWFydGluYWx2IiwiYSI6ImNscHR1YjdvZDBlY2sybHBnNTRwM2l4ZTEifQ.nn8C3qy8ULBkq6gdO3vlCg',
+    style: 'mapbox://styles/martinalv/clptudeob00ub01p74jlnbdce',
     center: coordinates,
     interactive: interactive,
     maxZoom: maxZoom,
