@@ -50,6 +50,10 @@
     font-weight: 600;
     line-height: 120%;
 
+    svg rect {
+      fill: var(--secondary-bg-color);
+    }
+
     &:hover {
       color: var(--white);
       background-color: var(--primary-color);
