@@ -41,7 +41,7 @@ const EventCard = ({ event, isHighlighted = false }) => {
         )}
       </div>
 
-      {image && (
+      {(image.gatsbyImageData || image.url) && (
         <div className="image">
           <ImageWrapper image={image} />
         </div>
