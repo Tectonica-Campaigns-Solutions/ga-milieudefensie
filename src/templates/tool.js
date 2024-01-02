@@ -33,7 +33,7 @@ const Tool = ({ pageContext, data: { page, listTool, favicon } }) => {
             </div>
           </div>
 
-          <h1>{title}</h1>
+          <h1 className="main-heading">{title}</h1>
 
           {introduction && <div className="introduction" dangerouslySetInnerHTML={{ __html: introduction }} />}
 
