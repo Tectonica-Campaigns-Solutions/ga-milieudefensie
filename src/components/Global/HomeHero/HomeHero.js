@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import HubspotForm from '../../Blocks/HubspotForm/HubspotForm';
+
 import './index.scss';
 
-function HomeHero({ title, subtitle, image, mobileImage = null }) {
+function HomeHero({ title, subtitle, image, form = null, mobileImage = null }) {
   const [windowWidth, setWindowWidth] = useState(0);
 
   const handleResize = () => {
@@ -30,7 +32,7 @@ function HomeHero({ title, subtitle, image, mobileImage = null }) {
             {title && <h1>{title}</h1>}
             {subtitle && <div className="introduction" dangerouslySetInnerHTML={{ __html: subtitle }} />}
 
-            {/* Form here */}
+            {form && <HubspotForm {...form} style="homepage" />}
           </div>
         </div>
 

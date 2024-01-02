@@ -1,0 +1,185 @@
+.form-hubspot {
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+    .hs-form-field {
+      label {
+        display: none;
+      }
+
+      .input {
+        input {
+          width: 100%;
+          padding: 16px;
+          border-radius: 4px;
+          border: none;
+          border: 1px solid var(--white);
+          background: transparent;
+
+          color: var(--white);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+
+          &.invalid.error {
+            border-color: #FF0000;
+          }
+
+          &::placeholder {
+            color: var(--white);
+          }
+        }
+      }
+
+      .hs-error-msgs.inputs-list {
+        display: none;
+      }
+    }
+
+    .legal-consent-container {
+      grid-column: span 2;
+    }
+
+    .hs-richtext {
+      color: var(--white);
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      margin-bottom: 15px;
+    }
+
+    .hs-dependent-field {
+      .input {
+        .inputs-list {
+          list-style: none;
+          padding: 0;
+          padding-left: .1rem;
+
+          .hs-form-booleancheckbox {
+            label {
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+
+              input {
+                width: auto;
+              }
+
+              span {
+                color: var(--white);
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 130%;
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .hs-submit {
+      grid-column: span 2;
+
+      .actions {
+        .hs-button {
+          width: 100%;
+          padding: 19px 20px 15px 20px;
+          background-color: var(--secondary-color);
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.35);
+
+          color: var(--white);
+          font-family: var(--primary-font);
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 100%;
+
+          &:hover {
+            background: #BA6900;
+          }
+        }
+      }
+    }
+
+    .hs_error_rollup {
+      .hs-error-msgs {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .hs-main-font-element {
+          color: #FF0000;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 130%;
+        }
+      }
+    }
+  }
+
+  &.homepage {
+    form {
+      .hs-form-field {
+        .input {
+          input {
+            border: 1px solid #79747E;
+            color: #1D1B20;
+
+            &::placeholder {
+              color: var(--third-color);
+            }
+          }
+        }
+      }
+
+      .hs-richtext {
+        color: var(--third-color);
+      }
+
+      .hs-dependent-field {
+        .input {
+          .inputs-list {
+            .hs-form-booleancheckbox {
+              label {
+                span {
+                  color: var(--third-color);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .hs-submit {
+        .actions {
+          .hs-button {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .form-hubspot {
+    form {
+      grid-template-columns: 1fr;
+
+      .legal-consent-container,
+      .hs-submit {
+        grid-column: initial;
+      }
+    }
+  }
+}

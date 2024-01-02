@@ -17,6 +17,7 @@ const IndexPage = ({ data: { page, favicon } }) => {
           subtitle={page?.subtitle}
           image={page?.heroImage}
           mobileImage={page?.mobileHeroImage}
+          form={page?.form}
         />
 
         {page?.blocks && <Blocks blocks={page.blocks} />}
@@ -46,6 +47,13 @@ export const HomeQuery = graphql`
       }
       mobileHeroImage {
         gatsbyImageData
+      }
+      form {
+        id
+        formId
+        portalId
+        region
+        internalName
       }
       blocks {
         ... on DatoCmsNarrativeBlock {

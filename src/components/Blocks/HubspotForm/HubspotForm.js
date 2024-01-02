@@ -1,7 +1,9 @@
 import React from 'react';
 import { Script } from 'gatsby';
 
-const HubspotForm = ({ id, formId, region, portalId }) => {
+import './index.scss';
+
+const HubspotForm = ({ id, formId, region, portalId, style = 'default' }) => {
   return (
     <>
       <Script
@@ -17,7 +19,7 @@ const HubspotForm = ({ id, formId, region, portalId }) => {
         onError={(e) => console.error(e)}
       />
 
-      <div id={`hubspotForm-${id}`} className="form-hubspot"></div>
+      <div id={`hubspotForm-${id}`} className={`form-hubspot ${style ? style : ''}`}></div>
     </>
   );
 };
