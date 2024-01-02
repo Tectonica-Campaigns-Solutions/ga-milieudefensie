@@ -203,17 +203,41 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .navbar {
+    .actions {
+      top: -0.8rem;
+
+      .navbar-toggler svg {
+        width: 50px;
+      }
+
+      .wp-button svg {
+        width: 70px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 456px) {
   .navbar {
     .navbar-brand {
       svg {
-        height: 76px;
-        width: 180px;
+        height: 65px;
+        width: 160px;
       }
     }
 
     .actions {
-      top: -.7rem;
+      top: -.85rem;
+
+      .navbar-toggler svg {
+        width: 35px;
+      }
+
+      .wp-button svg {
+        width: 50px;
+      }
     }
   }
 }

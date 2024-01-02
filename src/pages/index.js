@@ -12,7 +12,13 @@ const IndexPage = ({ data: { page, favicon } }) => {
       {page?.seo && <SeoDatoCMS seo={page?.seo} favicon={favicon} homepage />}
 
       <WrapperLayout variant="white">
-        <HomeHero title={page?.title} subtitle={page?.subtitle} image={page?.heroImage} />
+        <HomeHero
+          title={page?.title}
+          subtitle={page?.subtitle}
+          image={page?.heroImage}
+          mobileImage={page?.mobileHeroImage}
+        />
+
         {page?.blocks && <Blocks blocks={page.blocks} />}
       </WrapperLayout>
     </Layout>
@@ -37,6 +43,9 @@ export const HomeQuery = graphql`
       subtitle
       heroImage {
         gatsbyImageData(width: 1500, height: 800)
+      }
+      mobileHeroImage {
+        gatsbyImageData
       }
       blocks {
         ... on DatoCmsNarrativeBlock {
