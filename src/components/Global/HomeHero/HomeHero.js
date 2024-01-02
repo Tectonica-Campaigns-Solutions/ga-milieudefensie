@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react';
 import './index.scss';
 
 function HomeHero({ title, subtitle, image, mobileImage = null }) {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
   };
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    if (window) {
+      handleResize();
+      window.addEventListener('resize', handleResize);
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
 
   const backgroundImage = windowWidth <= 767 ? mobileImage : image;
