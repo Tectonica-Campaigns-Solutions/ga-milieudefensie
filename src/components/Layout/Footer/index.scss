@@ -137,14 +137,20 @@
       gap: 56px;
       margin-bottom: 20px;
 
+      .logo {
+        width: 188px;
+        height: 35.005px;
+      }
+
       .wp-btn {
         display: flex;
         gap: 7px;
         padding: 10px 7px 8px 7px;
         flex-direction: row-reverse;
+        max-width: 250px;
 
         span {
-          width: 155px;
+          width: 100%;
           text-align: left;
           font-size: 16px;
         }

@@ -62,7 +62,7 @@ function Footer({ isLanding = false, customLogo = null }) {
         <div className="first-row">
           <div>
             <Link to={'/'}>
-              <img src={isLanding ? customLogo?.url : logo?.url} alt={logo.alt} />
+              <img className="logo" src={isLanding ? customLogo?.url : logo?.url} alt={logo.alt} />
             </Link>
           </div>
 

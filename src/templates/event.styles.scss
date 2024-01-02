@@ -262,10 +262,16 @@
 @media screen and (max-width:992px) {
   .main-content {
     .float-layout {
-      h1 {
-        font-size: 29px;
-        line-height: 115%;
-        margin-bottom: 20px;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: 23px !important;
+        line-height: 120% !important;
+        margin-bottom: 10px !important;
       }
 
       .pre-header {
@@ -316,6 +322,15 @@
           font-style: normal;
           font-weight: 400;
           line-height: 145%;
+        }
+
+        blockquote {
+          padding-left: 15px;
+
+          * {
+            font-size: 23px;
+            line-height: 120%;
+          }
         }
       }
     }
