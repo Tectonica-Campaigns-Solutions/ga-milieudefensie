@@ -67,21 +67,24 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       }
     }
     fetchEvents();
+  }, []);
 
+  useEffect(() => {
     // Arrow style (up or down)
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       setIsScrollingUp(scrollY > 1350);
 
       // Hide float container on footer
-      setIsArrowVisible(scrollY < 4730);
+      const documentHeight = document.documentElement.scrollHeight;
+      setIsArrowVisible(scrollY < documentHeight - 1200);
     };
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [status]);
 
   useEffect(() => {
     const filteredEvents = [...mergedEvents]
