@@ -29,6 +29,7 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
     date,
     address,
     registrationForm,
+    formBackgroundColor,
     whatsappGroup,
     image,
     content,
@@ -60,7 +61,7 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
 
           {/* Form  */}
           {registrationForm && (
-            <div className="form-wrapper">
+            <div className={`form-wrapper ${formBackgroundColor}`}>
               <HubspotForm {...registrationForm} style="event" />
             </div>
           )}
@@ -148,6 +149,7 @@ export const PageQuery = graphql`
           portalId
         }
       }
+      formBackgroundColor
       tags {
         ... on DatoCmsTag {
           id

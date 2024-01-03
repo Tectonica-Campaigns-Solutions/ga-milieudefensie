@@ -248,6 +248,12 @@
 
     .form-wrapper {
       margin-bottom: 59px;
+
+      &.light-white {
+        border-radius: 10px;
+        padding: 20px;
+        background-color: var(--secondary-bg-color);
+      }
     }
   }
 
