@@ -8,7 +8,6 @@ const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileVi
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
-    // 4, 51
     const map = createMapReference(mapContainerRef, [5.6, 52.1], 20, 5, 6.9, true);
 
     const pins = data
@@ -21,7 +20,7 @@ const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileVi
     createMapMarkers(map, pins, type);
 
     return () => map.remove();
-  }, [data]);
+  }, [data, mobileView]);
 
   return (
     <div className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>

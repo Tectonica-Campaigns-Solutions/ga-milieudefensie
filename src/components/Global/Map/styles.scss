@@ -78,7 +78,7 @@
           span {
             font-family: var(--primary-font);
             color: var(--primary-color);
-            font-size: 25px;
+            font-size: 19px;
             font-style: normal;
             font-weight: 600;
             line-height: 120%;
@@ -91,10 +91,17 @@
       }
 
       .map {
+        filter: none;
+
         .map-container {
           height: 100vh;
+          width: 100%;
           border-radius: 0;
           margin: 0;
+
+          .mapboxgl-canvas-container canvas {
+            width: 100% !important;
+          }
 
           .mapboxgl-popup {
             transform: none !important;

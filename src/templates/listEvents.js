@@ -139,9 +139,15 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
             <h1>{title}</h1>
 
             {/* Mobile button */}
-            <div className="mobile-view-map">
-              <CtaHandler title={'Map View'} isPrimaryButton handleOnClick={() => setMobileShowMap((prev) => !prev)} />
-            </div>
+            {!isLoading && (
+              <div className="mobile-view-map">
+                <CtaHandler
+                  title={'Map View'}
+                  isPrimaryButton
+                  handleOnClick={() => setMobileShowMap((prev) => !prev)}
+                />
+              </div>
+            )}
 
             {highlighEvent && (
               <div className="highlighted-event-wrapper">
