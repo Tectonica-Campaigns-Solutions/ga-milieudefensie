@@ -46,6 +46,13 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
             list={events}
             customPageSize={10}
             renderItem={(item) => <EventCard event={item} key={item.id} />}
+            extraLogic={() => {
+              const targetElement = document.getElementById('filter-events-list');
+
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           />
         ) : (
           <h5>No events found.</h5>

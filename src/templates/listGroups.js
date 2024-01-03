@@ -80,7 +80,9 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
               setMobileView={setMobileShowMap}
             />
 
-            {Array.isArray(mappedGroups) && <ListGroupBlock withContainer={false} items={mappedGroups} />}
+            {Array.isArray(mappedGroups) && (
+              <ListGroupBlock items={mappedGroups} withPagination withContainer={false} />
+            )}
 
             {/* Fixed cta to view all */}
             <div className={`cta-view-list ${isArrowVisible ? '' : 'hide'}`}>

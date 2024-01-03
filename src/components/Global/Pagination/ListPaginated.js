@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Pagination, { PAGE_SIZE } from './Pagination';
 
-const ListPaginated = ({ list, renderItem, resetPage = null, customPageSize = PAGE_SIZE }) => {
+const ListPaginated = ({ list, renderItem, resetPage = null, customPageSize = PAGE_SIZE, extraLogic = null }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -26,7 +26,14 @@ const ListPaginated = ({ list, renderItem, resetPage = null, customPageSize = PA
         pageSize={customPageSize}
         currentPage={currentPage}
         totalCount={list.length}
-        onPageChange={(page) => setCurrentPage(page)}
+        onPageChange={(page) => {
+          setCurrentPage(page);
+
+          // Function to add extra logic if needed
+          if (extraLogic) {
+            extraLogic();
+          }
+        }}
       />
     </>
   );
