@@ -169,6 +169,49 @@
       }
     }
   }
+
+  &.event {
+    form {
+      .hs-form-field {
+        .input {
+          input {
+            border: 1px solid #79747E;
+            color: #1D1B20;
+
+            &::placeholder {
+              color: var(--third-color);
+            }
+          }
+        }
+      }
+
+      .hs-richtext {
+        color: var(--third-color);
+      }
+
+      .hs-dependent-field {
+        .input {
+          .inputs-list {
+            .hs-form-booleancheckbox {
+              label {
+                span {
+                  color: var(--third-color);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .hs-submit {
+        .actions {
+          .hs-button {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 992px) {

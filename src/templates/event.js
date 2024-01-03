@@ -61,7 +61,7 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
           {/* Form  */}
           {registrationForm && (
             <div className="form-wrapper">
-              <HubspotForm {...registrationForm} />
+              <HubspotForm {...registrationForm} style="event" />
             </div>
           )}
 
