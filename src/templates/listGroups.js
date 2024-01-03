@@ -16,6 +16,24 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
   const mappedGroups = Array.isArray(allGroups.edges) ? allGroups.edges.map((raw) => raw.node) : [];
 
   const [mobileShowMap, setMobileShowMap] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [isArrowVisible, setIsArrowVisible] = useState(true);
+
+  useEffect(() => {
+    // Arrow style (up or down)
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      setIsScrollingUp(scrollY > 1350);
+
+      // Hide float container on footer
+      setIsArrowVisible(scrollY < 4730);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -64,7 +82,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
             {Array.isArray(mappedGroups) && <ListGroupBlock withContainer={false} items={mappedGroups} />}
 
             {/* Fixed cta to view all */}
-            <div className="cta-view-list">
+            <div className={`cta-view-list ${isArrowVisible ? '' : 'hide'}`}>
               <div
                 className="custom-btn custom-btn-primary"
                 onClick={() => {
@@ -77,7 +95,14 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
               >
                 Show Local Groups List
                 {/* Icon */}
-                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="21"
+                  height="20"
+                  viewBox="0 0 21 20"
+                  fill="none"
+                  className={`icon-arrow-list ${isScrollingUp ? 'up' : 'down'}`}
+                >
                   <path
                     d="M15.5 7.5L10.5 12.5L5.5 7.5"
                     stroke="white"
