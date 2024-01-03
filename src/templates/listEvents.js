@@ -43,6 +43,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
           address: e.location?.query,
           coordinates: { latitude: e.location?.latitude, longitude: e.location?.longitude },
           region: e.location?.region,
+          rawDate: e.start_at,
           date: formatDateAsYYMMDD(e.start_at),
           hourStart: convertTime(e.start_at),
           hourEnd: e.end_at ? convertTime(e.end_at) : null,
@@ -54,7 +55,13 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
           type: 'INTERNATIONAL',
         }));
 
-        const events = [...cmsEvents, ...mappedCSL];
+        const events = [...cmsEvents, ...mappedCSL].sort((a, b) => {
+          const dateA = new Date(a.rawDate);
+          const dateB = new Date(b.rawDate);
+
+          return dateB - dateA;
+        });
+
         const uniqueLocations = [...new Set(events.map((event) => event.region))];
 
         setMergedEvents(events);
@@ -225,6 +232,7 @@ export const PageQuery = graphql`
           slug
           introduction
           date
+          rawDate: date
           hourStart
           hourEnd
           address
