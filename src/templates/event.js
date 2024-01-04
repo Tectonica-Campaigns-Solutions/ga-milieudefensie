@@ -62,7 +62,7 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
           {/* Form  */}
           {registrationForm && (
             <div className={`form-wrapper ${formBackgroundColor}`}>
-              <HubspotForm {...registrationForm} style="event" />
+              <HubspotForm {...registrationForm} style={`${formBackgroundColor === 'dark-green' ? '' : 'event'}`} />
             </div>
           )}
 
