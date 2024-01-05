@@ -15,6 +15,25 @@ const HubspotForm = ({ id, formId, region, portalId, style = 'default' }) => {
             formId: formId,
             target: `#hubspotForm-${id}`,
           });
+
+          // Handlers
+          setTimeout(() => {
+            const inputs = document.querySelectorAll('.hs-input');
+
+            inputs.forEach((input) => {
+              input.setAttribute('autocomplete', 'off');
+            });
+
+            inputs.forEach((input) => {
+              input.addEventListener('input', () => {
+                if (input.value.trim() !== '') {
+                  input.setAttribute('data-input', 'load');
+                } else {
+                  input.setAttribute('data-input', 'empty');
+                }
+              });
+            });
+          }, 1500);
         }}
         onError={(e) => console.error(e)}
       />

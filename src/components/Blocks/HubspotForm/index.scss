@@ -5,8 +5,15 @@
     gap: 15px;
 
     .hs-form-field {
+      position: relative;
+
       label {
-        display: none;
+        color: #49454F;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.5px;
       }
 
       .input {
@@ -18,7 +25,7 @@
           border: 1px solid var(--white);
           background: transparent;
 
-          color: var(--white);
+          color: #49454F;
           font-size: 16px;
           font-style: normal;
           font-weight: 400;
@@ -123,6 +130,34 @@
           font-weight: 600;
           line-height: 130%;
         }
+      }
+    }
+
+    // Material UI effect
+    .hs-form-field label {
+      position: absolute;
+      top: 15px;
+      left: 10px;
+      pointer-events: none;
+      transition: 0.3s ease-out;
+    }
+
+    .hs-form-booleancheckbox-display {
+      position: initial !important;
+      padding: 0 !important;
+      pointer-events: initial !important;
+    }
+
+    .hs-form-field:has(.hs-input:focus),
+    .hs-form-field:has(.hs-input[data-input="load"]) {
+      label {
+        top: -8px;
+        background-color: var(--white);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        padding: 0 5px;
       }
     }
   }
