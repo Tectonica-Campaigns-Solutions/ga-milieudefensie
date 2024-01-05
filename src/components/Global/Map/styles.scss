@@ -45,6 +45,7 @@
 
       .mapboxgl-popup-close-button {
         font-size: 22px;
+        color: #141414;
       }
     }
   }
@@ -114,6 +115,8 @@
             width: 100vw;
             height: 90vh;
             border-radius: 0;
+            overflow-y: auto;
+            padding-bottom: 10rem;
 
             .mapboxgl-popup-close-button {
               margin: 10px 0;
