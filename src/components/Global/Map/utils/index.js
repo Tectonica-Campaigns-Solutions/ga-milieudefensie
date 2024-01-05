@@ -9,7 +9,7 @@ import GroupMarker from '../Marker/GroupMarker';
 const { Popup } = mapboxgl;
 
 export const createMapReference = (ref, coordinates, maxZoom, minZoom, zoom, interactive = false) => {
-  return new mapboxgl.Map({
+  const map = new mapboxgl.Map({
     container: ref.current,
     accessToken: 'pk.eyJ1IjoibWFydGluYWx2IiwiYSI6ImNscHR1YjdvZDBlY2sybHBnNTRwM2l4ZTEifQ.nn8C3qy8ULBkq6gdO3vlCg',
     style: 'mapbox://styles/martinalv/clptudeob00ub01p74jlnbdce',
@@ -19,6 +19,11 @@ export const createMapReference = (ref, coordinates, maxZoom, minZoom, zoom, int
     minZoom: minZoom,
     zoom: zoom,
   });
+
+  map.scrollZoom.disable();
+  map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+
+  return map;
 };
 
 export const createMapMarkers = (mapRef, pins, type) => {
