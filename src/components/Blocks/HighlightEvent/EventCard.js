@@ -3,6 +3,7 @@ import Cta from '../../Global/Cta/Cta';
 import ImageWrapper from '../../Global/Image/ImageWrapper';
 import { formatDate, truncateText } from '../../../utils';
 import TagList from '../../Global/Tag/TagList';
+import Link from '../../Global/Link/Link';
 
 import './styles.scss';
 
@@ -10,8 +11,8 @@ const EventCard = ({ event, isHighlighted = false }) => {
   const { title, introduction, image, date, address, hourStart, hourEnd, tags = [], type, url } = event;
   const isCslEvent = type === 'INTERNATIONAL';
 
-  return (
-    <div className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
+  const renderContent = () => (
+    <>
       <div className="metadata">
         {date && <span className="date">{formatDate(date)}</span>}
 
@@ -46,7 +47,21 @@ const EventCard = ({ event, isHighlighted = false }) => {
           <ImageWrapper image={image} />
         </div>
       )}
-    </div>
+    </>
+  );
+
+  if (isCslEvent) {
+    return (
+      <a target="_blank" href={url} className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
+        {renderContent()}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={event} className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
+      {renderContent()}
+    </Link>
   );
 };
 

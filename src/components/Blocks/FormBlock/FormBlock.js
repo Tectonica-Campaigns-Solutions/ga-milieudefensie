@@ -14,7 +14,6 @@ function FormBlock({ block }) {
           <img className="left-img" src={formVector} alt="Form icon" />
 
           <div className="form-container-content">
-            {/* <div className={`row ${!title ? 'justify-content-center' : 'align-items-center'}`}> */}
             <div className={`row`}>
               {title && (
                 <div className="col-lg-3">

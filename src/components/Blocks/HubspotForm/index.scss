@@ -140,6 +140,7 @@
       left: 10px;
       pointer-events: none;
       transition: 0.3s ease-out;
+      color: var(--white);
     }
 
     .hs-form-booleancheckbox-display {
@@ -152,7 +153,8 @@
     .hs-form-field:has(.hs-input[data-input="load"]) {
       label {
         top: -8px;
-        background-color: var(--white);
+        background-color: var(--primary-color);
+        color: var(--white);
         font-size: 12px;
         font-style: normal;
         font-weight: 400;
@@ -202,6 +204,18 @@
           }
         }
       }
+
+      .hs-form-field label {
+        color: #49454F;
+      }
+
+      .hs-form-field:has(.hs-input:focus),
+      .hs-form-field:has(.hs-input[data-input="load"]) {
+        label {
+          background-color: var(--white);
+          color: #49454F;
+        }
+      }
     }
   }
 
@@ -243,6 +257,18 @@
           .hs-button {
             box-shadow: none;
           }
+        }
+      }
+
+      .hs-form-field label {
+        color: #49454F;
+      }
+
+      .hs-form-field:has(.hs-input:focus),
+      .hs-form-field:has(.hs-input[data-input="load"]) {
+        label {
+          background-color: var(--white);
+          color: #49454F;
         }
       }
     }

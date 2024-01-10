@@ -43,6 +43,8 @@
   background: var(--white);
   margin-bottom: 22px;
   padding: 48px 42px;
+  text-decoration: none;
+  color: initial;
 
   display: grid;
   gap: 63px;
@@ -80,7 +82,7 @@
 
   .basic-info {
     h4 {
-      color: var(-primary-color);
+      color: var(--primary-color);
       font-family: var(--primary-font);
       font-size: 31px;
       font-style: normal;
@@ -92,7 +94,7 @@
     }
 
     .introduction {
-      color: var(-primary-color);
+      color: var(--primary-color);
       font-family: var(--secondary-font);
       font-size: 20px;
       font-style: normal;
