@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  text-decoration: none;
 
   .image {
     height: 50%;
@@ -60,7 +61,7 @@
     .content {
       padding: 15px 25px;
 
-      h3 {
+      h3 a {
         font-size: 29px;
         margin-bottom: 20px;
       }

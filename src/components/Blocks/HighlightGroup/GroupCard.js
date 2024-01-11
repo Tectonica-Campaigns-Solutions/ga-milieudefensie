@@ -6,11 +6,11 @@ import Link from '../../Global/Link/Link';
 import './styles.scss';
 
 const GroupCard = ({ group }) => {
-  console.log({ group });
   const { title, image, cta = [] } = group;
+  const showCtas = Array.isArray(cta) && cta.length > 0;
 
   return (
-    <div className="group-card">
+    <Link to={group} className="group-card">
       {image && (
         <div className="image">
           <ImageWrapper image={image} />
@@ -26,9 +26,9 @@ const GroupCard = ({ group }) => {
           )}
         </div>
 
-        {Array.isArray(cta) && <CtaList ctas={cta} />}
+        {showCtas && <CtaList ctas={cta} />}
       </div>
-    </div>
+    </Link>
   );
 };
 
