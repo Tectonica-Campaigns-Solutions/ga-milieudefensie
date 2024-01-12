@@ -14,20 +14,30 @@ import './list-events.styles.scss';
 const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) => {
   const { seo, title, blocks = [] } = page;
   const mappedGroups = Array.isArray(allGroups.edges) ? allGroups.edges.map((raw) => raw.node) : [];
-
   const [mobileShowMap, setMobileShowMap] = useState(false);
-  const [isScrollingUp, setIsScrollingUp] = useState(false);
-  const [isArrowVisible, setIsArrowVisible] = useState(true);
 
   useEffect(() => {
     // Arrow style (up or down)
+    const ctaView = document.querySelector('#cta-view-groups');
+    const arrowIcon = document.querySelector('#arrow-view-groups');
+
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      setIsScrollingUp(scrollY > 500);
+      if (scrollY > 500) {
+        arrowIcon.classList.add('up');
+        arrowIcon.classList.remove('down');
+      } else {
+        arrowIcon.classList.add('down');
+        arrowIcon.classList.remove('up');
+      }
 
       // Hide float container on footer
       const documentHeight = document.documentElement.scrollHeight;
-      setIsArrowVisible(scrollY < documentHeight - 1200);
+      if (scrollY < documentHeight - 1200) {
+        ctaView.classList.remove('hide');
+      } else {
+        ctaView.classList.add('hide');
+      }
     };
     window.addEventListener('scroll', handleScroll);
 
@@ -85,7 +95,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
             )}
 
             {/* Fixed cta to view all */}
-            <div className={`cta-view-list ${isArrowVisible ? '' : 'hide'}`}>
+            <div id="cta-view-groups" className={`cta-view-list`}>
               <div
                 className="custom-btn custom-btn-primary"
                 onClick={() => {
@@ -104,7 +114,8 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
                   height="20"
                   viewBox="0 0 21 20"
                   fill="none"
-                  className={`icon-arrow-list ${isScrollingUp ? 'up' : 'down'}`}
+                  id="arrow-view-groups"
+                  className={`icon-arrow-list`}
                 >
                   <path
                     d="M15.5 7.5L10.5 12.5L5.5 7.5"

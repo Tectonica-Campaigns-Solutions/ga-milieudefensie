@@ -44,7 +44,7 @@ const DropdownItem = ({ link, label, children }) => {
   );
 };
 
-export default function Nav({ navData, config }) {
+export default function Nav({ navData, config, setNavOpen }) {
   const navRef = useRef(null);
   const openNavBtnRef = useRef(null);
 
@@ -83,6 +83,10 @@ export default function Nav({ navData, config }) {
       }
     };
   }, [openNavBtnRef]);
+
+  useEffect(() => {
+    setNavOpen(expanded);
+  }, [expanded]);
 
   const groupedLinks = navLinks.reduce(
     (result, item) => {
