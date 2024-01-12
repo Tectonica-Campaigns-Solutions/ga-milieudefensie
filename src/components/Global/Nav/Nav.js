@@ -46,6 +46,7 @@ const DropdownItem = ({ link, label, children }) => {
 
 export default function Nav({ navData, config }) {
   const navRef = useRef(null);
+  const openNavBtnRef = useRef(null);
 
   const navLinks = navData.nodes;
   const [expanded, setExpanded] = useState(false);
@@ -54,19 +55,34 @@ export default function Nav({ navData, config }) {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      const isExpanded = document.querySelector('#nav-content').classList.contains('show');
-
-      if (navRef.current && !navRef.current.contains(event.target) && isExpanded) {
-        // setExpanded(false);
+      if (openNavBtnRef.current && openNavBtnRef.current.contains(event.target)) {
+        setExpanded((prev) => !prev);
+        return;
       }
+
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setExpanded(false);
+      }
+    };
+
+    const handleBtnClick = () => {
+      setExpanded((prev) => !prev);
     };
 
     document.addEventListener('click', handleClickOutside);
 
+    if (openNavBtnRef.current) {
+      openNavBtnRef.current.addEventListener('click', handleBtnClick);
+    }
+
     return () => {
       document.removeEventListener('click', handleClickOutside);
+
+      if (openNavBtnRef.current) {
+        openNavBtnRef.current.removeEventListener('click', handleBtnClick);
+      }
     };
-  }, [expanded]);
+  }, [openNavBtnRef]);
 
   const groupedLinks = navLinks.reduce(
     (result, item) => {
@@ -97,6 +113,7 @@ export default function Nav({ navData, config }) {
             className="navbar-toggler"
             aria-label="Toggle navigation"
             onClick={() => handleNavClick()}
+            ref={openNavBtnRef}
           >
             <ReactSVG src={hamburgerIcon} />
           </button>

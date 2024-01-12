@@ -2,7 +2,7 @@
   background-color: var(--secondary-bg-color);
 
   .hero-home {
-    min-height: 444px;
+    min-height: 605px;
     position: relative;
     z-index: 1;
     background-repeat: no-repeat;
@@ -23,6 +23,7 @@
       background-image: url('../../Icons/hero-home-circle.svg');
       background-repeat: no-repeat;
       background-position: top right;
+      min-height: 605px;
 
       h1 {
         font-family: var(--primary-font);
@@ -77,10 +78,10 @@
 @media screen and (max-width: 992px) {
   .wrapper-hero {
     .hero-home {
-      min-height: 350px;
+      min-height: 667px;
 
       .content {
-        min-height: 350px;
+        min-height: 667px;
         top: 200px;
         padding: 20px 24px;
         background-size: 120px;
@@ -107,6 +108,18 @@
     &+div,
     &+section {
       padding-top: 250px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .wrapper-hero {
+    .hero-home {
+      min-height: 770px;
+
+      .content {
+        min-height: 770px;
+      }
     }
   }
 }

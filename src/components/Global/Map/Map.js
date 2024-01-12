@@ -23,6 +23,16 @@ const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileVi
     return () => map.remove();
   }, [data, mobileView]);
 
+  useEffect(() => {
+    if (window) {
+      const scrollToTop = () => {
+        window.scrollTo({ top: 0 });
+      };
+
+      scrollToTop();
+    }
+  }, [mobileView]);
+
   return (
     <div className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>
       {title && <h3>{title}</h3>}
