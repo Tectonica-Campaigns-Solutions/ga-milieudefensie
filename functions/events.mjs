@@ -32,6 +32,7 @@ export default async () => {
     }
 
     console.log({ events });
+    console.log('Events: ', events.length);
 
     return new Response(events);
   } catch (error) {
