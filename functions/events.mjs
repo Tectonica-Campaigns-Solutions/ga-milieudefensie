@@ -31,10 +31,7 @@ export default async () => {
       meta = nextPageResponse.data.meta;
     }
 
-    console.log({ events });
-    console.log('Events: ', events.length);
-
-    return new Response(events);
+    return new Response({ events: JSON.stringify(events) });
   } catch (error) {
     return new Response([], { status: 400 });
   }
