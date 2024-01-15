@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 // CSL Auth
 const clientId = 'Uh8AtWkWrvAj2rqJvigssfIXQdCENL570DWZlaaWSxE';
