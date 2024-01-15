@@ -31,13 +31,10 @@ export default async () => {
       meta = nextPageResponse.data.meta;
     }
 
-    return new Response(
-      { events: [{ prop: true, list: events }] },
-      {
-        status: 200,
-      }
-    );
+    return new Response(JSON.stringify({ events: [{ prop: true, list: events }] }), {
+      status: 200,
+    });
   } catch (error) {
-    return new Response([], { status: 400 });
+    return new Response(JSON.stringify({ error: 'Error here' }));
   }
 };
