@@ -26,5 +26,6 @@ module.exports = {
     // 'gatsby-plugin-sitemap',
     'gatsby-plugin-advanced-sitemap',
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-netlify`,
   ],
 };

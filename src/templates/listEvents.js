@@ -36,7 +36,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       setStatus('loading');
 
       try {
-        const response = await axios.get('/api/events');
+        const response = await axios.get('/.netlify/functions/events');
         const fetchedEvents = response.data.events;
         const mappedCSL = fetchedEvents.map((e) => ({
           id: e.slug.replace(' ', '_'),

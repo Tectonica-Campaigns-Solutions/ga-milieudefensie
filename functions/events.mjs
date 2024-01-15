@@ -1,13 +1,12 @@
 const axios = require('axios');
-const Base64 = require('base-64');
 
 // CSL Auth
-const clientId = 'Uh8AtWkWrvAj2rqJvigssfIXQdCENL570DWZlaaWSxE' || process.env.CSL_CLIENT_ID;
-const clientSecret = 'b6Fw4d7NTzloS35IKCrckb9zdfiT5VWUbIAeXBn3_kQ' || process.env.CSL_CLIENT_SECRET;
+const clientId = 'Uh8AtWkWrvAj2rqJvigssfIXQdCENL570DWZlaaWSxE';
+const clientSecret = 'b6Fw4d7NTzloS35IKCrckb9zdfiT5VWUbIAeXBn3_kQ';
 
-export default async function handler(req, res) {
+export default async () => {
   const credentials = `${clientId}:${clientSecret}`;
-  const encodedCredentials = Base64.encode(credentials);
+  const encodedCredentials = Buffer.from(credentials).toString('base64');
 
   const tokenResponse = await axios.post('https://klimaatmars.milieudefensie.nl/oauth/token', null, {
     headers: { Authorization: `Basic ${encodedCredentials}`, 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -32,8 +31,11 @@ export default async function handler(req, res) {
       meta = nextPageResponse.data.meta;
     }
 
-    res.json({ events });
+    console.log(3);
+    console.log('Events size: ', events.length);
+
+    return new Response(events);
   } catch (error) {
-    res.json({ events: [] });
+    return new Response([], { status: 400 });
   }
-}
+};

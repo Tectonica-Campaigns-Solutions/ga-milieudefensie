@@ -11,23 +11,26 @@
     "gatsby"
   ],
   "scripts": {
+    "netlify-local": "rm -rf .netlify/cache && yarn build && netlify serve",
+    "netlify-dev": "yarn clean && netlify dev",
     "develop": "gatsby clean && gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "preview": "ENABLE_GATSBY_REFRESH_ENDPOINT=true GATSBY_TELEMETRY_DISABLED=1 NODE_ENV=development gatsby develop -H 0.0.0.0"
   },
   "dependencies": {
     "@datocms/cma-client-node": "^2.2.2",
     "@types/mapbox-gl": "^2.7.19",
     "axios": "^1.5.1",
-    "base-64": "^1.0.0",
     "datocms-search": "^0.1.10",
     "dotenv": "16.3.1",
     "gatsby": "5.12.6",
     "gatsby-plugin-advanced-sitemap": "^2.1.0",
     "gatsby-plugin-image": "3.12.1",
+    "gatsby-plugin-netlify": "^5.1.1",
     "gatsby-plugin-react-helmet": "^6.12.0",
     "gatsby-plugin-sass": "6.12.1",
     "gatsby-plugin-sharp": "5.12.1",
@@ -35,6 +38,7 @@
     "gatsby-source-datocms": "5.1.2",
     "gatsby-source-filesystem": "5.12.0",
     "gatsby-transformer-sharp": "5.12.1",
+    "lru-cache": "^10.1.0",
     "mapbox-gl": "^3.0.1",
     "react": "18.2.0",
     "react-datocms": "^4.1.3",
