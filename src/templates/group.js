@@ -61,7 +61,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
           {/* Form  */}
           {registrationForm && (
             <div className="form-wrapper">
-              <HubspotForm {...registrationForm} />
+              <HubspotForm {...registrationForm} style="event" />
             </div>
           )}
 
