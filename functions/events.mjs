@@ -31,8 +31,7 @@ export default async () => {
       meta = nextPageResponse.data.meta;
     }
 
-    console.log(3);
-    console.log('Events size: ', events.length);
+    console.log({ events });
 
     return new Response(events);
   } catch (error) {
