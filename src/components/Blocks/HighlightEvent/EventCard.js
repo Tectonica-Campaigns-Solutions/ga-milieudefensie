@@ -52,9 +52,9 @@ const EventCard = ({ event, isHighlighted = false }) => {
 
   if (isCslEvent) {
     return (
-      <a target="_blank" href={url} className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
+      <Link to={'/csl-event/' + event.slug} className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
         {renderContent()}
-      </a>
+      </Link>
     );
   }
 

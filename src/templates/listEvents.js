@@ -36,7 +36,6 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       setStatus('loading');
 
       try {
-        console.log(2);
         const response = await axios.get('/.netlify/functions/events');
 
         const fetchedEvents = response.data.events[0].list;
