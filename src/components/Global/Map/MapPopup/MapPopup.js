@@ -2,11 +2,12 @@ import React from 'react';
 import TagList from '../../Tag/TagList';
 import { formatDate } from '../../../../utils';
 import Cta from '../../Cta/Cta';
+import Link from '../../Link/Link';
 
 import './styles.scss';
 
 const MapPopup = ({ card, linkTitle }) => {
-  const { title, date, hourStart, hourEnd, address, image, tags, type, url } = card;
+  const { title, date, hourStart, hourEnd, address, image, tags, type, url, slug } = card;
   const isCslEvent = type === 'INTERNATIONAL';
 
   return (
@@ -36,9 +37,9 @@ const MapPopup = ({ card, linkTitle }) => {
       {title && <h2>{title}</h2>}
 
       {isCslEvent ? (
-        <a target="_blank" href={url} className="custom-btn custom-btn-primary">
+        <Link to={'/csl-event/' + slug} className="custom-btn custom-btn-primary">
           Go to Event Page
-        </a>
+        </Link>
       ) : (
         <Cta cta={{ ...card, title: linkTitle, isButton: true }} />
       )}
