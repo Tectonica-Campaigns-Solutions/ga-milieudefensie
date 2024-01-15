@@ -5,7 +5,8 @@ import path from 'path';
 // CSL Auth
 const clientId = 'Uh8AtWkWrvAj2rqJvigssfIXQdCENL570DWZlaaWSxE';
 const clientSecret = 'b6Fw4d7NTzloS35IKCrckb9zdfiT5VWUbIAeXBn3_kQ';
-const cacheFilePath = path.join(process.cwd(), 'public', 'result.json');
+
+const cacheFilePath = path.join(__dirname, 'cache.json');
 
 export default async () => {
   try {
@@ -16,7 +17,7 @@ export default async () => {
     console.log(1);
     try {
       console.log(2);
-      const fileContent = fs.readFileSync(cacheFilePath, 'utf-8');
+      const fileContent = fs.readFileSync(cacheFilePath);
       console.log(3);
       jsonContent = JSON.parse(fileContent);
 
@@ -62,7 +63,7 @@ export default async () => {
       jsonContent = { date: currentDate, events: [{ list: events }] };
       fs.writeFileSync(cacheFilePath, JSON.stringify(jsonContent));
     } catch (error) {
-      console.log('Error: ', error);
+      console.log('Error creating json file.', error);
     }
 
     console.log('File creado');
