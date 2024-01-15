@@ -8,8 +8,9 @@ const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileVi
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
-    const initialCoordinates = [5.6, 52.1];
-    const map = createMapReference(mapContainerRef, initialCoordinates, 20, 5, 6.9, true);
+    const initialCoordinates = [4.9041, 52.25];
+
+    const map = createMapReference(mapContainerRef, initialCoordinates, 20, 5, 6.65, true);
 
     const pins = data
       .filter((e) => e.coordinates && e.coordinates.latitude && e.coordinates.longitude)
