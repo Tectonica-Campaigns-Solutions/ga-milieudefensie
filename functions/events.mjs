@@ -32,7 +32,7 @@ export default async () => {
     }
 
     return new Response(
-      { events },
+      { events: [{ prop: true, list: events }] },
       {
         status: 200,
       }
