@@ -13,26 +13,19 @@ export default async () => {
     const currentDate = new Date().getTime();
     let jsonContent = { date: null, events: [] };
 
-    // Intenta leer el contenido del archivo JSON de la caché
-    console.log(1);
     try {
-      console.log(2);
       const fileContent = fs.readFileSync(cacheFilePath);
-      console.log(3);
       jsonContent = JSON.parse(fileContent);
 
-      console.log(4);
       if (jsonContent.date && currentDate - jsonContent.date < 5 * 60 * 1000) {
-        console.log(5);
         return new Response(JSON.stringify(jsonContent), { status: 200 });
       }
     } catch (error) {
-      console.log(6);
       console.error('Error al leer el archivo de caché:');
     }
 
     // Leer desde API
-    console.log('Traytendo desde API');
+    console.log('Getting info from CSL API');
 
     const credentials = `${clientId}:${clientSecret}`;
     const encodedCredentials = Buffer.from(credentials).toString('base64');
@@ -58,15 +51,12 @@ export default async () => {
       meta = nextPageResponse.data.meta;
     }
 
-    console.log('Eventos: ', events.length);
     try {
       jsonContent = { date: currentDate, events: [{ list: events }] };
-      fs.writeFileSync(cacheFilePath, JSON.stringify(jsonContent));
+      // fs.writeFileSync(cacheFilePath, JSON.stringify(jsonContent));
     } catch (error) {
       console.log('Error creating json file.', error);
     }
-
-    console.log('File creado');
 
     return new Response(JSON.stringify(jsonContent), { status: 200 });
   } catch (error) {
