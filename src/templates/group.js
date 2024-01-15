@@ -5,9 +5,9 @@ import SeoDatoCMS from '../components/Layout/SeoDatocms';
 import HeroBasic from '../components/Global/HeroBasic/HeroBasic';
 import FloatLayout from '../components/Global/FloatLayout/FloatLayout';
 import StructuredTextDefault from '../components/Blocks/StructuredTextDefault/StructuredTextDefault';
-import dateIcon from '../components/Icons/calendar-date.svg';
-import hourIcon from '../components/Icons/calendar-hour.svg';
-import locationIcon from '../components/Icons/calendar-location.svg';
+import emailIcon from '../components/Icons/email.svg';
+import messageIcon from '../components/Icons/message.svg';
+import organizerIcon from '../components/Icons/organizer.svg';
 import wpIcon from '../components/Icons/wp-icon.svg';
 import { ReactSVG } from 'react-svg';
 import Link from '../components/Global/Link/Link';
@@ -70,7 +70,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
             <div className="metadata">
               {email && (
                 <span>
-                  <img src={dateIcon} alt="Email icon" />
+                  <img src={emailIcon} alt="Email icon" />
                   <span>
                     <a href={`mailto:${email}`}>{email}</a>
                   </span>
@@ -79,7 +79,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
 
               {whatsappGroup && (
                 <span>
-                  <img src={hourIcon} alt="Whatsapp Group icon" />
+                  <img src={messageIcon} alt="Whatsapp Group icon" />
                   <span>
                     <a href={`https://wa.me/${whatsappGroup}`} target="_blank" rel="noopener noreferrer">
                       Whatsapp Group
@@ -90,7 +90,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
 
               {organizer && (
                 <span>
-                  <img src={locationIcon} alt="Organizer icon" />
+                  <img src={organizerIcon} alt="Organizer icon" />
                   <span>Lokale organizer: {organizer}</span>
                 </span>
               )}
@@ -99,7 +99,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
             {whatsappGroup && (
               <div>
                 <a
-                  className="wp-button"
+                  className="wp-button stretched"
                   href={`https://wa.me/${whatsappGroup}`}
                   target="_blank"
                   rel="noopener noreferrer"

@@ -86,6 +86,11 @@
             fill: var(--white);
           }
         }
+
+        &.stretched {
+          max-width: 185px;
+          text-align: center;
+        }
       }
     }
 
