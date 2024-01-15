@@ -23,8 +23,8 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
 
   const eventsType = [
     { label: 'All', value: 'All' },
-    { label: 'National', value: 'NATIONAL' },
-    { label: 'International', value: 'INTERNATIONAL' },
+    { label: 'Nationaal', value: 'NATIONAL' },
+    { label: 'Lokale', value: 'INTERNATIONAL' },
   ];
 
   const handleFilter = () => {

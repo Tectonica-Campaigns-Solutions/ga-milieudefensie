@@ -73,6 +73,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
         setStatus('error');
       }
     }
+
     fetchEvents();
   }, []);
 
