@@ -155,59 +155,61 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
               </div>
             )}
 
-            {isLoading ? (
-              <div style={{ textAlign: 'center' }}>
-                <Spinner />
-              </div>
-            ) : (
-              <div className={`${mobileShowMap ? 'mobile-map' : ''}`}>
-                <Map
-                  title="Evenementen"
-                  data={filteredEvents}
-                  mobileView={mobileShowMap}
-                  setMobileView={setMobileShowMap}
-                />
+            <div className={`${mobileShowMap ? 'mobile-map' : ''}`}>
+              <Map
+                title="Evenementen"
+                data={filteredEvents}
+                mobileView={mobileShowMap}
+                setMobileView={setMobileShowMap}
+              />
 
-                <FilterEvents
-                  events={filteredEvents}
-                  locations={locationOptions}
-                  handleOnApplyNewFilters={(newFilterValues) => setFilterValues(newFilterValues)}
-                />
-
-                {/* Fixed cta to view all */}
-                <div className={`cta-view-list ${isArrowVisible ? '' : 'hide'}`}>
-                  <div
-                    className="custom-btn custom-btn-primary"
-                    onClick={() => {
-                      const targetElement = document.getElementById('filter-events-list');
-
-                      if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                  >
-                    Show Event List
-                    {/* Icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="21"
-                      height="20"
-                      viewBox="0 0 21 20"
-                      fill="none"
-                      className={`icon-arrow-list ${isScrollingUp ? 'up' : 'down'}`}
-                    >
-                      <path
-                        d="M15.5 7.5L10.5 12.5L5.5 7.5"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeLinecap="square"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
+              {isLoading ? (
+                <div style={{ textAlign: 'center' }}>
+                  <Spinner />
                 </div>
-              </div>
-            )}
+              ) : (
+                <>
+                  <FilterEvents
+                    events={filteredEvents}
+                    locations={locationOptions}
+                    handleOnApplyNewFilters={(newFilterValues) => setFilterValues(newFilterValues)}
+                  />
+
+                  {/* Fixed cta to view all */}
+                  <div className={`cta-view-list ${isArrowVisible ? '' : 'hide'}`}>
+                    <div
+                      className="custom-btn custom-btn-primary"
+                      onClick={() => {
+                        const targetElement = document.getElementById('filter-events-list');
+
+                        if (targetElement) {
+                          targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      Show Event List
+                      {/* Icon */}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="21"
+                        height="20"
+                        viewBox="0 0 21 20"
+                        fill="none"
+                        className={`icon-arrow-list ${isScrollingUp ? 'up' : 'down'}`}
+                      >
+                        <path
+                          d="M15.5 7.5L10.5 12.5L5.5 7.5"
+                          stroke="white"
+                          strokeWidth="3"
+                          strokeLinecap="square"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
 
           {Array.isArray(blocks) && blocks.length > 0 && (

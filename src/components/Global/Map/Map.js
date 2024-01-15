@@ -44,7 +44,7 @@ const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileVi
           <div className="container">
             <div className="action" onClick={() => setMobileView((prev) => !prev)}>
               <span>←</span>
-              <span>List {type === 'event' ? 'Events' : 'Local Groups'}</span>
+              <span>List {type === 'event' ? 'Events' : 'Lokale groep'}</span>
             </div>
           </div>
         </div>
