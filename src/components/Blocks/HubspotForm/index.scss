@@ -39,6 +39,15 @@
           &::placeholder {
             color: var(--white);
           }
+
+          &:hover {
+            border-color: #3b3b3b !important;
+          }
+
+          &:focus,
+          &:active {
+            border: 1px solid #0087ff !important;
+          }
         }
       }
 
@@ -263,6 +272,10 @@
           background-color: var(--white);
           color: #49454F;
         }
+      }
+
+      &:has(.hs-input.invalid.error) {
+        margin-bottom: 1.5rem !important;
       }
     }
   }
