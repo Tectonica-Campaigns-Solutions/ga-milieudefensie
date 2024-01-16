@@ -1,31 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import HubspotForm from '../../Blocks/HubspotForm/HubspotForm';
 
 import './index.scss';
 
 function HomeHero({ title, subtitle, image, form = null, mobileImage = null }) {
-  const [windowWidth, setWindowWidth] = useState(0);
+  const bgImageUrl = image?.gatsbyImageData?.images?.fallback?.src;
 
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    if (window) {
-      handleResize();
-      window.addEventListener('resize', handleResize);
-
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
+  const css = `
+    @media (max-width: 767px) {
+      .hero-home {
+        background-image: url("${mobileImage?.gatsbyImageData?.images?.fallback?.src}");
+        background-position: center;
+      }
     }
-  }, []);
-
-  const backgroundImage = windowWidth <= 767 ? mobileImage : image;
-  const bgImageUrl = backgroundImage?.gatsbyImageData?.images?.fallback?.src;
+  `;
 
   return (
     <div className="wrapper-hero">
+      <style scoped>{css}</style>
+
       <div className="hero-home" style={{ backgroundImage: `url(${bgImageUrl})` }}>
         <div className="container">
           <div className="content">

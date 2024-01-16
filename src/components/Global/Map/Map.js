@@ -9,7 +9,6 @@ const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileVi
 
   useEffect(() => {
     const initialCoordinates = [4.9041, 52.25];
-
     const map = createMapReference(mapContainerRef, initialCoordinates, 20, 5, 6.65, true);
 
     const pins = data
