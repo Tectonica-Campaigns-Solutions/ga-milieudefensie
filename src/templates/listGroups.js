@@ -33,7 +33,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
 
       // Hide float container on footer
       const documentHeight = document.documentElement.scrollHeight;
-      if (scrollY < documentHeight - 1200) {
+      if (scrollY < documentHeight - 1600) {
         ctaView.classList.remove('hide');
       } else {
         ctaView.classList.add('hide');
