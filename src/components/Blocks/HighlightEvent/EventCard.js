@@ -1,5 +1,4 @@
 import React from 'react';
-import Cta from '../../Global/Cta/Cta';
 import ImageWrapper from '../../Global/Image/ImageWrapper';
 import { formatDate, truncateText } from '../../../utils';
 import TagList from '../../Global/Tag/TagList';
@@ -33,13 +32,7 @@ const EventCard = ({ event, isHighlighted = false }) => {
           <div className="introduction" dangerouslySetInnerHTML={{ __html: truncateText(introduction, 200) }} />
         )}
 
-        {isCslEvent ? (
-          <a target="_blank" href={url} className="custom-btn custom-btn-primary">
-            Go to Event Page
-          </a>
-        ) : (
-          <Cta cta={{ ...event, title: 'Go to Event Page', isButton: true }} />
-        )}
+        <span className="custom-btn custom-btn-primary">Go to Event Page</span>
       </div>
 
       {(image.gatsbyImageData || image.url) && (

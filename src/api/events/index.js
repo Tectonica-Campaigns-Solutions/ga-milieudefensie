@@ -26,10 +26,8 @@ export default async function handler(req, res) {
       events = [...events, ...nextPageResponse.data.events];
       meta = nextPageResponse.data.meta;
     }
-    console.log(3);
-    console.log('Events size: ', events.length);
 
-    res.json({ events });
+    res.json({ events: [{ list: events }] });
     return;
   } catch (error) {
     res.json({ events: [] });

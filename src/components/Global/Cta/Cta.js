@@ -3,8 +3,27 @@ import Link from '../Link/Link';
 
 import './index.scss';
 
-export default function Cta({ cta = null, url = '', externalTitle = '', isButton = false, customVariant = null }) {
+export default function Cta({
+  cta = null,
+  url = '',
+  externalTitle = '',
+  isButton = false,
+  customVariant = null,
+  off = false,
+}) {
   const isCtaPrimaryButton = cta?.isButton || isButton;
+
+  if (off) {
+    return (
+      <span
+        className={`custom-btn ${isCtaPrimaryButton ? 'custom-btn-primary' : ''} ${cta?.buttonStyle} ${
+          customVariant ? customVariant : ''
+        }`}
+      >
+        {externalTitle || cta?.title}
+      </span>
+    );
+  }
 
   return (
     <Link

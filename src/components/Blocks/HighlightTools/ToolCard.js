@@ -39,7 +39,7 @@ const ToolCard = ({ tool }) => {
             {introduction && <div className="introduction" dangerouslySetInnerHTML={{ __html: introduction }} />}
           </div>
 
-          {hasLink && <CtaList ctas={cta} />}
+          {hasLink && <CtaList ctas={cta} off />}
         </div>
       </>
     );

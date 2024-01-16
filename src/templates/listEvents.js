@@ -36,7 +36,9 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       setStatus('loading');
 
       try {
-        const response = await axios.get('/.netlify/functions/events');
+        const response = await axios.get(
+          process.env.NODE_ENV === 'development' ? '/api/events' : '/.netlify/functions/events'
+        );
 
         const fetchedEvents = response.data.events[0].list;
         const mappedCSL = fetchedEvents.map((e) => ({
@@ -64,6 +66,8 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
         });
 
         const uniqueLocations = [...new Set(events.map((event) => event.region))];
+
+        console.log({ fetchedEvents });
 
         setMergedEvents(events);
         setFilteredEvents(events);

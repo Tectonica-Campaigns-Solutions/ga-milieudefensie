@@ -18,15 +18,9 @@ const GroupCard = ({ group }) => {
       )}
 
       <div className="content">
-        <div>
-          {title && (
-            <h3>
-              <Link to={group}>{title}</Link>
-            </h3>
-          )}
-        </div>
+        <div>{title && <h3>{title}</h3>}</div>
 
-        {showCtas && <CtaList ctas={cta} />}
+        {showCtas && <CtaList ctas={cta} off />}
       </div>
     </Link>
   );

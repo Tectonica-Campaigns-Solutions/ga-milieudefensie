@@ -27,9 +27,10 @@ const CSLEventPage = ({ data: { listEvent, favicon }, params }) => {
       setStatus('loading');
 
       try {
-        const response = await axios.get('/api/events');
-
-        const fetchedEvents = response.data.events;
+        const response = await axios.get(
+          process.env.NODE_ENV === 'development' ? '/api/events' : '/.netlify/functions/events'
+        );
+        const fetchedEvents = response.data.events[0].list;
         const eventBySlug = fetchedEvents.filter((e) => e.slug == slug)[0];
 
         if (eventBySlug) {
@@ -63,7 +64,9 @@ const CSLEventPage = ({ data: { listEvent, favicon }, params }) => {
     );
   }
 
-  const { title, description, image_url, location, start_at, end_at } = event;
+  if (!event) return <></>;
+
+  const { title = null, description, image_url, location, start_at, end_at } = event;
 
   return (
     <Layout>
