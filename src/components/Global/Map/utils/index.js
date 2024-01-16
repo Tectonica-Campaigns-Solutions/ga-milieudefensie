@@ -40,7 +40,7 @@ export const createMapMarkers = (mapRef, pins, type) => {
 
       // Add a Popup to the marker
       const popupContent = ReactDOMServer.renderToString(
-        <MapPopup card={pin} linkTitle={type === 'group' ? 'Go to Group Page' : 'Go to Event Page'} />
+        <MapPopup card={pin} linkTitle={type === 'group' ? 'Meld je aan' : 'Meld je aan'} />
       );
       const popup = new Popup({ offset: 25 }).setHTML(popupContent);
       marker.setPopup(popup);

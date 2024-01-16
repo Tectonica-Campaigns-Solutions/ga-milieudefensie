@@ -13,6 +13,7 @@ import hourIcon from '../../components/Icons/calendar-hour.svg';
 import locationIcon from '../../components/Icons/calendar-location.svg';
 import { convertTime, formatDate } from '../../utils';
 import Spinner from '../../components/Global/Spinner/Spinner';
+import Cta from '../../components/Global/Cta/Cta';
 
 import '../../templates/event.styles.scss';
 
@@ -66,7 +67,7 @@ const CSLEventPage = ({ data: { listEvent, favicon }, params }) => {
 
   if (!event) return <></>;
 
-  const { title = null, description, image_url, location, start_at, end_at } = event;
+  const { title = null, description, image_url, location, start_at, end_at, url } = event;
 
   return (
     <Layout>
@@ -97,6 +98,9 @@ const CSLEventPage = ({ data: { listEvent, favicon }, params }) => {
           {title && <h1>{title}</h1>}
 
           {/* Form */}
+          <div className="external-register">
+            <Cta externalTitle="Register" url={url} />
+          </div>
 
           {/* Brief information */}
           <div className="brief-information">

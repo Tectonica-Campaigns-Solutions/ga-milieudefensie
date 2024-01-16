@@ -261,6 +261,13 @@
         background-color: var(--primary-color);
       }
     }
+
+    .external-register {
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      margin: 1rem 0;
+    }
   }
 
   .related-section {
