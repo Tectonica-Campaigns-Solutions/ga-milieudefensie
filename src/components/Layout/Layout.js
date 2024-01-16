@@ -5,7 +5,7 @@ import Footer from './Footer/Footer';
 import '../../styles/main.scss';
 
 function Layout({ children, isHome = false, isDetail = false, bgColor = null }) {
-  const [navOpen, setNavOpen] = useState(true);
+  const [navOpen, setNavOpen] = useState(false);
 
   return (
     <>
