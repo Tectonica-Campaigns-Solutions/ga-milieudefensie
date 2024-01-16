@@ -105,7 +105,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span>WhatsApp Group Chat</span>
+                    <span>WhatsApp groepen</span>
                     <ReactSVG src={wpIcon} alt="Wp icon" />
                   </a>
                 </div>
@@ -125,8 +125,8 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
           <div className="related-section">
             <ListHighlightEvent
               block={{
-                sectionTitle: 'Events organized by this Group',
-                cta: [{ ...listEvent, title: 'See Full Calendar' }],
+                sectionTitle: 'Evenementen van deze groep',
+                cta: [{ ...listEvent, title: 'Bekijk alle evenementen' }],
                 items: relatedEvents,
               }}
             />
