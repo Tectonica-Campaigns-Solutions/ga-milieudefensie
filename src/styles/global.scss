@@ -8,11 +8,6 @@ html {
   overflow-x: hidden;
 }
 
-.header-home {
-  position: relative;
-  z-index: 10;
-}
-
 .header-detail {
   background-color: var(--primary-color);
   height: 220px;
@@ -38,7 +33,7 @@ html {
   top: 0;
   left: 0;
   position: fixed;
-  z-index: 5;
+  z-index: 15;
   background: rgba(0, 0, 0, 0.60);
 }
 

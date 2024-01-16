@@ -13,6 +13,7 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
 
   const locationsValues = [
     { label: 'All', value: 'All' },
+    { label: 'Online', value: 'online' },
     ...locations
       .filter((l) => l)
       .map((l) => {
@@ -23,8 +24,11 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
 
   const eventsType = [
     { label: 'All', value: 'All' },
-    { label: 'Nationaal', value: 'NATIONAL' },
-    { label: 'Lokale', value: 'INTERNATIONAL' },
+    { label: 'Training', value: 'NATIONAL' },
+    { label: 'Actie', value: 'INTERNATIONAL' },
+    { label: 'Leden', value: 'INTERNATIONAL' },
+    { label: 'Gezellig', value: 'INTERNATIONAL' },
+    { label: 'Organiseren', value: 'INTERNATIONAL' },
   ];
 
   const handleFilter = () => {

@@ -101,41 +101,47 @@ export default function Nav({ navData, config, setNavOpen }) {
   );
 
   return (
-    <nav className={`navbar`}>
-      <div className="container">
-        <Link className="navbar-brand" to={'/'}>
-          <ReactSVG src={headerLogo} alt="Milieudefensie logo" />
-        </Link>
+    <>
+      <nav className={`navbar2`}>
+        <div className="container">
+          <div className="top-section">
+            <Link className="navbar-brand" to={'/'}>
+              <ReactSVG src={headerLogo} alt="Milieudefensie logo" />
+            </Link>
 
-        <div className="actions" style={{ visibility: !expanded ? 'visible' : 'hidden' }}>
-          <button
-            type="button"
-            data-target="#navNav"
-            aria-expanded="false"
-            aria-controls="navNav"
-            data-toggle="collapse"
-            className="navbar-toggler"
-            aria-label="Toggle navigation"
-            onClick={() => handleNavClick()}
-            ref={openNavBtnRef}
-          >
-            <ReactSVG src={hamburgerIcon} />
-          </button>
+            <div className="actions" style={{ visibility: !expanded ? 'visible' : 'hidden' }}>
+              <button
+                type="button"
+                data-target="#navNav"
+                aria-expanded="false"
+                aria-controls="navNav"
+                data-toggle="collapse"
+                className="navbar-toggler"
+                aria-label="Toggle navigation"
+                onClick={() => handleNavClick()}
+                ref={openNavBtnRef}
+              >
+                <ReactSVG src={hamburgerIcon} />
+              </button>
 
-          {config?.whatsappGroup && (
-            <a
-              className="wp-button"
-              href={`https://wa.me/${config.whatsappGroup}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ReactSVG src={wpNavigationIcon} />
-            </a>
-          )}
+              {config?.whatsappGroup && (
+                <a
+                  className="wp-button"
+                  href={`https://wa.me/${config.whatsappGroup}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ReactSVG src={wpNavigationIcon} />
+                </a>
+              )}
+            </div>
+          </div>
         </div>
+      </nav>
 
-        {/* Open navbar */}
-        <div id="nav-content" ref={navRef} className={`offcanvas offcanvas-end ${expanded ? 'show' : ''}`}>
+      {/* Open navbar */}
+      <div id="nav-content">
+        <div ref={navRef} className={`offcanvas offcanvas-end ${expanded ? 'show' : ''}`}>
           <div className="offcanvas-header">
             <div className="actions">
               <button
@@ -193,6 +199,6 @@ export default function Nav({ navData, config, setNavOpen }) {
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 }

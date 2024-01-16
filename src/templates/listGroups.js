@@ -66,7 +66,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
   }, [mobileShowMap]);
 
   return (
-    <Layout>
+    <Layout extraClassNames="list-pages">
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="light">

@@ -8,7 +8,7 @@ import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 
 const IndexPage = ({ data: { page, favicon } }) => {
   return (
-    <Layout isHome={true}>
+    <Layout>
       {page?.seo && <SeoDatoCMS seo={page?.seo} favicon={favicon} homepage />}
 
       <WrapperLayout variant="white">

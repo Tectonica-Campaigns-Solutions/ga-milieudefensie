@@ -134,7 +134,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
   const isLoading = status === 'loading';
 
   return (
-    <Layout bgColor="secondary-bg">
+    <Layout bgColor="secondary-bg" extraClassNames="list-pages">
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="light" responsiveVariant="secondary-bg">

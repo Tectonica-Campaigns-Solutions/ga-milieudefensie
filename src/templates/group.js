@@ -34,6 +34,8 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
     relatedEvents = [],
   } = page;
 
+  console.log({ email, whatsappGroup, organizer });
+
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />
@@ -66,50 +68,52 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
           )}
 
           {/* Brief information */}
-          <div className="brief-information">
-            <div className="metadata">
-              {email && (
-                <span>
-                  <img src={emailIcon} alt="Email icon" />
+          {(email || whatsappGroup || organizer) && (
+            <div className="brief-information">
+              <div className="metadata">
+                {email && (
                   <span>
-                    <a href={`mailto:${email}`}>{email}</a>
+                    <img src={emailIcon} alt="Email icon" />
+                    <span>
+                      <a href={`mailto:${email}`}>{email}</a>
+                    </span>
                   </span>
-                </span>
-              )}
+                )}
+
+                {whatsappGroup && (
+                  <span>
+                    <img src={messageIcon} alt="Whatsapp Group icon" />
+                    <span>
+                      <a href={`https://wa.me/${whatsappGroup}`} target="_blank" rel="noopener noreferrer">
+                        Whatsapp Group
+                      </a>
+                    </span>
+                  </span>
+                )}
+
+                {organizer && (
+                  <span>
+                    <img src={organizerIcon} alt="Organizer icon" />
+                    <span>Lokale organizer: {organizer}</span>
+                  </span>
+                )}
+              </div>
 
               {whatsappGroup && (
-                <span>
-                  <img src={messageIcon} alt="Whatsapp Group icon" />
-                  <span>
-                    <a href={`https://wa.me/${whatsappGroup}`} target="_blank" rel="noopener noreferrer">
-                      Whatsapp Group
-                    </a>
-                  </span>
-                </span>
-              )}
-
-              {organizer && (
-                <span>
-                  <img src={organizerIcon} alt="Organizer icon" />
-                  <span>Lokale organizer: {organizer}</span>
-                </span>
+                <div>
+                  <a
+                    className="wp-button stretched"
+                    href={`https://wa.me/${whatsappGroup}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>WhatsApp Group Chat</span>
+                    <ReactSVG src={wpIcon} alt="Wp icon" />
+                  </a>
+                </div>
               )}
             </div>
-
-            {whatsappGroup && (
-              <div>
-                <a
-                  className="wp-button stretched"
-                  href={`https://wa.me/${whatsappGroup}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>WhatsApp Group Chat</span>
-                  <ReactSVG src={wpIcon} alt="Wp icon" />
-                </a>
-              </div>
-            )}
-          </div>
+          )}
 
           {content?.value && (
             <div className="content">
