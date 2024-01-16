@@ -6,6 +6,8 @@ import './styles.scss';
 const HighlightTools = ({ block }) => {
   const { sectionTitle, items = [] } = block;
 
+  const numColumns = items.length % 3 === 0 ? 3 : items.length % 2 === 0 ? 2 : 3;
+
   return (
     <section className="highlight-tools-section">
       <div className="container">
@@ -19,7 +21,7 @@ const HighlightTools = ({ block }) => {
         <div className="content">
           <div className="row gy-4">
             {items.map((item) => (
-              <div className="col-lg-4" key={item.id}>
+              <div className={`col-lg-${12 / numColumns}`} key={item.id}>
                 <ToolCard tool={item} />
               </div>
             ))}
