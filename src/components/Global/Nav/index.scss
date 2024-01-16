@@ -71,6 +71,7 @@
     padding: 37px 205px;
     width: 740px;
     background-color: var(--primary-color);
+    transition: transform 0.25s ease-in-out;
 
     .actions {
       visibility: hidden;
