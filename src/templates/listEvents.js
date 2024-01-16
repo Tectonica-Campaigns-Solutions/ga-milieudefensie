@@ -187,12 +187,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
             )}
 
             <div className={`${mobileShowMap ? 'mobile-map' : ''}`}>
-              <Map
-                title="Evenementen"
-                data={filteredEvents}
-                mobileView={mobileShowMap}
-                setMobileView={setMobileShowMap}
-              />
+              <Map title={title} data={filteredEvents} mobileView={mobileShowMap} setMobileView={setMobileShowMap} />
 
               {isLoading ? (
                 <div style={{ textAlign: 'center' }}>
