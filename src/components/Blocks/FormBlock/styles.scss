@@ -30,6 +30,10 @@
     form .hs-form-field .input input {
       color: var(--white);
     }
+
+    form .hs-form-field .hs-error-msgs.inputs-list label.hs-error-msg {
+      color: var(--white) !important;
+    }
   }
 }
 
