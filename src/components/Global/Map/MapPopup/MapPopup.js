@@ -37,9 +37,10 @@ const MapPopup = ({ card, linkTitle }) => {
       {title && <h2>{title}</h2>}
 
       {isCslEvent ? (
-        <Link to={'/csl-event/' + slug} className="custom-btn custom-btn-primary">
+        // <a to={'/csl-event/' + slug} className="custom-btn custom-btn-primary">
+        <a href={url} target="_blank" className="custom-btn custom-btn-primary">
           Meld je aan
-        </Link>
+        </a>
       ) : (
         <Cta cta={{ ...card, title: linkTitle, isButton: true }} />
       )}
