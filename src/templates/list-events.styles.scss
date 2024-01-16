@@ -2,6 +2,10 @@
   position: relative;
   margin-top: -240px;
 
+  &.event {
+    margin-top: -260px;
+  }
+
   .highlighted-event-wrapper {
     padding: 63px 0 31px 0;
   }

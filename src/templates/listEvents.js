@@ -165,7 +165,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       <WrapperLayout variant="light" responsiveVariant="secondary-bg">
         <HeroBasic backgroundColor="light" responsiveVariant="event" />
 
-        <div className="list-event-wrapper">
+        <div className="list-event-wrapper event">
           <div className="container">
             <h1>{title}</h1>
 
