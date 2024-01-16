@@ -218,7 +218,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
                         }
                       }}
                     >
-                      Show Event List
+                      Bekijk lijst
                       {/* Icon */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

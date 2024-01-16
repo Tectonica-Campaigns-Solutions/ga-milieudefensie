@@ -74,7 +74,7 @@ function Footer({ isLanding = false, customLogo = null }) {
               rel="noopener noreferrer"
             >
               <div className="wp-btn">
-                <span>Join Us to Our WhatsApp Community</span>
+                <span>WhatsApp groepen</span>
                 <ReactSVG src={wpIcon} />
               </div>
             </a>

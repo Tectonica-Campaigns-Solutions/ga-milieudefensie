@@ -32,7 +32,7 @@ const EventCard = ({ event, isHighlighted = false }) => {
           <div className="introduction" dangerouslySetInnerHTML={{ __html: truncateText(introduction, 200) }} />
         )}
 
-        <span className="custom-btn custom-btn-primary">Go to Event Page</span>
+        <span className="custom-btn custom-btn-primary">Meld je aan</span>
       </div>
 
       {(image.gatsbyImageData || image.url) && (

@@ -38,8 +38,8 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
   return (
     <div className="filter-events-wrapper" id="filter-events-list">
       <div className="filters">
-        <Dropdown title="Locations" options={locationsValues} onSelect={(value) => setLocation(value)} />
-        <Dropdown title="Type of Event" options={eventsType} onSelect={(value) => setTypeOfEvent(value)} />
+        <Dropdown title="Locaties" options={locationsValues} onSelect={(value) => setLocation(value)} />
+        <Dropdown title="Soort evenement" options={eventsType} onSelect={(value) => setTypeOfEvent(value)} />
 
         <CtaHandler title="Apply Filter" variant="fill-green" handleOnClick={handleFilter} />
       </div>
