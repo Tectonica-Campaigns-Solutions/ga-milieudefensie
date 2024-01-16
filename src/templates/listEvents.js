@@ -36,6 +36,30 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       setStatus('loading');
 
       try {
+        // Check if we have the data in local storage (5 minutes delay)
+        if (localStorage.getItem('events')) {
+          const rawEvents = localStorage.getItem('events');
+          const parsedEvents = JSON.parse(rawEvents);
+
+          const currentTime = new Date();
+          const lastExecutionDate = new Date(parsedEvents.date);
+          const timeDifference = (currentTime - lastExecutionDate) / (1000 * 60);
+
+          // Check if have passed 5 minutes, if so, fetch data for request and not from storage
+          if (timeDifference <= 5) {
+            const cachedEvents = parsedEvents.data;
+
+            setMergedEvents(cachedEvents);
+            setFilteredEvents(cachedEvents);
+            setLocationOptions([...new Set(cachedEvents.map((event) => event.region))]);
+
+            setStatus('success');
+            return;
+          } else {
+            localStorage.removeItem('events');
+          }
+        }
+
         const response = await axios.get(
           process.env.NODE_ENV === 'development' ? '/api/events' : '/.netlify/functions/events'
         );
@@ -67,12 +91,13 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
 
         const uniqueLocations = [...new Set(events.map((event) => event.region))];
 
-        console.log({ fetchedEvents });
-
         setMergedEvents(events);
         setFilteredEvents(events);
         setLocationOptions(uniqueLocations);
         setStatus('success');
+
+        // Save on storage for caching
+        localStorage.setItem('events', JSON.stringify({ date: new Date().getTime(), data: events }));
       } catch (error) {
         console.error('Error fetching events:', error);
         setStatus('error');
