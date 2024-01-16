@@ -4,11 +4,19 @@
   ul,
   ol {
     list-style: initial;
+    padding-left: 3rem;
+  }
+
+  ul,
+  ol,
+  p {
+    margin-bottom: 1rem;
   }
 
   table {
     border: 0;
     width: 100%;
+    margin-top: 2rem;
     margin-bottom: 1rem;
 
     * {
@@ -29,7 +37,7 @@
     }
 
     tr {
-      border-bottom: 1px solid #CBDFFE;
+      border-bottom: 1px solid #c7c7c7;
 
       td {
         padding: 20px;
