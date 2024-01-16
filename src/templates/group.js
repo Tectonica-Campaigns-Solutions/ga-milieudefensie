@@ -34,8 +34,6 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
     relatedEvents = [],
   } = page;
 
-  console.log({ email, whatsappGroup, organizer });
-
   return (
     <Layout>
       <SeoDatoCMS seo={seo} favicon={favicon} />

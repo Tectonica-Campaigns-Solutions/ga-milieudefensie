@@ -14,6 +14,17 @@ const HubspotForm = ({ id, formId, region, portalId, style = 'default' }) => {
             portalId: portalId,
             formId: formId,
             target: `#hubspotForm-${id}`,
+            locale: 'nl',
+            translations: {
+              nl: {
+                required: 'Verplicht veld',
+                invalidEmail: 'Geen geldig e-mailadres',
+                invalidEmailFormat: 'Geen geldig e-mailadres',
+                phoneInvalidCharacters: 'Telefoonnummer mag alleen nummers, +, en haakjes () bevatten.',
+                phoneInvalidCharactersWithoutCountryCode:
+                  'Telefoonnummer mag alleen nummers, +, en haakjes () bevatten.',
+              },
+            },
           });
 
           // Handlers
