@@ -69,7 +69,7 @@ function Footer({ isLanding = false, customLogo = null }) {
           {data.configuration?.whatsappGroup && (
             <a
               className="wp-button"
-              href={`https://wa.me/${data.configuration.whatsappGroup}`}
+              href={`${data.configuration.whatsappGroup}`}
               target="_blank"
               rel="noopener noreferrer"
             >
