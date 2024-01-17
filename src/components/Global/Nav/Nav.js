@@ -125,12 +125,7 @@ export default function Nav({ navData, config, setNavOpen }) {
               </button>
 
               {config?.whatsappGroup && (
-                <a
-                  className="wp-button"
-                  href={`https://wa.me/${config.whatsappGroup}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a className="wp-button" href={`${config.whatsappGroup}`} target="_blank" rel="noopener noreferrer">
                   <ReactSVG src={wpNavigationIcon} />
                 </a>
               )}
@@ -169,12 +164,7 @@ export default function Nav({ navData, config, setNavOpen }) {
               </button>
 
               {config?.whatsappGroup && (
-                <a
-                  className="wp-button"
-                  href={`https://wa.me/${config.whatsappGroup}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a className="wp-button" href={`${config.whatsappGroup}`} target="_blank" rel="noopener noreferrer">
                   <ReactSVG src={wpNavigationIcon} />
                 </a>
               )}
