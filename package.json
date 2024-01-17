@@ -50,6 +50,7 @@
     "react-svg": "^16.1.28",
     "sass": "1.69.3",
     "slick-carousel": "^1.8.1",
+    "supercluster": "^8.0.1",
     "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "devDependencies": {

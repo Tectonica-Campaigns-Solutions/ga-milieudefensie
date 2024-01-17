@@ -44,6 +44,26 @@ const HubspotForm = ({ id, formId, region, portalId, style = 'default' }) => {
                 }
               });
             });
+
+            // Agrega eventos o utiliza JavaScript para cambiar clases según tus condiciones
+            document.querySelectorAll('.hs-form-field').forEach((e) => {
+              const labelElement = e.querySelector('label');
+              const inputElement = e.querySelector('input');
+
+              console.log({ inputElement });
+
+              e.addEventListener('focusin', function () {
+                labelElement?.classList.add('focused');
+              });
+
+              e.addEventListener('focusout', function () {
+                labelElement?.classList.remove('focused');
+
+                if (inputElement && inputElement.value.trim() !== '') {
+                  labelElement?.classList.add('focused');
+                }
+              });
+            });
           }, 1500);
         }}
         onError={(e) => console.error(e)}

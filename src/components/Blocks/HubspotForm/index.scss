@@ -207,6 +207,7 @@
       pointer-events: initial !important;
     }
 
+    /*
     .hs-form-field:has(.hs-input:focus),
     .hs-form-field:has(.hs-input[data-input="load"]) {
       label {
@@ -219,6 +220,18 @@
         line-height: 16px;
         padding: 0 5px;
       }
+    }
+    */
+
+    .focused {
+      top: -8px !important;
+      color: var(--primary-color);
+      background-color: transparent;
+      font-size: 14px !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      line-height: 16px !important;
+      padding: 0 5px !important;
     }
   }
 
@@ -267,12 +280,19 @@
         color: #49454F;
       }
 
+      /*
       .hs-form-field:has(.hs-input:focus),
       .hs-form-field:has(.hs-input[data-input="load"]) {
         label {
           background-color: var(--white);
           color: #49454F;
         }
+      }
+      */
+
+      .focused {
+        background-color: var(--white);
+        color: #49454F;
       }
 
       &:has(.hs_error_rollup),
@@ -329,12 +349,19 @@
         color: #49454F;
       }
 
+      /*
       .hs-form-field:has(.hs-input:focus),
       .hs-form-field:has(.hs-input[data-input="load"]) {
         label {
           background-color: var(--white);
           color: #49454F;
         }
+      }
+      */
+
+      .focused {
+        background-color: var(--white);
+        color: #49454F;
       }
     }
   }

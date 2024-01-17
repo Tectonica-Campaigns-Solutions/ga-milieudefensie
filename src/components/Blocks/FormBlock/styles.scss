@@ -29,10 +29,23 @@
 
     form .hs-form-field .input input {
       color: var(--white);
+
+      &:focus,
+      &:active {
+        border: 1px solid #51921f !important;
+      }
+
+      &:hover {
+        border-color: #51921f !important;
+      }
     }
 
     form .hs-form-field .hs-error-msgs.inputs-list label.hs-error-msg {
       color: var(--white) !important;
+    }
+
+    form .focused {
+      background-color: var(--primary-color);
     }
   }
 }
