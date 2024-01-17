@@ -68,7 +68,7 @@ export const formatDate = (rawDate) => {
   const year = date.getFullYear();
 
   // Construct the formatted date string
-  const formattedDate = `${day} ${monthName}, ${year}`;
+  const formattedDate = `${day} ${monthName} ${year}`;
 
   return formattedDate;
 };
