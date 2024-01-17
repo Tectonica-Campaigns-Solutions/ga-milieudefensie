@@ -13,7 +13,7 @@ const EventCard = ({ event, isHighlighted = false }) => {
   const renderContent = () => (
     <>
       <div className="metadata">
-        {date && <span className="date">{formatRelativeDate(date)}</span>}
+        {date && <span className="date">{formatDate(date)}</span>}
 
         <div className="venue">
           <span>

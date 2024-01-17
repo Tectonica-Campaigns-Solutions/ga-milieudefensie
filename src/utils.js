@@ -60,7 +60,7 @@ export const formatDate = (rawDate) => {
   }
 
   // Get the month name
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const months = ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
   const monthName = months[date.getMonth()];
 
   // Get the day and year
