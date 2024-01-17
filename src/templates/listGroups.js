@@ -8,6 +8,7 @@ import WrapperLayout from '../components/Layout/WrapperLayout/WrapperLayout';
 import ListGroupBlock from '../components/Blocks/HighlightGroup/ListGroups';
 import CtaHandler from '../components/Global/Cta/CtaHandler';
 import Blocks from '../components/Blocks';
+import FloatCta from '../components/Global/FloatCta/FloatCta';
 
 import './list-events.styles.scss';
 
@@ -95,38 +96,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
             )}
 
             {/* Fixed cta to view all */}
-            <div id="cta-view-groups" className={`cta-view-list`}>
-              <div
-                className="custom-btn custom-btn-primary"
-                onClick={() => {
-                  const targetElement = document.getElementById('groups-list');
-
-                  if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              >
-                Bekijk lijst
-                {/* Icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="20"
-                  viewBox="0 0 21 20"
-                  fill="none"
-                  id="arrow-view-groups"
-                  className={`icon-arrow-list`}
-                >
-                  <path
-                    d="M15.5 7.5L10.5 12.5L5.5 7.5"
-                    stroke="white"
-                    strokeWidth="3"
-                    strokeLinecap="square"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
+            <FloatCta title="Bekijk lijst" id="cta-view-groups" />
           </div>
 
           {Array.isArray(blocks) && blocks.length > 0 && (

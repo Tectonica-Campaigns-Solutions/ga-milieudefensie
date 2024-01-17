@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageWrapper from '../../Global/Image/ImageWrapper';
-import { formatDate, truncateText } from '../../../utils';
+import { formatDate, formatRelativeDate, truncateText } from '../../../utils';
 import TagList from '../../Global/Tag/TagList';
 import Link from '../../Global/Link/Link';
 
@@ -13,7 +13,7 @@ const EventCard = ({ event, isHighlighted = false }) => {
   const renderContent = () => (
     <>
       <div className="metadata">
-        {date && <span className="date">{formatDate(date)}</span>}
+        {date && <span className="date">{formatRelativeDate(date)}</span>}
 
         <div className="venue">
           <span>
@@ -35,7 +35,7 @@ const EventCard = ({ event, isHighlighted = false }) => {
         <span className="custom-btn custom-btn-primary">Meld je aan</span>
       </div>
 
-      {(image.gatsbyImageData || image.url) && (
+      {(image?.gatsbyImageData || image?.url) && (
         <div className="image">
           <ImageWrapper image={image} />
         </div>

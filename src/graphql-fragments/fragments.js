@@ -475,6 +475,7 @@ export const DatoCMS = graphql`
         date
         hourStart
         hourEnd
+        onlineEvent
         tags {
           ... on DatoCmsTag {
             id

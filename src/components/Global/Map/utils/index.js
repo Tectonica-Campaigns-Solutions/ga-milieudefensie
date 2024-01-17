@@ -47,3 +47,5 @@ export const createMapMarkers = (mapRef, pins, type) => {
     }
   });
 };
+
+export const centerMapOn = (mapRef, newCoordinates, newZoom) => {};

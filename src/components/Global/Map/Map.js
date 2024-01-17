@@ -8,6 +8,21 @@ const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileVi
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      if (width <= 992) {
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     const initialCoordinates = [4.9041, 52.25];
     const map = createMapReference(mapContainerRef, initialCoordinates, 20, 5, 6.65, true);
 
@@ -43,7 +58,7 @@ const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileVi
           <div className="container">
             <div className="action" onClick={() => setMobileView((prev) => !prev)}>
               <span>←</span>
-              <span>List {type === 'event' ? 'Events' : 'Lokale groep'}</span>
+              <span>{type === 'event' ? 'Bekijk lijst' : 'Bekijk lijst'}</span>
             </div>
           </div>
         </div>
