@@ -130,6 +130,13 @@
               align-items: center;
               justify-content: flex-start;
 
+              position: unset !important;
+
+              &.focused {
+                margin: 0 !important;
+                padding: 0 !important;
+              }
+
               input {
                 width: auto;
               }
