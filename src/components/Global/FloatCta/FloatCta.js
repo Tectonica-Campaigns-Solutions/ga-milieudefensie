@@ -2,7 +2,7 @@ import React from 'react';
 
 const FloatCta = ({ title, id, isArrowVisible, isScrollingUp }) => {
   return (
-    <div id={id} className={`cta-view-list ${isArrowVisible ? '' : 'hide'}`}>
+    <div id={'cta-view-list'} className={`cta-view-list ${isArrowVisible ? '' : 'hide'}`}>
       <div
         className="custom-btn custom-btn-primary"
         onClick={() => {

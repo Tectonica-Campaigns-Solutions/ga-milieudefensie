@@ -28,6 +28,10 @@
       border-radius: 20px;
       margin-bottom: 36px;
 
+      .mapboxgl-popup {
+        z-index: 10;
+      }
+
       .mapboxgl-popup-content {
         padding: 20px;
         width: 345px;

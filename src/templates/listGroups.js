@@ -19,7 +19,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
 
   useEffect(() => {
     // Arrow style (up or down)
-    const ctaView = document.querySelector('#cta-view-groups');
+    const ctaView = document.querySelector('#cta-view-list');
     const arrowIcon = document.querySelector('#arrow-view-groups');
 
     const handleScroll = () => {
@@ -33,14 +33,19 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
       }
 
       // Hide float container on footer
-      const documentHeight = document.documentElement.scrollHeight;
-      if (scrollY < documentHeight - 1600) {
+      const testElement = document.getElementById('groups-list');
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+      const testElementPosition = testElement?.offsetTop;
+
+      if (scrollPosition + 700 < testElementPosition) {
         ctaView.classList.remove('hide');
       } else {
         ctaView.classList.add('hide');
       }
     };
     window.addEventListener('scroll', handleScroll);
+
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -96,7 +101,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
             )}
 
             {/* Fixed cta to view all */}
-            <FloatCta title="Bekijk lijst" id="cta-view-groups" />
+            <FloatCta title="Bekijk lijst" id="groups-list" />
           </div>
 
           {Array.isArray(blocks) && blocks.length > 0 && (

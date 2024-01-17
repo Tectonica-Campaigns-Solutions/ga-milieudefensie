@@ -35,9 +35,13 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       setIsScrollingUp(scrollY > 1350);
 
       // Hide float container on footer
-      const documentHeight = document.documentElement.scrollHeight;
-      setIsArrowVisible(scrollY < documentHeight - 1200);
+      const testElement = document.getElementById('filter-events-list');
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+      const testElementPosition = testElement?.offsetTop;
+
+      setIsArrowVisible(scrollPosition + 650 < testElementPosition);
     };
+
     window.addEventListener('scroll', handleScroll);
 
     return () => {
