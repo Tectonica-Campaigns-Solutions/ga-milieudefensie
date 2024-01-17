@@ -24,11 +24,11 @@ const FilterEvents = ({ events = [], locations, handleOnApplyNewFilters }) => {
 
   const eventsType = [
     { label: 'All', value: 'All' },
-    { label: 'Training', value: 'NATIONAL' },
-    { label: 'Actie', value: 'INTERNATIONAL' },
-    { label: 'Leden', value: 'INTERNATIONAL' },
-    { label: 'Gezellig', value: 'INTERNATIONAL' },
-    { label: 'Organiseren', value: 'INTERNATIONAL' },
+    { label: 'Training', value: 'Training' },
+    { label: 'Actie', value: 'Actie' },
+    { label: 'Leden', value: 'Leden' },
+    { label: 'Gezellig', value: 'Gezellig' },
+    { label: 'Organiseren', value: 'Organiseren' },
   ];
 
   const handleFilter = () => {

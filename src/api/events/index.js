@@ -12,6 +12,7 @@ export default async function handler(req, res) {
     params: { grant_type: 'client_credentials' },
   });
   const accessToken = tokenResponse.data.access_token;
+
   // Events loop
   try {
     const initialEventsResponse = await axios.get(
