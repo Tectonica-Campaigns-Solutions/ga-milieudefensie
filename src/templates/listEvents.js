@@ -46,8 +46,6 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
   }, [status]);
 
   useEffect(() => {
-    console.log({ filterValues });
-
     const filteredEvents = [...mergedEvents]
       .filter((e) => {
         if (filterValues.location === 'online') {
@@ -62,8 +60,6 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
         (e) =>
           filterValues.typeOfEvent === null || filterValues.typeOfEvent === 'All' || e.type === filterValues.typeOfEvent
       );
-
-    console.log({ filteredEvents });
 
     setFilteredEvents(filteredEvents);
   }, [filterValues, mergedEvents]);

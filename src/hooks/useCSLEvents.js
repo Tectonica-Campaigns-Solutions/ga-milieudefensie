@@ -37,9 +37,7 @@ function useCSLEvents(cmsEvents) {
           }
         }
 
-        const response = await axios.get(
-          process.env.NODE_ENV === 'development' ? '/api/events' : '/.netlify/functions/events'
-        );
+        const response = await axios.get('/api/events');
 
         const fetchedEvents = response.data.events[0].list;
         const mappedCSL = fetchedEvents.map((e) => ({
