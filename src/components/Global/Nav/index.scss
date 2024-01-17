@@ -24,6 +24,22 @@
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.20);
   }
 
+  .navbar-toggler {
+    border: none;
+
+    &:hover {
+      svg {
+        rect {
+          fill: var(--primary-color);
+        }
+
+        path {
+          stroke: var(--white);
+        }
+      }
+    }
+  }
+
   .actions {
     display: flex;
     align-items: center;
