@@ -62,7 +62,9 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       })
       .filter(
         (e) =>
-          filterValues.typeOfEvent === null || filterValues.typeOfEvent === 'All' || e.type === filterValues.typeOfEvent
+          filterValues.typeOfEvent === null ||
+          filterValues.typeOfEvent === 'All' ||
+          (Array.isArray(e.labels) && e.labels.includes(`tag-${filterValues.typeOfEvent}`))
       );
 
     setFilteredEvents(filteredEvents);

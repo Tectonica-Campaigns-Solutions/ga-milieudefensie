@@ -18,7 +18,7 @@ const Page = ({ pageContext, data: { page, favicon } }) => {
   );
 
   return (
-    <Layout>
+    <Layout heroBgColor={backgroundColor}>
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <div className="inner-page" style={{ backgroundColor: '#FFF' }}>

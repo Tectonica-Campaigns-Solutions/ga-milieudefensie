@@ -4,12 +4,12 @@ import Footer from './Footer/Footer';
 
 import '../../styles/main.scss';
 
-function Layout({ children, bgColor = null, extraClassNames = null }) {
+function Layout({ children, bgColor = null, extraClassNames = null, heroBgColor = 'default' }) {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
     <>
-      <Header setNavOpen={setNavOpen} />
+      <Header setNavOpen={setNavOpen} heroBgColor={heroBgColor} />
       <main id={`${bgColor ? bgColor : ''}`} className={`main-content ${extraClassNames ? extraClassNames : ''}`}>
         {navOpen && <div className="nav-open-overlay"></div>}
 

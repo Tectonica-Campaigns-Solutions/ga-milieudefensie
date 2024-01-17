@@ -55,6 +55,7 @@ function useCSLEvents(cmsEvents) {
           title: e.title,
           image: { url: e.image_url },
           type: 'INTERNATIONAL',
+          labels: e.labels || [],
         }));
 
         const events = [...cmsEvents, ...mappedCSL].sort((a, b) => {

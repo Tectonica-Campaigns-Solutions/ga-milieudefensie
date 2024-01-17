@@ -40,6 +40,18 @@
     }
   }
 
+  &.green {
+    .navbar-toggler {
+      &:hover {
+        svg {
+          rect {
+            fill: var(--primary-color-light);
+          }
+        }
+      }
+    }
+  }
+
   .actions {
     display: flex;
     align-items: center;

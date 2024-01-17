@@ -44,7 +44,7 @@ const DropdownItem = ({ link, label, children }) => {
   );
 };
 
-export default function Nav({ navData, config, setNavOpen }) {
+export default function Nav({ navData, config, setNavOpen, heroBgColor }) {
   const navRef = useRef(null);
   const openNavBtnRef = useRef(null);
 
@@ -102,7 +102,7 @@ export default function Nav({ navData, config, setNavOpen }) {
 
   return (
     <>
-      <nav className={`navbar2`}>
+      <nav className={`navbar2 ${heroBgColor}`}>
         <div className="container">
           <div className="top-section">
             <Link className="navbar-brand" to={'/'}>
