@@ -1,10 +1,6 @@
 .list-event-wrapper {
   position: relative;
-  margin-top: -240px;
-
-  &.event {
-    margin-top: -210px;
-  }
+  margin-top: -20vw;
 
   .highlighted-event-wrapper {
     padding: 63px 0 31px 0;
@@ -48,11 +44,12 @@
 
 @media screen and (max-width: 992px) {
   .hero-basic.event {
-    height: 0;
+    display: none;
   }
 
   .list-event-wrapper {
-    margin-top: 50px !important;
+    margin-top: 0;
+    padding-top: 120px;
 
     .highlighted-event-wrapper {
       padding: 18px 0;

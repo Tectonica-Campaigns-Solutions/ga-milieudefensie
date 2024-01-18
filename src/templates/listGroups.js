@@ -78,7 +78,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
       <WrapperLayout variant="light">
         <HeroBasic backgroundColor="light" responsiveVariant="event" />
 
-        <div className="list-event-wrapper pt-4">
+        <div className="list-event-wrapper">
           <div className="container">
             <h1>{title}</h1>
 

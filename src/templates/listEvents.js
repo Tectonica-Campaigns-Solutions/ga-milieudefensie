@@ -98,13 +98,13 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
       <WrapperLayout variant="light" responsiveVariant="secondary-bg">
         <HeroBasic backgroundColor="light" responsiveVariant="event" />
 
-        <div className="list-event-wrapper event">
+        <div className="list-event-wrapper">
           <div className="container">
             {title && <h1>{title}</h1>}
 
             {/* Mobile button */}
             {!isLoading && (
-              <div className="mobile-view-map">
+              <div className="mobile-view-map mb-4">
                 <CtaHandler
                   title={'Map View'}
                   isPrimaryButton
