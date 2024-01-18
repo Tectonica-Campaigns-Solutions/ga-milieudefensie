@@ -75,6 +75,16 @@
     background-color: var(--secondary-bg-color);
     border-radius: 0 0 60% 60%/20px;
   }
+
+  &+.highlight-event-section.empty {
+    .container {
+      display: none;
+    }
+
+    @media screen and (min-width: 1350px) {
+      padding-top: 400px !important;
+    }
+  }
 }
 
 @media screen and (max-width: 992px) {

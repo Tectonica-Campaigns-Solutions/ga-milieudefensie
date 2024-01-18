@@ -6,9 +6,10 @@ import './styles.scss';
 
 const ListHighlightEvent = ({ block }) => {
   const { sectionTitle, cta = [], items = [] } = block;
+  const hasItems = Array.isArray(items) && items.length > 0;
 
   return (
-    <section className="highlight-event-section">
+    <section className={`highlight-event-section ${hasItems ? '' : 'empty'}`}>
       <div className="container">
         <div className="header">
           <h3>{sectionTitle}</h3>
