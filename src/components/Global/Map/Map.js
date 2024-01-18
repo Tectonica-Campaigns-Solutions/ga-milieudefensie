@@ -17,6 +17,7 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
       const scrollToTop = () => window.scrollTo({ top: 0 });
       scrollToTop();
     }
+    mapRef.current?.resize();
   }, [mobileView]);
 
   const pins = data
