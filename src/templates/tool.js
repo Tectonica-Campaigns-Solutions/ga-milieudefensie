@@ -28,7 +28,7 @@ const Tool = ({ pageContext, data: { page, listTool, favicon } }) => {
             <div className="back-btn">
               <Link to={listTool}>
                 <img src={backBtnIcon} alt="Back button icon" />
-                <span>Action Toolkit</span>
+                <span>Toolkit</span>
               </Link>
             </div>
           </div>
