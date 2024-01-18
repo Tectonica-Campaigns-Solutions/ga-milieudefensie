@@ -7,8 +7,8 @@ import Link from '../../Link/Link';
 import './styles.scss';
 
 const MapPopup = ({ card, linkTitle }) => {
-  const { title, date, hourStart, hourEnd, address, image, tags, type, url, slug } = card;
-  const isCslEvent = type === 'INTERNATIONAL';
+  const { title, date, hourStart, hourEnd, address, image, tags, type, url, slug, externalUrl } = card;
+  const isCslEvent = type === 'INTERNATIONAL' || externalUrl;
 
   return (
     <article className="map-popup">
@@ -37,8 +37,11 @@ const MapPopup = ({ card, linkTitle }) => {
       {title && <h2>{title}</h2>}
 
       {isCslEvent ? (
-        // <a to={'/csl-event/' + slug} className="custom-btn custom-btn-primary">
-        <a href={url} target="_blank" className="custom-btn custom-btn-primary">
+        <a
+          href={externalUrl || url}
+          target={`${externalLink ? '' : '_blank'}`}
+          className="custom-btn custom-btn-primary"
+        >
           Meld je aan
         </a>
       ) : (

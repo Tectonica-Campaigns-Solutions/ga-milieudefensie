@@ -45,7 +45,11 @@ const EventCard = ({ event, isHighlighted = false }) => {
 
   if (isCslEvent || externalLink) {
     return (
-      <a href={externalLink || url} target="_blank" className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
+      <a
+        href={externalLink || url}
+        target={`${externalLink ? '' : '_blank'}`}
+        className={`event-card ${isHighlighted ? 'highlighted' : ''}`}
+      >
         {renderContent()}
       </a>
     );
