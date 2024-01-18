@@ -222,7 +222,7 @@ export const PageQuery = graphql`
             }
           }
           image {
-            gatsbyImageData
+            gatsbyImageData(width: 900, height: 505)
           }
           model {
             apiKey

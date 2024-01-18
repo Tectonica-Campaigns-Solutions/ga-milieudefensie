@@ -339,7 +339,7 @@ export const DatoCMS = graphql`
         title
         introduction
         image {
-          gatsbyImageData
+          gatsbyImageData(width: 900, height: 505)
         }
         icon {
           url
@@ -484,7 +484,7 @@ export const DatoCMS = graphql`
           }
         }
         image {
-          gatsbyImageData
+          gatsbyImageData(width: 900, height: 505)
         }
         model {
           apiKey

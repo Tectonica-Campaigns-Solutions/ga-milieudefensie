@@ -137,8 +137,7 @@ export const PageQuery = graphql`
             apiKey
           }
           image {
-            url
-            gatsbyImageData
+            gatsbyImageData(width: 900, height: 505)
           }
           tags {
             ... on DatoCmsTag {
