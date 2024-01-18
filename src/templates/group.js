@@ -35,7 +35,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
   } = page;
 
   return (
-    <Layout>
+    <Layout heroBgColor={image ? '' : 'green'}>
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="white">

@@ -16,7 +16,7 @@ const Tool = ({ pageContext, data: { page, listTool, favicon } }) => {
   const { seo, title, introduction, heroImage, content, blocks = [] } = page;
 
   return (
-    <Layout>
+    <Layout heroBgColor={heroImage ? '' : 'green'}>
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="white">

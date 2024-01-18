@@ -96,9 +96,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
               setMobileView={setMobileShowMap}
             />
 
-            {Array.isArray(mappedGroups) && (
-              <ListGroupBlock items={mappedGroups} withPagination withContainer={false} />
-            )}
+            {Array.isArray(mappedGroups) && <ListGroupBlock items={mappedGroups} withContainer={false} />}
 
             {/* Fixed cta to view all */}
             <FloatCta title="Bekijk lijst" id="groups-list" />
@@ -124,7 +122,7 @@ export const PageQuery = graphql`
         ...GatsbyDatoCmsFaviconMetaTags
       }
     }
-    allGroups: allDatoCmsGroup {
+    allGroups: allDatoCmsGroup(sort: { title: ASC }) {
       edges {
         node {
           id
