@@ -66,49 +66,47 @@ const HubspotForm = ({ id, formId, region, portalId, style = 'default' }) => {
 
               // Postal code custom logic
               const zipInput = document.querySelectorAll('.hs_zip');
-              zipInput.forEach((zip2) => {
-                const zip = zip2.querySelector('input[name="zip"]');
+              zipInput.forEach((hsZipContainer) => {
+                const zipInput = hsZipContainer.querySelector('input[name="zip"]');
 
-                zip.addEventListener('input', () => {
-                  // runLogic(zip, zip2);
+                hsZipContainer.addEventListener('input', () => {
+                  verifyPostalCode(zipInput, hsZipContainer);
                 });
               });
 
-              function runLogic(zip, zip2) {
-                const zipValue = zip.value.trim();
+              function verifyPostalCode(input, hsZipContainer) {
+                const zipValue = input.value.trim();
                 const zipRegex = /^\d{4}[a-zA-Z]{2}$/;
+                const errorContainer = hsZipContainer.querySelector('.hs-error-msgs');
 
-                const errorContainer = zip2.querySelector('.hs-error-msgs');
+                const invalidInput = !zipRegex.test(zipValue);
+                if (zipValue === '') return;
 
-                if (!zipRegex.test(zipValue)) {
-                  zip.classList.add('invalid', 'error');
-
-                  if (!errorContainer) {
-                    const errorMessage = `
-                        <ul class="no-list hs-error-msgs inputs-list" role="alert">
-                          <li>
-                            <label class="hs-error-msg hs-main-font-element">Verplicht veld</label>
-                          </li>
-                        </ul>
-                      `;
-
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = errorMessage;
-
-                    zip2.appendChild(tempDiv);
-                  } else {
-                    console.log('ACA????');
-                    const label = zip2.querySelector('.hs-error-msgs li label.hs-error-msg');
-                    if (!label) return;
-                    // label.textContent = `Voer een geldige postcode in`;
-                  }
+                if (invalidInput) {
+                  input.classList.add('invalid', 'error');
                 } else {
-                  zip.classList.remove('invalid', 'error');
+                  input.classList.remove('invalid', 'error');
 
-                  const existingError = document.querySelector('.hs-error-msgs');
-                  if (existingError) {
-                    existingError.remove();
+                  const tempDivId = hsZipContainer.querySelectorAll('#to-delete');
+                  if (tempDivId) {
+                    tempDivId.forEach((div) => (div.innerHTML = ``));
+                    return;
                   }
+                }
+
+                if (!errorContainer) {
+                  const errorMessage = `
+                    <ul class="no-list hs-error-msgs inputs-list" role="alert">
+                      <li>
+                        <label class="hs-error-msg hs-main-font-element">Voer een geldige postcode in</label>
+                      </li>
+                    </ul>
+                  `;
+
+                  const tempDiv = document.createElement('div');
+                  tempDiv.id = `to-delete`;
+                  tempDiv.innerHTML = errorMessage;
+                  hsZipContainer.appendChild(tempDiv);
                 }
               }
             },
