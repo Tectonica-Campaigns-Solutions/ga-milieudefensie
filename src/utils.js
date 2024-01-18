@@ -4,9 +4,9 @@ export const pathToModel = (model = null, slug = '') => {
   } else if (model === 'event') {
     return `/event/${slug}`;
   } else if (model === 'tool') {
-    return `/action/${slug}`;
+    return `/toolkit/${slug}`;
   } else if (model === 'group') {
-    return `/group/${slug}`;
+    return `/groep/${slug}`;
   } else {
     return `/${slug}`;
   }

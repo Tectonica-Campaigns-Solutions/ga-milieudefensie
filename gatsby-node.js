@@ -135,7 +135,7 @@ exports.createPages = ({ graphql, actions }) => {
         const groups = result.data.groups.edges;
         for (const group of groups) {
           createPage({
-            path: `/group/${group.node.slug}`,
+            path: `/groep/${group.node.slug}`,
             component: templates.group,
             context: {
               slug: group.node.slug,
@@ -160,7 +160,7 @@ exports.createPages = ({ graphql, actions }) => {
         const tools = result.data.tools.edges;
         for (const tool of tools) {
           createPage({
-            path: `/action/${tool.node.slug}`,
+            path: `/toolkit/${tool.node.slug}`,
             component: templates.tool,
             context: {
               slug: tool.node.slug,
