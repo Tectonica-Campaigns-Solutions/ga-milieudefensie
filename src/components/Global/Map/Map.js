@@ -4,6 +4,7 @@ import { Map, Source, Layer, Marker, Popup, NavigationControl } from 'react-map-
 import GroupMarker from './Marker/GroupMarker';
 import CustomMarker from './Marker/Marker';
 import MapPopup from './MapPopup/MapPopup';
+import useSupercluster from 'use-supercluster';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './styles.scss';
@@ -25,6 +26,7 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
     .map((e) => ({
       type: 'Feature',
       properties: {
+        cluster: false,
         id: e.id,
         title: e.title,
         date: e.date,
@@ -36,12 +38,23 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
         type: e.type,
         url: e.url,
         slug: e.slug,
+        externalLink: e.externalLink,
       },
       geometry: {
         type: 'Point',
         coordinates: [e.coordinates.longitude, e.coordinates.latitude],
       },
     }));
+
+  // get clusters
+  const bounds = mapRef.current ? mapRef.current.getMap().getBounds().toArray().flat() : null;
+
+  const { clusters, supercluster } = useSupercluster({
+    points: pins,
+    bounds,
+    zoom: 6.65,
+    options: { radius: 75, maxZoom: 20 },
+  });
 
   const onClickCluster = (event) => {
     const feature = event.features[0];
@@ -59,7 +72,7 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
   };
 
   return (
-    <div className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>
+    <div id="map-wrapper-id" className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>
       {title && <h3>{title}</h3>}
 
       <div className="map">

@@ -6,7 +6,7 @@ import Link from '../../Link/Link';
 
 import './styles.scss';
 
-const MapPopup = ({ card, linkTitle }) => {
+const MapPopup = ({ card, linkTitle = 'Meld je aan' }) => {
   const { title, date, hourStart, hourEnd, address, image, tags, type, url, slug, externalLink } = card;
   const isCslEvent = type === 'INTERNATIONAL' || externalLink;
 
