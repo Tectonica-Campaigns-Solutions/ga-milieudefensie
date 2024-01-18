@@ -40,23 +40,26 @@ function useCSLEvents(cmsEvents) {
         const response = await axios.get('/api/events');
 
         const fetchedEvents = response.data.events[0].list;
-        const mappedCSL = fetchedEvents.map((e) => ({
-          id: e.slug.replace(' ', '_'),
-          address: e.location?.query,
-          coordinates: { latitude: e.location?.latitude, longitude: e.location?.longitude },
-          region: e.location?.region,
-          rawDate: e.start_at,
-          date: formatDateAsYYMMDD(e.start_at),
-          hourStart: convertTime(e.start_at),
-          hourEnd: e.end_at ? convertTime(e.end_at) : null,
-          introduction: e.description,
-          slug: e.slug,
-          url: e.url,
-          title: e.title,
-          image: { url: e.image_url },
-          type: 'INTERNATIONAL',
-          labels: e.labels || [],
-        }));
+
+        const mappedCSL = fetchedEvents
+          .filter((e) => !e.cancelled_at)
+          .map((e) => ({
+            id: e.slug.replace(' ', '_'),
+            address: e.location?.query,
+            coordinates: { latitude: e.location?.latitude, longitude: e.location?.longitude },
+            region: e.location?.region,
+            rawDate: e.start_at,
+            date: formatDateAsYYMMDD(e.start_at),
+            hourStart: convertTime(e.start_at),
+            hourEnd: e.end_at ? convertTime(e.end_at) : null,
+            introduction: e.description,
+            slug: e.slug,
+            url: e.url,
+            title: e.title,
+            image: { url: e.image_url },
+            type: 'INTERNATIONAL',
+            labels: e.labels || [],
+          }));
 
         // Get only future events
         const currentDate = new Date();
