@@ -1,5 +1,5 @@
 .hero-basic {
-  height: 350px;
+  height: calc(150px + 20vw);
   background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
     top: 0;
     width: 100%;
     z-index: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 60%);
+    background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 15%);
     border-radius: 0 0 60% 60%/20px;
   }
 
@@ -43,6 +43,14 @@
     h1 {
       color: var(--primary-color);
     }
+  }
+
+  &.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(150px + 20vw);
   }
 }
 

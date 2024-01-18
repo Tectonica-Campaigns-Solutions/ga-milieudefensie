@@ -3,7 +3,7 @@
 
   .hero-home {
     background-position: center;
-    min-height: 605px;
+    height: calc(150px + 20vw);
     position: relative;
     z-index: 1;
     background-repeat: no-repeat;
@@ -71,7 +71,7 @@
 
   &+div,
   &+section {
-    padding-top: 410px !important;
+    padding-top: calc(500px) !important;
     background-color: var(--secondary-bg-color);
     border-radius: 0 0 60% 60%/20px;
   }
@@ -80,12 +80,12 @@
 @media screen and (max-width: 992px) {
   .wrapper-hero {
     .hero-home {
-      min-height: 667px;
+      height: 300px;
 
       .content {
-        min-height: 667px;
         top: 130px;
         padding: 20px 24px;
+        padding-bottom: 5rem;
         background-size: 120px;
         max-width: 100%;
 
@@ -109,7 +109,7 @@
 
     &+div,
     &+section {
-      padding-top: 250px !important;
+      padding-top: 650px !important;
     }
   }
 }
@@ -117,11 +117,48 @@
 @media screen and (max-width: 767px) {
   .wrapper-hero {
     .hero-home {
-      min-height: 770px;
-
-      .content {
-        min-height: 770px;
+      .form-hubspot.homepage {
+        padding-bottom: 1rem;
       }
+    }
+
+    &+div,
+    &+section {
+      padding-top: 700px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .wrapper-hero {
+    .hero-home {
+      .form-hubspot.homepage {
+        padding-bottom: 2rem;
+      }
+    }
+
+    &+div,
+    &+section {
+      padding-top: 850px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 310px) {
+  .wrapper-hero {
+    .hero-home {
+      .form-hubspot.homepage {
+        padding-bottom: 3rem;
+      }
+
+      .form-hubspot.homepage form .legal-consent-container .hs-richtext {
+        top: 8.5rem;
+      }
+    }
+
+    &+div,
+    &+section {
+      padding-top: 900px !important;
     }
   }
 }

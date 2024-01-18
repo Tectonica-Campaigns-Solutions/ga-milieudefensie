@@ -58,7 +58,15 @@ function useCSLEvents(cmsEvents) {
           labels: e.labels || [],
         }));
 
-        const events = [...cmsEvents, ...mappedCSL].sort((a, b) => {
+        // Get only future events
+        const currentDate = new Date();
+
+        const temEvents = [...cmsEvents, ...mappedCSL].filter((event) => {
+          const eventDate = new Date(event.rawDate);
+          return eventDate > currentDate;
+        });
+
+        const events = temEvents.sort((a, b) => {
           const dateA = new Date(a.rawDate);
           const dateB = new Date(b.rawDate);
 
