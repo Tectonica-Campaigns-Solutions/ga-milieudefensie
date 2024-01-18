@@ -11405,13 +11405,21 @@ url-loader@^4.1.1:
     mime-types "^2.1.27"
     schema-utils "^3.0.0"
 
-use-deep-compare-effect@^1.6.1:
+use-deep-compare-effect@^1.6.1, use-deep-compare-effect@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/use-deep-compare-effect/-/use-deep-compare-effect-1.8.1.tgz#ef0ce3b3271edb801da1ec23bf0754ef4189d0c6"
   integrity sha512-kbeNVZ9Zkc0RFGpfMN3MNfaKNvcLNyxOAAd9O4CBZ+kCBXXscn9s/4I+8ytUER4RDpEYs5+O6Rs4PqiZ+rHr5Q==
   dependencies:
     "@babel/runtime" "^7.12.5"
     dequal "^2.0.2"
+
+use-supercluster@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/use-supercluster/-/use-supercluster-1.1.0.tgz#7f1d3fee9ad2ee0160653e4650091f7cf3595435"
+  integrity sha512-MO/COIbXWMpUV3GhR7tRn6HzH0fMKNGxTd5iCM6rJRAgH8bByhReRgCAmKBzjZCeG8DtccUxa5HSEXpvcgsJbg==
+  dependencies:
+    dequal "^2.0.3"
+    use-deep-compare-effect "^1.8.1"
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
