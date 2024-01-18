@@ -23,8 +23,8 @@
       display: none;
     }
 
-    .map-container {
-      height: 80dvh;
+    .mapboxgl-map {
+      height: 80dvh !important;
       border-radius: 20px;
       margin-bottom: 36px;
 

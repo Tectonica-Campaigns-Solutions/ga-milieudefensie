@@ -134,7 +134,6 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
                     handleOnApplyNewFilters={(newFilterValues) => setFilterValues(newFilterValues)}
                   />
 
-                  {/* Fixed cta to view all */}
                   <FloatCta
                     title="Bekijk lijst"
                     id="filter-events-list"

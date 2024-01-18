@@ -1,59 +1,67 @@
-import React, { useEffect, useRef } from 'react';
-import { createMapMarkers, createMapReference } from './utils';
+import React, { useEffect, useRef, useState } from 'react';
+import { clusterLayer, clusterCountLayer } from './layers';
+import { Map, Source, Layer, Marker, Popup, NavigationControl } from 'react-map-gl';
+import GroupMarker from './Marker/GroupMarker';
+import CustomMarker from './Marker/Marker';
+import MapPopup from './MapPopup/MapPopup';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './styles.scss';
 
-const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileView }) => {
-  const mapContainerRef = useRef(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-
-      if (width <= 992) {
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    const initialCoordinates = [4.9041, 52.25];
-    const map = createMapReference(mapContainerRef, initialCoordinates, 20, 5, 6.65, true);
-
-    const pins = data
-      .filter((e) => e.coordinates && e.coordinates.latitude && e.coordinates.longitude)
-      .map((e) => ({
-        ...e,
-        coordinates: [e.coordinates.longitude, e.coordinates.latitude],
-      }));
-
-    createMapMarkers(map, pins, type);
-
-    return () => map.remove();
-  }, [data, mobileView]);
+const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setMobileView }) => {
+  const mapRef = useRef(null);
+  const [selectedMarker, setSelectedMarker] = useState(null);
 
   useEffect(() => {
     if (window) {
-      const scrollToTop = () => {
-        window.scrollTo({ top: 0 });
-      };
-
+      const scrollToTop = () => window.scrollTo({ top: 0 });
       scrollToTop();
     }
   }, [mobileView]);
+
+  const pins = data
+    .filter((e) => e.coordinates && e.coordinates.latitude && e.coordinates.longitude)
+    .map((e) => ({
+      type: 'Feature',
+      properties: {
+        id: e.id,
+        title: e.title,
+        date: e.date,
+        hourStart: e.hourStart,
+        hourEnd: e.hourEnd,
+        address: e.address,
+        image: e.image,
+        tags: e.tags || [],
+        type: e.type,
+        url: e.url,
+        slug: e.slug,
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: [e.coordinates.longitude, e.coordinates.latitude],
+      },
+    }));
+
+  const onClickCluster = (event) => {
+    const feature = event.features[0];
+    if (!feature) return;
+
+    const clusterId = feature.properties.cluster_id;
+    const mapboxSource = mapRef.current.getSource('pins');
+
+    mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
+      if (err) {
+        return;
+      }
+      mapRef.current.easeTo({ center: feature.geometry.coordinates, zoom, duration: 500 });
+    });
+  };
 
   return (
     <div className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>
       {title && <h3>{title}</h3>}
 
       <div className="map">
-        {/* Pre-header */}
         <div className="pre-header">
           <div className="container">
             <div className="action" onClick={() => setMobileView((prev) => !prev)}>
@@ -63,10 +71,58 @@ const Map = ({ title, data = [], type = 'event', mobileView = false, setMobileVi
           </div>
         </div>
 
-        <div ref={mapContainerRef} className="map-container" />
+        <Map
+          ref={mapRef}
+          initialViewState={{ latitude: 52.25, longitude: 4.9041, zoom: 6.65 }}
+          mapStyle="mapbox://styles/martinalv/clptudeob00ub01p74jlnbdce"
+          mapboxAccessToken={process.env.REACT_MAPBOX_TOKEN}
+          interactive
+          interactiveLayerIds={[clusterLayer.id]}
+          scrollZoom={false}
+        >
+          <Source
+            id="pins"
+            type="geojson"
+            data={{ type: 'FeatureCollection', features: pins }}
+            cluster={false}
+            clusterMaxZoom={14}
+            clusterRadius={50}
+          >
+            <Layer {...clusterLayer} />
+            <Layer {...clusterCountLayer} />
+
+            {/* Pins */}
+            {pins.map((e) => (
+              <Marker
+                key={e.properties.id}
+                longitude={e.geometry.coordinates[0]}
+                latitude={e.geometry.coordinates[1]}
+                onClick={() => setSelectedMarker(e)}
+                anchor="bottom"
+              >
+                {type === 'group' ? <GroupMarker /> : <CustomMarker />}
+              </Marker>
+            ))}
+
+            {/* Popup */}
+            {selectedMarker && (
+              <Popup
+                key={selectedMarker.properties.id}
+                longitude={selectedMarker.geometry.coordinates[0]}
+                latitude={selectedMarker.geometry.coordinates[1]}
+                closeOnClick={false}
+                onClose={() => setSelectedMarker(null)}
+              >
+                <MapPopup card={selectedMarker.properties} />
+              </Popup>
+            )}
+
+            <NavigationControl position="bottom-right" />
+          </Source>
+        </Map>
       </div>
     </div>
   );
 };
 
-export default Map;
+export default MapWrapper;
