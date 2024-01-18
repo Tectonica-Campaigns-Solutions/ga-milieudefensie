@@ -80,7 +80,14 @@ const HubspotForm = ({ id, formId, region, portalId, style = 'default' }) => {
                 const errorContainer = hsZipContainer.querySelector('.hs-error-msgs');
 
                 const invalidInput = !zipRegex.test(zipValue);
-                if (zipValue === '') return;
+                if (zipValue === '') {
+                  const tempDivId = hsZipContainer.querySelectorAll('#to-delete');
+                  if (tempDivId) {
+                    tempDivId.forEach((div) => (div.innerHTML = ``));
+                  }
+
+                  return;
+                }
 
                 if (invalidInput) {
                   input.classList.add('invalid', 'error');
