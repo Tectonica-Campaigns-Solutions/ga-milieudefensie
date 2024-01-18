@@ -76,7 +76,9 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
           ref={mapRef}
           initialViewState={{ latitude: 52.25, longitude: 4.9041, zoom: 6.65 }}
           mapStyle="mapbox://styles/martinalv/clptudeob00ub01p74jlnbdce"
-          mapboxAccessToken={process.env.REACT_MAPBOX_TOKEN}
+          mapboxAccessToken={
+            'pk.eyJ1IjoibWFydGluYWx2IiwiYSI6ImNscHR1YjdvZDBlY2sybHBnNTRwM2l4ZTEifQ.nn8C3qy8ULBkq6gdO3vlCg'
+          }
           interactive
           interactiveLayerIds={[clusterLayer.id]}
           scrollZoom={false}
