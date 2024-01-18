@@ -136,6 +136,7 @@ export const PageQuery = graphql`
       id
       title
       slug
+      externalLink
       date
       hourStart
       hourEnd

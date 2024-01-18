@@ -38,7 +38,6 @@ function useCSLEvents(cmsEvents) {
         }
 
         const response = await axios.get('/api/events');
-
         const fetchedEvents = response.data.events[0].list;
 
         const mappedCSL = fetchedEvents
@@ -63,7 +62,6 @@ function useCSLEvents(cmsEvents) {
 
         // Get only future events
         const currentDate = new Date();
-
         const temEvents = [...cmsEvents, ...mappedCSL].filter((event) => {
           const eventDate = new Date(event.rawDate);
           return eventDate > currentDate;

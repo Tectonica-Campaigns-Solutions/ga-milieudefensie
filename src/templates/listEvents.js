@@ -172,6 +172,7 @@ export const PageQuery = graphql`
           id
           title
           slug
+          externalLink
           introduction
           date
           rawDate: date
@@ -209,6 +210,7 @@ export const PageQuery = graphql`
           id
           title
           slug
+          externalLink
           introduction
           date
           hourStart

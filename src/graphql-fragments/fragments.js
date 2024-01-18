@@ -471,6 +471,7 @@ export const DatoCMS = graphql`
         id
         title
         slug
+        externalLink
         introduction
         date
         hourStart

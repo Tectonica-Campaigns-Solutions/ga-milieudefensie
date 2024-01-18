@@ -7,7 +7,7 @@ import Link from '../../Global/Link/Link';
 import './styles.scss';
 
 const EventCard = ({ event, isHighlighted = false }) => {
-  const { title, introduction, image, date, address, hourStart, hourEnd, tags = [], type, url } = event;
+  const { title, introduction, image, date, address, hourStart, hourEnd, tags = [], type, url, externalLink } = event;
   const isCslEvent = type === 'INTERNATIONAL';
 
   const renderContent = () => (
@@ -43,10 +43,9 @@ const EventCard = ({ event, isHighlighted = false }) => {
     </>
   );
 
-  if (isCslEvent) {
+  if (isCslEvent || externalLink) {
     return (
-      // <Link to={'/csl-event/' + event.slug} className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
-      <a href={url} target="_blank" className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
+      <a href={externalLink || url} target="_blank" className={`event-card ${isHighlighted ? 'highlighted' : ''}`}>
         {renderContent()}
       </a>
     );
