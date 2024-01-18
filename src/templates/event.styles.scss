@@ -2,6 +2,8 @@
   background-color: var(--white) !important;
 
   .float-layout {
+    min-height: 250px;
+
     h1 {
       color: var(--black);
       font-family: var(--primary-font);
@@ -272,6 +274,10 @@
       // justify-content: center;
       margin: 1rem 0;
     }
+  }
+
+  .float-layout+.highlight-tools-section {
+    margin-top: -100px;
   }
 
   .related-section {
