@@ -404,6 +404,7 @@
 @media screen and (max-width: 500px) {
   .form-hubspot {
     &.homepage {
+      padding-bottom: 5rem;
 
       &:has(.hs_error_rollup),
       &:has(.hs-input.invalid.error) {
@@ -428,6 +429,11 @@
 @media screen and (max-width: 366px) {
   .form-hubspot {
     &.homepage {
+      padding-bottom: 7rem;
+
+      form .legal-consent-container .hs-richtext {
+        top: 7.5rem;
+      }
 
       &:has(.hs_error_rollup),
       &:has(.hs-input.invalid.error) {
@@ -436,6 +442,18 @@
         form .legal-consent-container .hs-richtext {
           top: 7.8rem;
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .form-hubspot {
+    &.homepage {
+      padding-bottom: 8rem;
+
+      form .legal-consent-container .hs-richtext {
+        top: 8rem;
       }
     }
   }
