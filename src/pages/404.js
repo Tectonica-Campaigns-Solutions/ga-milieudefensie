@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
+import SeoDatoCMS from '../components/Layout/SeoDatocms';
 
 const pageStyles = {
   color: '#232129',
@@ -15,30 +16,20 @@ const headingStyles = {
 const paragraphStyles = {
   marginBottom: 48,
 };
-const codeStyles = {
-  color: '#8A6534',
-  padding: 4,
-  backgroundColor: '#FFF4DB',
-  fontSize: '1.25rem',
-  borderRadius: 4,
-};
 
-const NotFoundPage = () => {
+const NotFoundPage = ({ data: { favicon } }) => {
   return (
     <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
+      <SeoDatoCMS favicon={favicon}>
+        <title>Deze pagina bestaat niet</title>
+      </SeoDatoCMS>
+
+      <h1 style={headingStyles}>Deze pagina bestaat niet</h1>
       <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
+        Klimaatverandering helaas wel.
         <br />
-        {process.env.NODE_ENV === 'development' ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
         <br />
-        <Link to="/">Go home</Link>.
+        <Link to="/">Terug naar hoofdpagina</Link>.
       </p>
     </main>
   );
@@ -46,4 +37,12 @@ const NotFoundPage = () => {
 
 export default NotFoundPage;
 
-export const Head = () => <title>Not found</title>;
+export const NotFoundQuery = graphql`
+  query NotFound {
+    favicon: datoCmsSite {
+      faviconMetaTags {
+        ...GatsbyDatoCmsFaviconMetaTags
+      }
+    }
+  }
+`;
