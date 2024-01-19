@@ -82,7 +82,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
                   <span>
                     <img src={messageIcon} alt="Whatsapp Group icon" />
                     <span>
-                      <a href={`https://wa.me/${whatsappGroup}`} target="_blank" rel="noopener noreferrer">
+                      <a href={`${whatsappGroup}`} target="_blank" rel="noopener noreferrer">
                         WhatsApp groep
                       </a>
                     </span>
@@ -101,7 +101,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
                 <div>
                   <a
                     className="wp-button stretched"
-                    href={`https://wa.me/${whatsappGroup}`}
+                    href={`${whatsappGroup}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

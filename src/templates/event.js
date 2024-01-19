@@ -94,12 +94,7 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
             </div>
 
             {whatsappGroup && (
-              <a
-                className="wp-button"
-                href={`https://wa.me/${whatsappGroup}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="wp-button" href={`${whatsappGroup}`} target="_blank" rel="noopener noreferrer">
                 <span>Deel op WhatsApp</span>
                 <ReactSVG src={wpIcon} alt="Wp icon" />
               </a>

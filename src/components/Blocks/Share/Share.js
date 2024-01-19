@@ -17,7 +17,7 @@ const Share = ({ block }) => {
       {Array.isArray(ctas) && ctas.length > 0 && <CtaList ctas={ctas} />}
 
       {whatsappGroup && (
-        <a className="wp-button" href={`https://wa.me/${whatsappGroup}`} target="_blank" rel="noopener noreferrer">
+        <a className="wp-button" href={`${whatsappGroup}`} target="_blank" rel="noopener noreferrer">
           <span>Join Us to Our WhatsApp Community</span>
           <ReactSVG src={wpIcon} alt="Wp icon" />
         </a>
