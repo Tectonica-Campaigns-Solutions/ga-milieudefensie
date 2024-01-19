@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { clusterLayer, clusterCountLayer } from './layers';
-import { Map, Source, Layer, Marker, Popup, NavigationControl } from 'react-map-gl';
+import { Map, Marker, Popup, NavigationControl } from 'react-map-gl';
 import GroupMarker from './Marker/GroupMarker';
 import CustomMarker from './Marker/Marker';
 import MapPopup from './MapPopup/MapPopup';
@@ -11,6 +10,14 @@ import './styles.scss';
 
 const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setMobileView }) => {
   const mapRef = useRef(null);
+
+  const [viewport, setViewport] = useState({
+    latitude: 52.25,
+    longitude: 4.9041,
+    zoom: 6.65,
+    interactive: true,
+    scrollZoom: true,
+  });
   const [selectedMarker, setSelectedMarker] = useState(null);
 
   useEffect(() => {
@@ -39,6 +46,7 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
         url: e.url,
         slug: e.slug,
         externalLink: e.externalLink,
+        model: e.model,
       },
       geometry: {
         type: 'Point',
@@ -46,30 +54,15 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
       },
     }));
 
-  // get clusters
+  // Clusters
   const bounds = mapRef.current ? mapRef.current.getMap().getBounds().toArray().flat() : null;
 
   const { clusters, supercluster } = useSupercluster({
     points: pins,
     bounds,
-    zoom: 6.65,
+    zoom: viewport?.zoom,
     options: { radius: 75, maxZoom: 20 },
   });
-
-  const onClickCluster = (event) => {
-    const feature = event.features[0];
-    if (!feature) return;
-
-    const clusterId = feature.properties.cluster_id;
-    const mapboxSource = mapRef.current.getSource('pins');
-
-    mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
-      if (err) {
-        return;
-      }
-      mapRef.current.easeTo({ center: feature.geometry.coordinates, zoom, duration: 500 });
-    });
-  };
 
   return (
     <div id="map-wrapper-id" className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>
@@ -86,55 +79,71 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
         </div>
 
         <Map
+          {...viewport}
           ref={mapRef}
-          initialViewState={{ latitude: 52.25, longitude: 4.9041, zoom: 6.65 }}
           mapStyle="mapbox://styles/martinalv/clptudeob00ub01p74jlnbdce"
           mapboxAccessToken={
             'pk.eyJ1IjoibWFydGluYWx2IiwiYSI6ImNscHR1YjdvZDBlY2sybHBnNTRwM2l4ZTEifQ.nn8C3qy8ULBkq6gdO3vlCg'
           }
-          interactive
-          interactiveLayerIds={[clusterLayer.id]}
-          scrollZoom={false}
+          onMove={(evt) => setViewport(evt.viewState)}
+          onLoad={(evt) => evt.target.setZoom(viewport.zoom)}
         >
-          <Source
-            id="pins"
-            type="geojson"
-            data={{ type: 'FeatureCollection', features: pins }}
-            cluster={false}
-            clusterMaxZoom={14}
-            clusterRadius={50}
-          >
-            <Layer {...clusterLayer} />
-            <Layer {...clusterCountLayer} />
+          {clusters.map((cluster) => {
+            const [longitude, latitude] = cluster.geometry.coordinates;
+            const { cluster: isCluster, point_count: pointCount } = cluster.properties;
 
-            {/* Pins */}
-            {pins.map((e) => (
+            if (isCluster) {
+              return (
+                <Marker key={cluster.id} longitude={longitude} latitude={latitude}>
+                  <div
+                    className="cluster-marker"
+                    style={{
+                      width: `${10 + (pointCount / pins.length) * 20}px`,
+                      height: `${10 + (pointCount / pins.length) * 20}px`,
+                    }}
+                    onClick={() => {
+                      const expansionZoom = Math.min(supercluster.getClusterExpansionZoom(cluster.id), 20);
+
+                      setViewport({
+                        ...viewport,
+                        latitude,
+                        longitude,
+                        zoom: expansionZoom,
+                      });
+                    }}
+                  >
+                    {pointCount}
+                  </div>
+                </Marker>
+              );
+            }
+
+            return (
               <Marker
-                key={e.properties.id}
-                longitude={e.geometry.coordinates[0]}
-                latitude={e.geometry.coordinates[1]}
-                onClick={() => setSelectedMarker(e)}
-                anchor="bottom"
+                key={cluster.properties.id}
+                longitude={longitude}
+                latitude={latitude}
+                onClick={() => setSelectedMarker(cluster)}
+                anchor="top"
               >
                 {type === 'group' ? <GroupMarker /> : <CustomMarker />}
               </Marker>
-            ))}
+            );
+          })}
 
-            {/* Popup */}
-            {selectedMarker && (
-              <Popup
-                key={selectedMarker.properties.id}
-                longitude={selectedMarker.geometry.coordinates[0]}
-                latitude={selectedMarker.geometry.coordinates[1]}
-                closeOnClick={false}
-                onClose={() => setSelectedMarker(null)}
-              >
-                <MapPopup card={selectedMarker.properties} />
-              </Popup>
-            )}
+          {selectedMarker && (
+            <Popup
+              key={selectedMarker.properties.id}
+              longitude={selectedMarker.geometry.coordinates[0]}
+              latitude={selectedMarker.geometry.coordinates[1]}
+              closeOnClick={false}
+              onClose={() => setSelectedMarker(null)}
+            >
+              <MapPopup card={selectedMarker.properties} />
+            </Popup>
+          )}
 
-            <NavigationControl position="bottom-right" />
-          </Source>
+          <NavigationControl position="bottom-right" />
         </Map>
       </div>
     </div>
