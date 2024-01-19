@@ -130,7 +130,8 @@
     }
   }
 
-  &.single {
+  &.single,
+  &.introduction-normal {
     margin-top: 72px;
   }
 
@@ -160,7 +161,8 @@
       }
     }
 
-    &.single {
+    &.single,
+    &.introduction-normal {
       margin-top: 10px;
     }
   }

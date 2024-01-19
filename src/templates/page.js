@@ -17,7 +17,7 @@ const Page = ({ pageContext, data: { page, favicon } }) => {
           limitedWidth
           block={{ text: introduction }}
           container={!floatingLayout}
-          extraClassNames="introduction"
+          extraClassNames={floatingLayout ? 'introduction' : 'introduction-normal'}
         />
       )}
       <Blocks blocks={blocks} />
