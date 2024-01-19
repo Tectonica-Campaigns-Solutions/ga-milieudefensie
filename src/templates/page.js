@@ -12,7 +12,14 @@ const Page = ({ pageContext, data: { page, favicon } }) => {
 
   const renderMainContent = () => (
     <>
-      {introduction && <SimpleText limitedWidth block={{ text: introduction }} container={!floatingLayout} />}
+      {introduction && (
+        <SimpleText
+          limitedWidth
+          block={{ text: introduction }}
+          container={!floatingLayout}
+          extraClassNames="introduction"
+        />
+      )}
       <Blocks blocks={blocks} />
     </>
   );
@@ -30,7 +37,7 @@ const Page = ({ pageContext, data: { page, favicon } }) => {
             {renderMainContent()}
           </FloatLayout>
         ) : (
-          renderMainContent()
+          <>{renderMainContent()}</>
         )}
       </div>
     </Layout>

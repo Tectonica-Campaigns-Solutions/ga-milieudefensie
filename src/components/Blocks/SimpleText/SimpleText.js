@@ -1,10 +1,10 @@
 import React from 'react';
 import './index.scss';
 
-function SimpleText({ block, custom = false, limitedWidth = false, container = true }) {
+function SimpleText({ block, custom = false, limitedWidth = false, container = true, extraClassNames = null }) {
   return (
-    <div className="simple-text-wrapper">
-      <div className={`${custom ? '' : `${container ? 'container' : ''} pre-c mt-5 mb-5`} `}>
+    <div id="simple-text-block" className={`simple-text-wrapper ${extraClassNames ? extraClassNames : ''}`}>
+      <div className={`${custom ? '' : `${container ? 'container' : ''}`}`}>
         <div className={`simple-text ${limitedWidth ? 'limited-with' : ''}`}>
           <div className={`${custom ? '' : 'row'}`}>
             <div className={`${custom ? '' : 'col'}`}>

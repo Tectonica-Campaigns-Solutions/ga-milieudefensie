@@ -27,6 +27,11 @@
       bottom: 0;
     }
 
+    .form-container-content {
+      position: relative;
+      z-index: 1;
+    }
+
     form .hs-form-field .input input {
       color: var(--white);
 

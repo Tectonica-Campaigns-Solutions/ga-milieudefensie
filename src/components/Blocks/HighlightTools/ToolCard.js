@@ -21,7 +21,7 @@ const ToolCard = ({ tool }) => {
           </div>
         )}
 
-        <div className="content">
+        <div className="content-tool">
           <div>
             {googleFontIcon ? (
               <div className="icon">

@@ -33,6 +33,11 @@
       }
     }
   }
+
+  &+.highlight-tools-section {
+    margin-top: 0;
+    padding-bottom: 60px;
+  }
 }
 
 .tool-card {
@@ -47,7 +52,7 @@
   justify-content: space-between;
   overflow: hidden;
 
-  .content {
+  .content-tool {
     height: 100%;
     padding: 30px;
     display: flex;
@@ -89,16 +94,16 @@
   &:hover {
     background-color: var(--primary-color);
 
-    .content h3,
-    .content .introduction {
+    .content-tool h3,
+    .content-tool .introduction {
       color: var(--white);
     }
 
-    .content .icon span {
+    .content-tool .icon span {
       color: var(--white);
     }
 
-    .content .icon svg path {
+    .content-tool .icon svg path {
       fill: var(--white);
     }
   }
@@ -136,7 +141,7 @@
       }
     }
 
-    .content {
+    .content-tool {
       padding: 15px 25px;
 
       .icon {

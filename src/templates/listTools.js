@@ -21,7 +21,7 @@ const ListTool = ({ pageContext, data: { page, favicon } }) => {
           backgroundColor={backgroundColor}
           responsiveVariant="tools"
         />
-        {introduction && <SimpleText limitedWidth block={{ text: introduction }} />}
+        {introduction && <SimpleText limitedWidth block={{ text: introduction }} extraClassNames="single" />}
         <Blocks blocks={blocks} />
       </WrapperLayout>
     </Layout>

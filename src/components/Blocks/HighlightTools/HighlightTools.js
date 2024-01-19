@@ -18,7 +18,7 @@ const HighlightTools = ({ block }) => {
         )}
 
         {/* Items */}
-        <div className="content">
+        <div className="content-tool">
           <div className="row gy-4">
             {items.map((item) => (
               <div className={`col-lg-${12 / numColumns}`} key={item.id}>
