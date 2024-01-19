@@ -60,6 +60,16 @@
         margin: 0;
       }
     }
+
+    .cluster-marker {
+      color: var(--white);
+      background: var(--primary-color);
+      border-radius: 50%;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 

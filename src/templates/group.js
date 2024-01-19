@@ -83,7 +83,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
                     <img src={messageIcon} alt="Whatsapp Group icon" />
                     <span>
                       <a href={`https://wa.me/${whatsappGroup}`} target="_blank" rel="noopener noreferrer">
-                        Whatsapp Group
+                        WhatsApp groep
                       </a>
                     </span>
                   </span>
@@ -105,7 +105,7 @@ const Group = ({ pageContext, data: { page, listGroup, listEvent, favicon } }) =
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span>WhatsApp groepen</span>
+                    <span>WhatsApp groep</span>
                     <ReactSVG src={wpIcon} alt="Wp icon" />
                   </a>
                 </div>

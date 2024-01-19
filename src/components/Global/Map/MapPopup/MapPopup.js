@@ -2,12 +2,11 @@ import React from 'react';
 import TagList from '../../Tag/TagList';
 import { formatDate } from '../../../../utils';
 import Cta from '../../Cta/Cta';
-import Link from '../../Link/Link';
 
 import './styles.scss';
 
 const MapPopup = ({ card, linkTitle = 'Meld je aan' }) => {
-  const { title, date, hourStart, hourEnd, address, image, tags, type, url, slug, externalLink } = card;
+  const { title, date, hourStart, hourEnd, address, image, tags, type, url, externalLink } = card;
   const isCslEvent = type === 'INTERNATIONAL' || externalLink;
 
   return (

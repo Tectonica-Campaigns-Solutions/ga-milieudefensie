@@ -182,6 +182,13 @@ export const DatoCMS = graphql`
           ... on DatoCmsGlobalLink {
             id
             content {
+              ... on DatoCmsListTool {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
               ... on DatoCmsBasicPage {
                 id
                 slug
@@ -355,6 +362,13 @@ export const DatoCMS = graphql`
               ... on DatoCmsGlobalLink {
                 id
                 content {
+                  ... on DatoCmsListTool {
+                    id
+                    slug
+                    model {
+                      apiKey
+                    }
+                  }
                   ... on DatoCmsBasicPage {
                     id
                     slug
@@ -419,6 +433,13 @@ export const DatoCMS = graphql`
           ... on DatoCmsGlobalLink {
             id
             content {
+              ... on DatoCmsListTool {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
               ... on DatoCmsBasicPage {
                 id
                 slug

@@ -41,9 +41,54 @@ function Footer({ isLanding = false, customLogo = null }) {
             label
             externalUrl
             content {
+              ... on DatoCmsListTool {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
               ... on DatoCmsBasicPage {
                 id
                 slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsEvent {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsListEvent {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsListGroup {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsTool {
+                id
+                slug
+                model {
+                  apiKey
+                }
+              }
+              ... on DatoCmsGroup {
+                id
+                slug
+                model {
+                  apiKey
+                }
               }
             }
           }
@@ -52,7 +97,7 @@ function Footer({ isLanding = false, customLogo = null }) {
     }
   `);
 
-  const { logo = null, columns = [], bottomLinks = [], socialLinks = [], cta } = data.datoCmsFooter;
+  const { logo = null, columns = [], bottomLinks = [] } = data.datoCmsFooter;
   const hasColumnsLinks = columns && columns.length > 0;
 
   return (
@@ -74,7 +119,7 @@ function Footer({ isLanding = false, customLogo = null }) {
               rel="noopener noreferrer"
             >
               <div className="wp-btn">
-                <span>WhatsApp groepen</span>
+                <span>WhatsApp groep</span>
                 <ReactSVG src={wpIcon} />
               </div>
             </a>
