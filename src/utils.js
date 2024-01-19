@@ -2,7 +2,7 @@ export const pathToModel = (model = null, slug = '') => {
   if (model === 'basicPage') {
     return `/${slug}`;
   } else if (model === 'event') {
-    return `/event/${slug}`;
+    return `/agenda/${slug}`;
   } else if (model === 'tool') {
     return `/toolkit/${slug}`;
   } else if (model === 'group') {

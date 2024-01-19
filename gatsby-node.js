@@ -110,7 +110,7 @@ exports.createPages = ({ graphql, actions }) => {
         const events = result.data.events.edges;
         for (const event of events) {
           createPage({
-            path: `/event/${event.node.slug}`,
+            path: `/agenda/${event.node.slug}`,
             component: templates.event,
             context: {
               slug: event.node.slug,
