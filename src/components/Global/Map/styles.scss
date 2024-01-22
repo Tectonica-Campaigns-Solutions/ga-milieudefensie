@@ -65,10 +65,15 @@
       color: var(--white);
       background: var(--primary-color);
       border-radius: 50%;
-      padding: 15px;
+      padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--primary-color-light);
+      }
     }
   }
 }
