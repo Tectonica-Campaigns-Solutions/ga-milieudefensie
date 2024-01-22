@@ -8,7 +8,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Milieudefensie`,
-    siteUrl: `http://localhost:8000/`,
+    siteUrl: `https://milieudefensie-preview.netlify.app`,
   },
   plugins: [
     {
@@ -19,11 +19,17 @@ module.exports = {
         disableLiveReload: false,
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-MMB2NFFR',
+        // enableWebVitalsTracking: true,
+      },
+    },
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
-    // 'gatsby-plugin-sitemap',
     'gatsby-plugin-advanced-sitemap',
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-netlify`,
