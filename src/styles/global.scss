@@ -85,6 +85,44 @@ html {
     }
   }
 
+  .c-settings {
+    .c-header {
+      font-size: 20px !important;
+      font-style: normal !important;
+      font-weight: 600 !important;
+      line-height: 110% !important;
+      font-family: var(--secondary-font) !important;
+    }
+
+    p {
+      color: var(--black) !important;
+      font-size: 14px !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      line-height: 130% !important;
+      font-family: var(--secondary-font) !important;
+    }
+
+    a {
+      color: var(--secondary-color) !important;
+    }
+  }
+
+  .c-content {
+    .c-label {
+      font-size: 15px !important;
+    }
+
+    .c-intro {
+      color: var(--black) !important;
+      font-size: 14px !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      line-height: 130% !important;
+      font-family: var(--secondary-font) !important;
+    }
+  }
+
   @media (max-width: 992px) {
     .c-header {
       font-size: 25px !important;
