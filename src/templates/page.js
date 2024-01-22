@@ -8,7 +8,17 @@ import SimpleText from '../components/Blocks/SimpleText/SimpleText';
 import FloatLayout from '../components/Global/FloatLayout/FloatLayout';
 
 const Page = ({ pageContext, data: { page, favicon } }) => {
-  const { seo, title, introduction, backgroundColor, heroBackgroundImage, blocks = [], floatingLayout = false } = page;
+  const {
+    seo,
+    title,
+    introduction,
+    showDarkOverlay = true,
+    reduceOverlap = false,
+    backgroundColor,
+    heroBackgroundImage,
+    blocks = [],
+    floatingLayout = false,
+  } = page;
 
   const renderMainContent = () => (
     <>
@@ -29,10 +39,15 @@ const Page = ({ pageContext, data: { page, favicon } }) => {
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <div className="inner-page" style={{ backgroundColor: '#FFF' }}>
-        <HeroBasic title={floatingLayout ? '' : title} image={heroBackgroundImage} backgroundColor={backgroundColor} />
+        <HeroBasic
+          title={floatingLayout ? '' : title}
+          image={heroBackgroundImage}
+          backgroundColor={backgroundColor}
+          overlay={showDarkOverlay}
+        />
 
         {floatingLayout ? (
-          <FloatLayout>
+          <FloatLayout reduceOverlap={reduceOverlap}>
             <h1>{title}</h1>
             {renderMainContent()}
           </FloatLayout>
@@ -57,6 +72,8 @@ export const PageQuery = graphql`
       title
       introduction
       backgroundColor
+      showDarkOverlay
+      reduceOverlap
       heroBackgroundImage {
         url
         gatsbyImageData

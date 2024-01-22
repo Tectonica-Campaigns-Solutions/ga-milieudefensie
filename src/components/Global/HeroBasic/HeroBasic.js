@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 
-function HeroBasic({ title, image = null, backgroundColor = null, responsiveVariant }) {
+function HeroBasic({ title, image = null, backgroundColor = null, responsiveVariant, overlay = true }) {
   const heroBgImage = image?.url ? `url(${image.url})` : undefined;
 
   return (
@@ -15,7 +15,7 @@ function HeroBasic({ title, image = null, backgroundColor = null, responsiveVari
         <h1>{title}</h1>
       </div>
 
-      {heroBgImage && <div className="overlay" />}
+      {heroBgImage && overlay && <div className="overlay" />}
     </div>
   );
 }
