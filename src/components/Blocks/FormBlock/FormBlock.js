@@ -5,7 +5,7 @@ import HubspotForm from '../HubspotForm/HubspotForm';
 import './styles.scss';
 
 function FormBlock({ block }) {
-  const { title, hubspot } = block;
+  const { title, description, hubspot } = block;
 
   return (
     <div className="form-block-wrapper">
@@ -16,8 +16,10 @@ function FormBlock({ block }) {
           <div className="form-container-content">
             <div className={`row`}>
               {title && (
-                <div className="col-lg-3">
+                <div className={`${description ? 'col-lg-12' : 'col-lg-3'}`}>
                   <h2>{title}</h2>
+
+                  {description && <div className="description" dangerouslySetInnerHTML={{ __html: description }} />}
                 </div>
               )}
 

@@ -539,6 +539,7 @@ export const DatoCMS = graphql`
     __typename
     id: originalId
     title
+    description
     hubspot {
       ... on DatoCmsHubspot {
         formId
