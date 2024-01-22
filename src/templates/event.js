@@ -34,6 +34,8 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
     image,
     content,
     tags = [],
+    showDarkOverlay,
+    reduceOverlap,
   } = page;
 
   return (
@@ -41,9 +43,9 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="white">
-        <HeroBasic image={image} />
+        <HeroBasic image={image} overlay={showDarkOverlay} />
 
-        <FloatLayout>
+        <FloatLayout reduceOverlap={reduceOverlap}>
           {listEvent && (
             <div className="pre-header">
               <div className="back-btn">
@@ -132,6 +134,8 @@ export const PageQuery = graphql`
       title
       slug
       externalLink
+      showDarkOverlay
+      reduceOverlap
       date
       hourStart
       hourEnd
