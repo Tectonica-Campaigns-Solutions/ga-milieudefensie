@@ -23,7 +23,7 @@ module.exports = {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
         id: 'GTM-MMB2NFFR',
-        // enableWebVitalsTracking: true,
+        enableWebVitalsTracking: true,
       },
     },
     'gatsby-plugin-image',
