@@ -21,6 +21,30 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
   const [selectedMarker, setSelectedMarker] = useState(null);
 
   useEffect(() => {
+    const resizeMapOnMobile = () => {
+      const isMobile = window.innerWidth <= 992;
+
+      if (isMobile) {
+        const boundingBox = [
+          [3.31497114423, 50.803721015],
+          [7.09205325687, 53.5104033474],
+        ];
+
+        mapRef.current?.fitBounds(boundingBox, { padding: 80 });
+      }
+    };
+
+    resizeMapOnMobile();
+
+    window.addEventListener('resize', resizeMapOnMobile);
+
+    return () => {
+      window.removeEventListener('resize', resizeMapOnMobile);
+      mapRef.current?.remove();
+    };
+  }, []);
+
+  useEffect(() => {
     if (window) {
       const scrollToTop = () => window.scrollTo({ top: 0 });
       scrollToTop();
@@ -87,6 +111,7 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
           }
           onMove={(evt) => setViewport(evt.viewState)}
           onLoad={(evt) => evt.target.setZoom(viewport.zoom)}
+          scrollZoom={false}
         >
           {clusters.map((cluster) => {
             const [longitude, latitude] = cluster.geometry.coordinates;
