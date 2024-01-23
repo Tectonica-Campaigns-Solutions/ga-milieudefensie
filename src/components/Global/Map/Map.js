@@ -91,7 +91,6 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
   });
 
   if (error) {
-    console.error('Error loading complex map. Basic map render.');
     return <BasicMap title={title} data={data} type={type} mobileView={mobileView} setMobileView={setMobileView} />;
   }
 
@@ -117,13 +116,14 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
             'pk.eyJ1IjoibWFydGluYWx2IiwiYSI6ImNscHR1YjdvZDBlY2sybHBnNTRwM2l4ZTEifQ.nn8C3qy8ULBkq6gdO3vlCg'
           }
           onMove={(evt) => setViewport(evt.viewState)}
-          onLoad={(evt) => {
-            evt.target.setZoom(viewport.zoom);
-          }}
+          onLoad={(evt) => evt.target.setZoom(viewport.zoom)}
           scrollZoom={false}
           dragRotate={false}
           touchZoomRotate={false}
-          onError={() => setError((prev) => !prev)}
+          onError={(err) => {
+            console.error('Error loading complex map: ', err.error.message);
+            setError((prev) => !prev);
+          }}
         >
           {clusters.map((cluster) => {
             const [longitude, latitude] = cluster.geometry.coordinates;
