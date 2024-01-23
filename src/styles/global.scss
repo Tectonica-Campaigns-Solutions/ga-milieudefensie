@@ -81,6 +81,11 @@ html {
         font-style: normal !important;
         font-weight: 600 !important;
         line-height: 100% !important;
+
+        &:hover {
+          box-shadow: none !important;
+          border: none !important;
+        }
       }
     }
   }
@@ -107,6 +112,11 @@ html {
         font-style: normal !important;
         font-weight: 600 !important;
         line-height: 100% !important;
+
+        &:hover {
+          box-shadow: none !important;
+          border: none !important;
+        }
       }
     }
 
