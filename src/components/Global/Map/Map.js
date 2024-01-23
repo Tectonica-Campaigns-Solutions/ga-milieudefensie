@@ -7,7 +7,6 @@ import useSupercluster from 'use-supercluster';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './styles.scss';
-import BasicMap from './BasicMap';
 
 const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setMobileView }) => {
   const mapRef = useRef(null);
@@ -89,10 +88,6 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
     zoom: viewport?.zoom,
     options: { radius: 75, maxZoom: 20 },
   });
-
-  if (error) {
-    return <BasicMap title={title} data={data} type={type} mobileView={mobileView} setMobileView={setMobileView} />;
-  }
 
   return (
     <div id="map-wrapper-id" className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>
