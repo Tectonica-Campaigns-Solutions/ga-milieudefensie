@@ -19,6 +19,7 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
     scrollZoom: true,
   });
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [error, setError] = useState(false);
 
   const resizeMapOnMobile = () => {
     const isMobile = window.innerWidth <= 992;
@@ -90,7 +91,7 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
 
   return (
     <div id="map-wrapper-id" className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>
-      {title && <h3>{title}</h3>}
+      {title && !error && <h3>{title}</h3>}
 
       <div className="map">
         <div className="pre-header">
@@ -114,6 +115,7 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
           scrollZoom={false}
           dragRotate={false}
           touchZoomRotate={false}
+          onError={() => setError((prev) => !prev)}
         >
           {clusters.map((cluster) => {
             const [longitude, latitude] = cluster.geometry.coordinates;
