@@ -7,6 +7,7 @@ import useSupercluster from 'use-supercluster';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './styles.scss';
+import BasicMap from './BasicMap';
 
 const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setMobileView }) => {
   const mapRef = useRef(null);
@@ -89,6 +90,11 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
     options: { radius: 75, maxZoom: 20 },
   });
 
+  if (error) {
+    console.error('Error loading complex map. Basic map render.');
+    return <BasicMap title={title} data={data} type={type} mobileView={mobileView} setMobileView={setMobileView} />;
+  }
+
   return (
     <div id="map-wrapper-id" className={`map-wrapper ${mobileView ? 'mobile' : ''}`}>
       {title && !error && <h3>{title}</h3>}
@@ -111,7 +117,9 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
             'pk.eyJ1IjoibWFydGluYWx2IiwiYSI6ImNscHR1YjdvZDBlY2sybHBnNTRwM2l4ZTEifQ.nn8C3qy8ULBkq6gdO3vlCg'
           }
           onMove={(evt) => setViewport(evt.viewState)}
-          onLoad={(evt) => evt.target.setZoom(viewport.zoom)}
+          onLoad={(evt) => {
+            evt.target.setZoom(viewport.zoom);
+          }}
           scrollZoom={false}
           dragRotate={false}
           touchZoomRotate={false}
