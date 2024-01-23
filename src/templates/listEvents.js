@@ -23,7 +23,6 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
 
   const [filterValues, setFilterValues] = useState({ location: null, typeOfEvent: null });
   const [mobileShowMap, setMobileShowMap] = useState(false);
-  const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [isArrowVisible, setIsArrowVisible] = useState(true);
 
   const { mergedEvents, setFilteredEvents, filteredEvents, locationOptions, status } = useCSLEvents(cmsEvents);
@@ -31,10 +30,6 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
   useEffect(() => {
     // Arrow style (up or down)
     const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      setIsScrollingUp(scrollY > 1350);
-
-      // Hide float container on footer
       const testElement = document.getElementById('filter-events-list');
       const scrollPosition = window.scrollY || document.documentElement.scrollTop;
       const testElementPosition = testElement?.offsetTop;
@@ -137,8 +132,7 @@ const ListEvents = ({ pageContext, data: { page, allEvents = [], favicon } }) =>
                   <FloatCta
                     title="Bekijk lijst"
                     id="filter-events-list"
-                    isArrowVisible={isArrowVisible}
-                    isScrollingUp={isScrollingUp}
+                    isArrowVisible={isArrowVisible}                    
                   />
                 </>
               )}

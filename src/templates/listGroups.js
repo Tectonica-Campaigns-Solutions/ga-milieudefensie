@@ -18,20 +18,9 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
   const [mobileShowMap, setMobileShowMap] = useState(false);
 
   useEffect(() => {
-    // Arrow style (up or down)
     const ctaView = document.querySelector('#cta-view-list');
-    const arrowIcon = document.querySelector('#arrow-view-groups');
 
     const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      if (scrollY > 500) {
-        arrowIcon.classList.add('up');
-        arrowIcon.classList.remove('down');
-      } else {
-        arrowIcon.classList.add('down');
-        arrowIcon.classList.remove('up');
-      }
-
       // Hide float container on footer
       const testElement = document.getElementById('groups-list');
       const scrollPosition = window.scrollY || document.documentElement.scrollTop;
@@ -43,6 +32,7 @@ const ListGroups = ({ pageContext, data: { page, allGroups = [], favicon } }) =>
         ctaView.classList.add('hide');
       }
     };
+    
     window.addEventListener('scroll', handleScroll);
 
     handleScroll();
