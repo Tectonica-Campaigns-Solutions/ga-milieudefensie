@@ -6,7 +6,7 @@ function useCSLEvents(cmsEvents) {
   const [mergedEvents, setMergedEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [locationOptions, setLocationOptions] = useState([]);
-  const [status, setStatus] = useState('idle'); // Puedes usar 'idle' para indicar que no se ha iniciado la carga
+  const [status, setStatus] = useState('idle');
 
   useEffect(() => {
     async function fetchEvents() {
@@ -72,7 +72,7 @@ function useCSLEvents(cmsEvents) {
           const dateA = new Date(a.rawDate);
           const dateB = new Date(b.rawDate);
 
-          return dateB - dateA;
+          return dateA - dateB;
         });
 
         const uniqueLocations = [...new Set(events.map((event) => event.region))];
