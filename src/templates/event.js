@@ -34,8 +34,6 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
     image,
     content,
     tags = [],
-    showDarkOverlay,
-    reduceOverlap,
   } = page;
 
   return (
@@ -43,9 +41,9 @@ const Event = ({ pageContext, data: { page, listEvent, favicon } }) => {
       <SeoDatoCMS seo={seo} favicon={favicon} />
 
       <WrapperLayout variant="white">
-        <HeroBasic image={image} overlay={showDarkOverlay} />
+        <HeroBasic image={image} overlay={false} />
 
-        <FloatLayout reduceOverlap={reduceOverlap}>
+        <FloatLayout reduceOverlap>
           {listEvent && (
             <div className="pre-header">
               <div className="back-btn">
