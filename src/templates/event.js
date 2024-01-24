@@ -134,8 +134,6 @@ export const PageQuery = graphql`
       title
       slug
       externalLink
-      showDarkOverlay
-      reduceOverlap
       date
       hourStart
       hourEnd
