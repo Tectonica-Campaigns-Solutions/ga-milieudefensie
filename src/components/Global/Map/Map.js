@@ -12,9 +12,9 @@ const MapWrapper = ({ title, data = [], type = 'event', mobileView = false, setM
   const mapRef = useRef(null);
 
   const [viewport, setViewport] = useState({
-    latitude: 52.1,
+    latitude: 52.25,
     longitude: 4.9041,
-    zoom: 6.65,
+    zoom: 6.5,
     interactive: true,
     scrollZoom: true,
   });
